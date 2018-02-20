@@ -7,11 +7,12 @@
 
 a {
     text-decoration: none;
+    letter-spacing: 3px;
 }
 
 header {
     position: fixed;
-    height: 100px;
+    height: 75px;
     left:0;
     right:0;
     top:0;
@@ -20,12 +21,36 @@ header {
 }
 
 header a{
-    line-height: 100px;
+    line-height: 75px;
     margin: 0px 50px;
-    font-size: 25px;
+    font-size: 20px;
     color: #fff;
 }
 
 header a:hover{
     color: rgb(179, 80, 0);
+}
+
+.wrapper {
+    margin: 0 auto;
+}
+
+#about-me {
+    margin-top: 75px;
+    height: 800px;
+    background: transparent url('../images/bgimg-1.jpg') center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+h1 {
+    position: absolute;
+    top:50%;
+    color: #fff;
+    background-color: rgb(65, 65, 65);
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+    letter-spacing: 10px;
 }
