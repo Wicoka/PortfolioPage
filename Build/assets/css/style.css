@@ -1,0 +1,31 @@
+*{
+    font-family: 'Exo 2', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    height: 100px;
+    left:0;
+    right:0;
+    top:0;
+    z-index: 999;
+    background-color: rgb(85, 85, 85);
+}
+
+header a{
+    line-height: 100px;
+    margin: 0px 50px;
+    font-size: 25px;
+    color: #fff;
+}
+
+header a:hover{
+    color: rgb(179, 80, 0);
+}
