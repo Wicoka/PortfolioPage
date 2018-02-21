@@ -39,18 +39,18 @@ header a:hover{
     position: relative;
 }
 
-#about-me .wrapper {
+.wrapper {
     /* margin: 0 auto; */
     position: absolute;
     width: 100%;
-    left: 0;
     top: 50%;
     text-align: center;
     color: #000;
 }
 
-#about-me h1 {
+h1 {
     /* width: 300px; */
+    /* position: absolute; */
     color: #fff;
     background-color: rgb(65, 65, 65);
     font-size: 30px;
@@ -60,13 +60,35 @@ header a:hover{
     letter-spacing: 10px;
 }
 
+.container {
+    width: 75%;
+    text-align: center;
+    margin: 30px auto;
+}
 
 p {
-    width: 50%;
     color: #fff;
     background-color: rgb(65, 65, 65);
     font-size: 15px;
-    text-align: center;
-    margin: 30px auto;
     padding: 15px;
+}
+
+#projects {
+    height: 800px;
+    background: transparent url('../images/bgimg-2.jpg') center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+#projects-container {
+    width: 75%;
+    text-align: center;
+    padding: 15px;
+    margin: 30px auto;
+
+}
+
+#projects-container h2 {
+    display: inline;
+    margin: 60px;
 }
