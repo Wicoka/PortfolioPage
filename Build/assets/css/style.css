@@ -31,10 +31,6 @@ header a:hover{
     color: rgb(179, 80, 0);
 }
 
-.wrapper {
-    margin: 0 auto;
-}
-
 #about-me {
     margin-top: 75px;
     height: 800px;
@@ -43,14 +39,34 @@ header a:hover{
     position: relative;
 }
 
-h1 {
+#about-me .wrapper {
+    /* margin: 0 auto; */
     position: absolute;
-    top:50%;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    text-align: center;
+    color: #000;
+}
+
+#about-me h1 {
+    /* width: 300px; */
     color: #fff;
     background-color: rgb(65, 65, 65);
     font-size: 30px;
     text-align: center;
-    margin: 0 auto;
-    padding: 15px;
+    /* margin: 0 auto; */
+    padding: 10px;
     letter-spacing: 10px;
+}
+
+
+p {
+    width: 50%;
+    color: #fff;
+    background-color: rgb(65, 65, 65);
+    font-size: 15px;
+    text-align: center;
+    margin: 30px auto;
+    padding: 15px;
 }
