@@ -83,12 +83,25 @@ p {
 #projects-container {
     width: 75%;
     text-align: center;
-    padding: 15px;
-    margin: 30px auto;
-
+    /* padding: 15px; */
+    margin: 0 auto;
 }
 
 #projects-container h2 {
     display: inline;
-    margin: 60px;
+}
+
+#projects-container img {
+    display: block;
+    width: 400px;
+    margin-top: 50px;
+}
+
+.projects-element{
+    display: inline-block;
+    width: 300px;
+}
+
+#projects-element-middle {
+    margin: 30px;
 }
