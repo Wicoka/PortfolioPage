@@ -41,9 +41,13 @@ header a:hover {
 #about-me {
     margin-top: 75px;
     height: 800px;
-    background: transparent url('../images/bgimg-1.jpg') center center no-repeat;
+    background-image: url('../images/bgimg-1.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+
 }
 
 .wrapper {
@@ -83,7 +87,11 @@ p {
 
 #projects {
     height: 800px;
-    background: transparent url('../images/bgimg-2.jpg') center center no-repeat;
+    background-image: url('../images/bgimg-2.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-size: cover;
     position: relative;
 }
@@ -118,7 +126,11 @@ p {
 #social {
     margin-top: 75px;
     height: 800px;
-    background: transparent url('../images/bgimg-3.jpg') center center no-repeat;
+    background-image: url('../images/bgimg-3.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-size: cover;
     position: relative;
 }
