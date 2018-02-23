@@ -21,13 +21,20 @@ header {
 }
 
 header a{
+    height: 100px;
+    width: 200px;
     line-height: 75px;
     margin: 0px 50px;
     font-size: 20px;
     color: #fff;
+    -webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+	transition:0.5s all;
 }
 
-header a:hover{
+header a:hover {
     color: rgb(179, 80, 0);
 }
 
@@ -58,6 +65,7 @@ h1 {
     /* margin: 0 auto; */
     padding: 10px;
     letter-spacing: 10px;
+    opacity: 0.9;
 }
 
 .container {
