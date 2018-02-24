@@ -5,12 +5,8 @@
     padding: 0;
 }
 
-.szeles {
-    padding: 0 !important;
-}
-
 a {
-    text-decoration: none !important;
+    text-decoration: none;
     letter-spacing: 3px;
 }
 
@@ -66,7 +62,7 @@ header a:hover {
 h1 {
     /* width: 300px; */
     /* position: absolute; */
-    color: #fff !important;
+    color: #fff;
     background-color: rgb(65, 65, 65);
     font-size: 30px;
     text-align: center;
@@ -76,7 +72,7 @@ h1 {
     opacity: 0.9;
 }
 
-.about-me-container {
+.container {
     width: 75%;
     text-align: center;
     margin: 30px auto;
@@ -115,7 +111,7 @@ p {
     width: 100%;
     height: 100%;
     margin-top: 30px;
-    border: 3px solid rgb(85, 85, 85);
+    border: 3px solid rgb(65, 65, 65);
 }
 
 .projects-element{
