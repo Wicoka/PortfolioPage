@@ -5,8 +5,12 @@
     padding: 0;
 }
 
+.szeles {
+    padding: 0 !important;
+}
+
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     letter-spacing: 3px;
 }
 
@@ -62,7 +66,7 @@ header a:hover {
 h1 {
     /* width: 300px; */
     /* position: absolute; */
-    color: #fff;
+    color: #fff !important;
     background-color: rgb(65, 65, 65);
     font-size: 30px;
     text-align: center;
@@ -72,7 +76,7 @@ h1 {
     opacity: 0.9;
 }
 
-.container {
+.about-me-container {
     width: 75%;
     text-align: center;
     margin: 30px auto;
