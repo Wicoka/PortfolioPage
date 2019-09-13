@@ -18,6 +18,7 @@ header {
     top:0;
     z-index: 999;
     background-color: rgb(85, 85, 85);
+    text-align: center;
 }
 
 header a{
@@ -85,6 +86,7 @@ p {
     padding: 15px;
 }
 
+/* Parralax */
 #projects {
     height: 800px;
     background-image: url('../images/bgimg-2.jpg');
@@ -168,4 +170,20 @@ footer h3 {
     color: #fff;
     line-height: 75px;
     letter-spacing: 5px;
+    text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+      background-color: rgb(55, 55, 55) !important;
+  }
+  .social-element {
+    display: inline-block;
+    width: 100px;
+    margin: 30px;
+    color: #fff;
+  }
+  .projects-element {
+      color: #fff;
+  }
 }
