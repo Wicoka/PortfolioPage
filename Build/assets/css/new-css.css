@@ -1,103 +1,99 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+* {
+    font-family: "Exo 2", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: 'Ubuntu', sans-serif;
-  line-height: 180%;
-  color: #666;
-  text-align: center;
+body,
+html {
+    height: 100%;
+    margin: 0;
+    line-height: 180%;
+    color: #fff;
+    text-align: center;
 }
 .parallax1 {
-  background: url("../images/bgimg-1.jpg");
-  min-height: 100%;
+    background: url("../images/bgimg-1.jpg");
+    min-height: 100%;
 }
 .parallax2 {
-  background: url("../images/bgimg-2.jpg");
-  min-height: 60%;
+    background: url("../images/bgimg-2.jpg");
+    min-height: 100%;
 }
 .parallax3 {
-  background: url("../images/bgimg-3.jpg");
-  min-height: 40%;
+    background: url("../images/bgimg-3.jpg");
+    min-height: 100%;
 }
-.parallax4 {
-  background: url("../images/bgimg-3.jpg");
-  min-height: 100%;
-}
-.parallax1, .parallax2, .parallax3, .parallax4 {
-  position: relative;
-  opacity: .75;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.parallax1,
+.parallax2,
+.parallax3 {
+    position: relative;
+    opacity: 1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .heading {
-  position: absolute;
-  color: #fff;
-  font-size: 550%;
-  top: 38%;
-  width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 8px;
-  text-shadow: 0 0 10px #000;
+    position: absolute;
+    color: #fff;
+    font-size: 550%;
+    top: 50%;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    text-shadow: 0 0 10px #000;
 }
 .heading-sm {
-  position: absolute;
-  top: 45%;
-  width: 100%;
-  color: #fff;
-  font-size: 250%;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  text-shadow: 0 0 10px #000;
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    color: #fff;
+    font-size: 250%;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #000;
 }
-.two-col {
-  float: left;
-  width: 42%;
-  padding: 0 4%;
-  text-align: left;
+.four-col {
+    display: inline-block;
+    width: 20%;
+    padding: 0 4%;
+    text-align: left;
 }
 section {
-  overflow: auto;
-  padding: 50px 80px;
+    overflow: auto;
+    padding: 50px 80px;
 }
 .dark {
-  overflow: auto;
-  padding: 50px 80px;
-  background-color: #323232;
-  color: #f2f2f2;
+    overflow: auto;
+    padding: 50px 80px;
+    /* background-color: #323232; */
+    color: #f2f2f2;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 50px 50px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
 }
 
 @media (max-width: 768px) {
-  .heading {
-    font-size: 250%;
-  }
-  .heading-sm {
-    font-size: 180%;
-  }
-  .two-col {
-    width: 100%;
-    padding: 0;
-    text-align: center;
-  }
+    .heading {
+        font-size: 250%;
+    }
+    .heading-sm {
+        font-size: 180%;
+    }
+    .four-col {
+        display: block;
+        width: 100%;
+        padding: 0;
+        text-align: center;
+    }
+
+    .grid-container {
+        grid-template-columns: auto !important;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

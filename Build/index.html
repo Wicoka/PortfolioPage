@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/card.css">
     <link rel="stylesheet" type="text/css" href="assets/css/new-css.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/from-old.css">
 
     <script src="assets/js/jquery-1.11.2.min.js"></script>
     <script src="assets/js/jquery.bxslider.min.js"></script>
@@ -21,126 +22,15 @@
         <a href="#projects">Projektek</a>
         <a href="#social">Közösségi élet</a>
     </header>
-    <!-- 
-    <div id="about-me">
-        <div class="wrapper">
-            <h1>Magamról</h1>
-        </div>
-    </div>
-
-    <section>
-        <h1>Bemutatkozás</h1>
-        <div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis faucibus odio, vel imperdiet erat
-                sagittis
-                interdum. Nulla lobortis quis justo in euismod. Fusce ultrices tempus interdum. Praesent feugiat nisl
-                lorem,
-                elementum volutpat mauris semper et. Ut elementum, libero ac dignissim lobortis, sapien sapien viverra
-                dolor,
-                bibendum tincidunt risus magna eget purus. Nulla feugiat, eros sit amet fringilla euismod, ex urna
-                mattis
-                massa,
-                quis rutrum erat dolor eu nisi. Phasellus quis massa vulputate, accumsan orci ut, luctus orci. Integer
-                et
-                dignissim
-                mi. Phasellus vel sagittis felis. Proin condimentum nulla in consectetur euismod.
-            </p>
-        </div>
-    </section>
-
-
-    <div id="projects">
-        <div class="wrapper">
-            <h1>Projektek</h1>
-        </div>
-    </div>
-
-    <div id="projects-container" class="grid-container">
-
-        <div class="card">
-            <div class="box">
-                <h2>Mark Caine</h2>
-                <p class="project-description">The first step toward success is taken when you refuse to be a captive of
-                    the environment in which
-                    you first find yourself. </p>
-            </div>
-            <div class="bg"></div>
-        </div>
-
-        <div class="card">
-            <div class="box">
-                <p class="project-description">The first step toward success is taken when you refuse to be a captive of
-                    the environment in which
-                    you first find yourself. </p>
-                <h2>Mark Caine</h2>
-            </div>
-            <div class="bg"></div>
-        </div>
-
-        <div class="card">
-            <div class="box">
-                <p class="project-description">The first step toward success is taken when you refuse to be a captive of
-                    the environment in which
-                    you first find yourself. </p>
-                <h2>Mark Caine</h2>
-            </div>
-            <div class="bg"></div>
-        </div>
-
-        <div class="card">
-            <div class="box">
-                <p class="project-description">The first step toward success is taken when you refuse to be a captive of
-                    the environment in which
-                    you first find yourself. </p>
-                <h2>Mark Caine</h2>
-            </div>
-            <div class="bg"></div>
-        </div>
-
-    </div>
-
-    <div id="social">
-        <div class="wrapper">
-            <h1>Közösségi élet</h1>
-
-        </div>
-    </div>
-
-    <div id="social-container">
-        <div class="social-element">
-            <h2>Facebook</h2>
-            <a target="_blank" href="https://www.facebook.com/wicoka95">
-                <img class="svg" src="assets/images/icons/facebook.svg" alt="Facebook">
-            </a>
-        </div>
-        <div class="social-element">
-            <h2>Instagram</h2>
-            <a target="_blank" href="https://www.instagram.com/szokevitya/">
-                <img src="assets/images/icons/instagram.svg" alt="Instagram">
-            </a>
-        </div>
-        <div class="social-element">
-            <h2>Linkedin</h2>
-            <a target="_blank" href="https://www.linkedin.com/in/viktor-szőke-2a680112a">
-                <img src="assets/images/icons/linkedin.svg" alt="Linkedin">
-            </a>
-        </div>
-        <div class="social-element">
-            <h2>Twitter</h2>
-            <a target="_blank" href="https://twitter.com/Wicoka00">
-                <img src="assets/images/icons/twitter.svg" alt="Twitter">
-            </a>
-        </div>
-    </div> -->
-
-    <div class="parallax1">
+   
+    <div id="about-me" class="parallax1">
         <div class="heading">
             Magamról
         </div>
     </div>
 
     <section>
+        <h1 onclick="toggleDarkMode()">Dark mode</h1>
         <h1>Bemutatkozás</h1>
         <div>
             <p>
@@ -161,9 +51,9 @@
         </div>
     </section>
 
-    <div class="parallax2">
-        <div class="heading-sm">
-            Fire Works
+    <div id="projects" class="parallax2">
+        <div class="heading">
+            Projektek
         </div>
     </div>
 
@@ -211,30 +101,30 @@
 
     </section>
 
-    <div class="parallax3">
+    <div id="social" class="parallax3">
         <div class="heading">Közösségi élet</div>
     </div>
 
     <div class="dark">
-        <div class="social-element">
+        <div class="social-element four-col">
             <h2>Facebook</h2>
             <a target="_blank" href="https://www.facebook.com/wicoka95">
                 <img class="svg" src="assets/images/icons/facebook.svg" alt="Facebook">
             </a>
         </div>
-        <div class="social-element">
+        <div class="social-element four-col">
             <h2>Instagram</h2>
             <a target="_blank" href="https://www.instagram.com/szokevitya/">
                 <img src="assets/images/icons/instagram.svg" alt="Instagram">
             </a>
         </div>
-        <div class="social-element">
+        <div class="social-element four-col">
             <h2>Linkedin</h2>
             <a target="_blank" href="https://www.linkedin.com/in/viktor-szőke-2a680112a">
                 <img src="assets/images/icons/linkedin.svg" alt="Linkedin">
             </a>
         </div>
-        <div class="social-element">
+        <div class="social-element four-col">
             <h2>Twitter</h2>
             <a target="_blank" href="https://twitter.com/Wicoka00">
                 <img src="assets/images/icons/twitter.svg" alt="Twitter">
@@ -242,8 +132,6 @@
         </div>
     </div>
 
-    <div class="parallax4">
-    </div>
     <footer>
         <h3>Made by Viktor Szőke</h3>
     </footer>

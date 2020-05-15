@@ -1,0 +1,86 @@
+a {
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+
+header {
+    position: fixed;
+    height: 75px;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    background-color: rgb(85, 85, 85);
+    text-align: center;
+}
+
+header a {
+    height: 100px;
+    width: 200px;
+    line-height: 75px;
+    margin: 0px 50px;
+    font-size: 20px;
+    color: #fff;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+}
+
+header a:hover {
+    color: rgb(179, 80, 0);
+}
+
+footer {
+    height: 75px;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    background-color: rgb(85, 85, 85);
+}
+
+footer h3 {
+    color: #fff;
+    line-height: 75px;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: rgb(55, 55, 55);
+        /* background-color: #000; */
+        color: #fff;
+
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+        transition: 0.5s all;
+    }
+    .parallax1,
+    .parallax2,
+    .parallax3 {
+        opacity: 0.75;
+
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+        transition: 0.5s all;
+    }
+}
+
+.dark-mode {
+    color: #fff;
+    /* background-color: rgb(55, 55, 55); */
+    background-color: #000 !important;
+
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+}
