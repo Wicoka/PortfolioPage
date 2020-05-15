@@ -8,3 +8,14 @@ $(document).ready(function() {
 	});
 
 });
+
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // dark mode
+	var isDarkMode = true;
+}
+
+function toggleDarkMode() {
+	isDarkMode = !isDarkMode;
+	var element = document.body;
+	element.classList.toggle("dark-mode");
+}

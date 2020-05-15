@@ -1,5 +1,5 @@
-*{
-    font-family: 'Exo 2', sans-serif;
+* {
+    font-family: "Exo 2", sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -13,26 +13,26 @@ a {
 header {
     position: fixed;
     height: 75px;
-    left:0;
-    right:0;
-    top:0;
+    left: 0;
+    right: 0;
+    top: 0;
     z-index: 999;
     background-color: rgb(85, 85, 85);
     text-align: center;
 }
 
-header a{
+header a {
     height: 100px;
     width: 200px;
     line-height: 75px;
     margin: 0px 50px;
     font-size: 20px;
     color: #fff;
-    -webkit-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-o-transition:0.5s all;
-	-ms-transition:0.5s all;
-	transition:0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
 }
 
 header a:hover {
@@ -42,13 +42,12 @@ header a:hover {
 #about-me {
     margin-top: 75px;
     height: 800px;
-    background-image: url('../images/bgimg-1.jpg');
+    background-image: url("../images/bgimg-1.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-
 }
 
 .wrapper {
@@ -88,8 +87,12 @@ p {
 
 /* Parralax */
 #projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
     height: 800px;
-    background-image: url('../images/bgimg-2.jpg');
+    background-image: url("../images/bgimg-2.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -116,7 +119,7 @@ p {
     border: 3px solid rgb(85, 85, 85);
 }
 
-.projects-element{
+.projects-element {
     display: inline-block;
     width: 300px;
     border: 2px solid rgb(85, 85, 85);
@@ -136,7 +139,7 @@ p {
 #social {
     margin-top: 75px;
     height: 800px;
-    background-image: url('../images/bgimg-3.jpg');
+    background-image: url("../images/bgimg-3.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -166,9 +169,9 @@ p {
 
 footer {
     height: 75px;
-    left:0;
-    right:0;
-    top:0;
+    left: 0;
+    right: 0;
+    top: 0;
     z-index: 999;
     background-color: rgb(85, 85, 85);
 }
@@ -180,17 +183,19 @@ footer h3 {
     text-align: center;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  body {
-      background-color: rgb(55, 55, 55) !important;
-  }
-  .social-element {
-    display: inline-block;
-    width: 100px;
-    margin: 30px;
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: rgb(55, 55, 55) !important;
+    }
+    .social-element {
+        color: #fff;
+    }
+    .projects-element {
+        color: #fff;
+    }
+}
+
+.dark-mode {
     color: #fff;
-  }
-  .projects-element {
-      color: #fff;
-  }
-} */
+    background-color: rgb(55, 55, 55) !important;
+}
