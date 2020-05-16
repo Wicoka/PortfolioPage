@@ -10,20 +10,23 @@ html {
     height: 100%;
     margin: 0;
     line-height: 180%;
-    color: #fff;
+    color: rgb(65, 65, 65);
     text-align: center;
+
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
 }
 .parallax1 {
     background: url("../images/bgimg-1.jpg");
-    min-height: 100%;
 }
 .parallax2 {
     background: url("../images/bgimg-2.jpg");
-    min-height: 100%;
 }
 .parallax3 {
     background: url("../images/bgimg-3.jpg");
-    min-height: 100%;
 }
 .parallax1,
 .parallax2,
@@ -34,6 +37,13 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    min-height: 100%;
+
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
 }
 .heading {
     position: absolute;
@@ -59,7 +69,7 @@ html {
     display: inline-block;
     width: 20%;
     padding: 0 4%;
-    text-align: left;
+    text-align: center;
 }
 section {
     overflow: auto;
@@ -69,17 +79,22 @@ section {
     overflow: auto;
     padding: 50px 80px;
     /* background-color: #323232; */
-    color: #f2f2f2;
+    /* color: #f2f2f2; */
 }
 
-.grid-container {
+.grid-container, .social-grid  {
     display: grid;
     grid-gap: 50px 50px;
     grid-template-columns: auto auto auto;
     padding: 10px;
 }
 
-@media (max-width: 768px) {
+.technologies img {
+    height: 50px;
+}
+
+/* 768 */
+@media (max-width: 1200px) {
     .heading {
         font-size: 250%;
     }
@@ -93,7 +108,19 @@ section {
         text-align: center;
     }
 
+    .four-col img {
+        height: 150px;
+    }
+
     .grid-container {
-        grid-template-columns: auto !important;
+        grid-template-columns: auto;
+    }
+
+    .social-grid {
+        grid-template-columns: auto auto;
+    }
+
+    .technologies img {
+        height: 150px;
     }
 }
