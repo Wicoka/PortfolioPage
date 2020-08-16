@@ -8,10 +8,12 @@ $(document).ready(function() {
 	});
 
 });
-
+var isDarkMode;
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     // dark mode
-	var isDarkMode = true;
+	this.isDarkMode = true;
+} else {
+	this.isDarkMode = false;
 }
 
 function toggleDarkMode() {
