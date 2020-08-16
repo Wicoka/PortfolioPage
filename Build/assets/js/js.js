@@ -1,13 +1,12 @@
 $(document).ready(function() {
-	var header_offset = 75;
-
-	$("header a").click(function() {
+	$(".navbar .navbar-nav .nav-item a").click(function() {
 		$("html, body").animate({
-			scrollTop: $($.attr(this, "href")).offset().top - header_offset
-		}, 1000);
+			scrollTop: $($.attr(this, "href")).offset().top
+		}, 1);
 	});
-
 });
+
+
 var isDarkMode;
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     // dark mode
