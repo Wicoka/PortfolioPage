@@ -82,11 +82,20 @@ section {
     /* color: #f2f2f2; */
 }
 
-.grid-container, .social-grid  {
-    display: grid;
-    grid-gap: 50px 50px;
-    grid-template-columns: auto auto auto;
+.grid-container,
+.social-grid {
+    display: flex;
+    justify-content: space-around;
     padding: 10px;
+}
+
+.social-element {
+    box-sizing: border-box;
+}
+
+.social-title {
+    font-size: 2vw;
+    padding-bottom: 1vw;
 }
 
 .technologies img {
@@ -98,29 +107,48 @@ section {
     .heading {
         font-size: 250%;
     }
-    .heading-sm {
-        font-size: 180%;
-    }
-    .four-col {
-        display: block;
-        width: 100%;
-        padding: 0;
-        text-align: center;
-    }
-
-    .four-col img {
-        height: 150px;
-    }
-
     .grid-container {
         grid-template-columns: auto;
     }
 
-    .social-grid {
-        grid-template-columns: auto auto;
-    }
-
     .technologies img {
         height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container,
+    .social-grid {
+        flex-wrap: wrap;
+    }
+    .social-element:first-child {
+        flex-basis: 50%;
+    }
+    .social-element:nth-child(2) {
+        flex-basis: 50%;
+    }
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+    body * {
+        background-attachment: scroll !important;
+    }
+
+    .parallax1,
+    .parallax2,
+    .parallax3 {
+        position: relative;
+        opacity: 1;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll !important;
+        min-height: 100%;
+
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+        -ms-transition: 0.5s all;
+        transition: 0.5s all;
     }
 }

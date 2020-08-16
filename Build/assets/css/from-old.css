@@ -33,6 +33,7 @@ header a:hover {
 }
 
 .social-logo {
+    height: 8vw;
     background-color: #FFF;
     border-radius: 50%;
     padding: 2px;
