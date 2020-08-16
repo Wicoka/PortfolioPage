@@ -82,15 +82,33 @@ section {
     /* color: #f2f2f2; */
 }
 
-.grid-container,
+.grid-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.technology-element {
+    width: 100px;
+    margin: 0 50px;
+}
+
+.technology-element img {
+  max-width:100px;
+  max-height:100px;
+  width: auto;
+  height: auto;
+}
 .social-grid {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     padding: 10px;
 }
 
 .social-element {
     box-sizing: border-box;
+    margin: 0 50px;
 }
 
 .social-title {
@@ -103,7 +121,7 @@ section {
 }
 
 /* 768 */
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .heading {
         font-size: 250%;
     }
@@ -113,19 +131,6 @@ section {
 
     .technologies img {
         height: 150px;
-    }
-}
-
-@media (max-width: 768px) {
-    .grid-container,
-    .social-grid {
-        flex-wrap: wrap;
-    }
-    .social-element:first-child {
-        flex-basis: 50%;
-    }
-    .social-element:nth-child(2) {
-        flex-basis: 50%;
     }
 }
 
