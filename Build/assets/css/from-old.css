@@ -3,6 +3,10 @@ a {
     letter-spacing: 3px;
 }
 
+h1 {
+    padding-bottom: 15px;
+}
+
 header {
     position: fixed;
     height: 75px;
@@ -14,12 +18,7 @@ header {
     text-align: center;
 }
 
-header a {
-    height: 100px;
-    width: 200px;
-    line-height: 75px;
-    margin: 0px 50px;
-    font-size: 20px;
+.nav-item a {
     color: #fff;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -28,13 +27,17 @@ header a {
     transition: 0.5s all;
 }
 
-header a:hover {
+.nav-item {
+    font-size: 20px;
+}
+
+.nav-item a:hover {
     color: rgb(179, 80, 0);
 }
 
 .social-logo {
     height: 100px;
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 50%;
     padding: 2px;
 }
@@ -82,8 +85,8 @@ footer h3 {
 
 .dark-mode {
     color: #fff;
-    /* background-color: rgb(55, 55, 55); */
-    background-color: #000 !important;
+    background-color: rgb(55, 55, 55);
+    /* background-color: #000 !important; */
 
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
