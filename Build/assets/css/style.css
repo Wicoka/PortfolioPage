@@ -41,13 +41,8 @@ header a:hover {
 
 #about-me {
     margin-top: 75px;
-    height: 800px;
     background-image: url("../images/bgimg-1.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+    min-height: 100%;
 }
 
 .wrapper {
@@ -87,18 +82,8 @@ p {
 
 /* Parralax */
 #projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    height: 800px;
+    min-height: 100%;
     background-image: url("../images/bgimg-2.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: cover;
-    position: relative;
 }
 
 #projects-container {
@@ -138,14 +123,8 @@ p {
 
 #social {
     margin-top: 75px;
-    height: 800px;
     background-image: url("../images/bgimg-3.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: cover;
-    position: relative;
+    min-height: 100%;
 }
 
 #social-container {

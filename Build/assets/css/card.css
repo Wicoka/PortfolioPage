@@ -1,9 +1,9 @@
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-gap: 50px 50px;
   grid-template-columns: auto auto auto;
   padding: 10px;
-}
+} */
 
 /* Mixins */
 .item {
@@ -24,6 +24,11 @@
   padding: 20px;
   color: #8293ff;
   cursor: pointer;
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  transition: 0.3s all;
   /* Link */
 }
 .box .icon-wrapper {
@@ -42,6 +47,11 @@
   align-items: center;
   text-align: center;
   padding: 15px;
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  transition: 0.3s all;
 }
 .box .boxContent .icon {
   color: #8293ff;
@@ -69,19 +79,33 @@
 .box:hover .icon,
 .box:hover .title,
 .box:hover .desc {
-  color: white;
-  transition: 0.3s all ease-in-out;
+  color: white; 
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  transition: 0.3s all;
 }
 .project-description {
   background-color: transparent;
   color: rgb(65, 65, 65);
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  transition: 0.3s all;
 }
-#projects-container .box:hover,
-#projects-container .box:hover ~ .bg {
+.box:hover,
+.box:hover ~ .bg {
   opacity: 1;
   background: #e2a9e5;
   background: -moz-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
   background: -webkit-linear-gradient(-45deg, #e2a9e5 15%, #2b94e5 100%);
   background: linear-gradient(135deg, #e2a9e5 15%, #2b94e5 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2a9e5', endColorstr='#2b94e5',GradientType=1 );
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  transition: 0.3s all;
 }
