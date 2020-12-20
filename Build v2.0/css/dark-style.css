@@ -15,4 +15,14 @@
   .bg-primary {
     background-color: #0b6654 !important;
   }
+  .form-control:focus {
+    color: #fff;
+    background-color: transparent;
+  }
+  .floating-label-form-group-with-value {
+    color: #fff;
+  }
+  .form-control {
+    color: #495057;
+  }
 }
