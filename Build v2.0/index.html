@@ -18,6 +18,7 @@
         type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/toggle.css" rel="stylesheet" />
     <link href="css/dark-style.css" rel="stylesheet" id="theme-link" />
 
     <link href="css/all.css" rel="stylesheet" />
@@ -31,7 +32,6 @@
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">Szőke Viktor</a>
-            <button onclick="toggleDarkMode()">Dark mode</button>
             <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
                 type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -47,6 +47,12 @@
                             href="#about">Magamról</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             href="#contact">Kapcsolat</a></li>
+                    <li class="nav-item mx-0 mx-lg-1 checkbox-wrapper">
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-checkbox" onclick="toggleDarkMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
                 </ul>
             </div>
         </div>
