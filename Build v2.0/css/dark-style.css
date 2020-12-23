@@ -32,3 +32,10 @@ body {
   color: #495057;
   transition: 0.4s ease;
 }
+.modal-content {
+  background-color: rgb(55, 55, 55) !important;
+  transition: 0.4s ease;
+}
+p {
+  color: #fff;
+}
