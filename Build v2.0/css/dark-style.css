@@ -1,28 +1,28 @@
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: rgb(55, 55, 55) !important;
-  }
-  .text-secondary {
-    color: #fff !important;
-  }
-  .divider-custom .divider-custom-line {
-    background-color: #fff;
-    border-color: #fff !important;
-  }
-  .divider-custom .divider-custom-icon {
-    color: #fff !important;
-  }
-  .bg-primary {
-    background-color: #0b6654 !important;
-  }
-  .form-control:focus {
-    color: #fff;
-    background-color: transparent;
-  }
-  .floating-label-form-group-with-value {
-    color: #fff;
-  }
-  .form-control {
-    color: #495057;
-  }
+/* @media (prefers-color-scheme: dark) { */
+body {
+  background-color: rgb(55, 55, 55) !important;
 }
+.text-secondary {
+  color: #fff !important;
+}
+.divider-custom .divider-custom-line {
+  background-color: #fff;
+  border-color: #fff !important;
+}
+.divider-custom .divider-custom-icon {
+  color: #fff !important;
+}
+.bg-primary {
+  background-color: #0b6654 !important;
+}
+.form-control:focus {
+  color: #fff;
+  background-color: transparent;
+}
+.floating-label-form-group-with-value {
+  color: #fff;
+}
+.form-control {
+  color: #495057;
+}
+/* } */

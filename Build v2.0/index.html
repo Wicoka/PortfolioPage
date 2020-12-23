@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Viktor Szőke</title>
+    <title>Szőke Viktor</title>
     <!-- Favicon-->
     <!-- <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" /> -->
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
@@ -18,7 +18,7 @@
         type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/dark-style.css" rel="stylesheet" />
+    <link href="css/dark-style.css" rel="stylesheet" id="theme-link" />
 
     <link href="css/all.css" rel="stylesheet" />
     <link href="css/all.min.css" rel="stylesheet" />
@@ -31,21 +31,22 @@
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">Szőke Viktor</a>
+            <button onclick="toggleDarkMode()">Dark mode</button>
             <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
                 type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
-                Menu
+                Menü
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#portfolio">Portfolio</a></li>
+                            href="#portfolio">Portfólió</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#about">About</a></li>
+                            href="#about">Magamról</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#contact">Contact</a></li>
+                            href="#contact">Kapcsolat</a></li>
                 </ul>
             </div>
         </div>
@@ -65,7 +66,7 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Programozó - Gamer - Apple fan
+            <p class="masthead-subheading font-weight-light mb-0">Programozó - Gamer - Apple Fan
             </p>
         </div>
     </header>
@@ -73,7 +74,7 @@
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
             <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfólió</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -155,7 +156,7 @@
     <section class="page-section bg-primary text-white mb-0" id="about">
         <div class="container">
             <!-- About Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-white">Magamról</h2>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -197,7 +198,7 @@
     <section class="page-section" id="contact">
         <div class="container">
             <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Kapcsolat</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -212,43 +213,43 @@
                     <form id="contactForm" name="sentMessage" novalidate="novalidate">
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Name</label>
-                                <input class="form-control" id="name" type="text" placeholder="Name" required="required"
-                                    data-validation-required-message="Please enter your name." />
+                                <label>Név</label>
+                                <input class="form-control" id="name" type="text" placeholder="Név" required="required"
+                                    data-validation-required-message="Kérem adjon meg egy nevet." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Email Address</label>
-                                <input class="form-control" id="email" type="email" placeholder="Email Address"
+                                <label>Email cím</label>
+                                <input class="form-control" id="email" type="email" placeholder="Email cím"
                                     required="required"
-                                    data-validation-required-message="Please enter your email address." />
+                                    data-validation-required-message="Kérem adj meg egy email címet." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Phone Number</label>
-                                <input class="form-control" id="phone" type="tel" placeholder="Phone Number"
+                                <label>Telefonszám (opcionális)</label>
+                                <input class="form-control" id="phone" type="tel" placeholder="Telefonszám (opcionális)"
                                     required="required"
-                                    data-validation-required-message="Please enter your phone number." />
+                                    data-validation-required-message="Kérem adjon meg egy telefonszámot." />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Message</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="Message"
+                                <label>Üzenet</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Üzenet"
                                     required="required"
-                                    data-validation-required-message="Please enter a message."></textarea>
+                                    data-validation-required-message="Kérem írjon üzenetet."></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <br />
                         <div id="success"></div>
                         <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton"
-                                type="submit">Send</button></div>
+                                type="submit">Küldés</button></div>
                     </form>
                 </div>
             </div>
@@ -548,6 +549,7 @@
     <script src="assets/mail/contact_me.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <script src="js/dark-mode.js"></script>
 </body>
 
 </html>
