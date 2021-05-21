@@ -521,6 +521,7 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+  /* height: 240px; */
 }
 
 .img-thumbnail {
@@ -10539,6 +10540,10 @@ a.text-dark:focus {
   max-width: 25rem;
   border-radius: 0.5rem;
   overflow: hidden;
+}
+.portfolio-item {
+  display: flex !important;
+  justify-content: center;
 }
 .portfolio .portfolio-item .portfolio-item-caption {
   position: absolute;
