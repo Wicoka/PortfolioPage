@@ -1,0 +1,41 @@
+body {
+  background-color: rgb(55, 55, 55) !important;
+  transition: 0.4s ease;
+}
+.text-secondary {
+  color: #fff !important;
+  transition: 0.4s ease;
+}
+.divider-custom .divider-custom-line {
+  background-color: #fff;
+  border-color: #fff !important;
+  transition: 0.4s ease;
+}
+.divider-custom .divider-custom-icon {
+  color: #fff !important;
+  transition: 0.4s ease;
+}
+.bg-primary {
+  background-color: #0b6654 !important;
+  transition: 0.4s ease;
+}
+.form-control:focus {
+  color: #fff;
+  background-color: transparent;
+  transition: 0.4s ease;
+}
+.floating-label-form-group-with-value {
+  color: #fff;
+  transition: 0.4s ease;
+}
+.form-control {
+  color: #495057;
+  transition: 0.4s ease;
+}
+.modal-content {
+  background-color: rgb(55, 55, 55) !important;
+  transition: 0.4s ease;
+}
+p {
+  color: #fff;
+}
