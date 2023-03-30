@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class MainPageComponent {
   // TODO - Add Typed.js
   // https://www.jsdelivr.com/package/npm/typed.js
+  // https://boxicons.com/usage
 }
