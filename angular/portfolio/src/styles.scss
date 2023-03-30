@@ -19,3 +19,7 @@ body {
 *::selection {
   @apply bg-custom-blue text-primary;
 }
+
+.typed-cursor {
+  @apply text-custom-blue;
+}
