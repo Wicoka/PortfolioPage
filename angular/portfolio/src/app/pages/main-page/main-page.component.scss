@@ -216,18 +216,11 @@ span {
 /* CONTACT */
 .contact {
   min-height: auto;
-  padding-bottom: 7rem;
-}
-
-.contact h2 {
-  margin-bottom: 3rem;
 }
 
 .contact form {
   max-width: 70rem;
   margin: 1rem auto;
-  text-align: center;
-  margin-bottom: 3rem;
 }
 
 .contact form .input-box {
@@ -274,12 +267,6 @@ span {
 }
 
 .footer-iconTop a {
-  @apply bg-custom-blue;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.8rem;
-  border-radius: 0.8rem;
   transition: 0.5s ease;
 }
 
@@ -288,7 +275,6 @@ span {
 }
 
 .footer-iconTop a i {
-  @apply text-primary-second;
   font-size: 2.4rem;
 }
 
