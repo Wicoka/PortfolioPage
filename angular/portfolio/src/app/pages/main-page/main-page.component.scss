@@ -41,3 +41,37 @@
 //   -webkit-mask-composite: xor;
 //   mask-composite: exclude;
 // }
+
+// CSS COPY
+/* HEADER */
+.header {
+  padding: 2rem 9%;
+}
+// TODO - Convert to Tailwind
+.header.sticky {
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.navbar a {
+  font-size: 1.7rem;
+  color: #fff;
+  margin-left: 4rem;
+  transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  @apply text-custom-blue;
+}
+
+#menu-icon {
+  font-size: 3.6rem;
+  color: #fff;
+  display: none;
+}
