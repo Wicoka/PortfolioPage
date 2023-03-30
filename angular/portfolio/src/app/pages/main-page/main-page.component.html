@@ -8,16 +8,41 @@
 
   <nav class="navbar">
     <!-- TODO - Active -->
-    <a href="#home" class="active text-3xl text-white ml-16">Home</a>
-    <a href="#about" class="text-3xl text-white ml-16">About</a>
-    <a href="#services" class="text-3xl text-white ml-16">Services</a>
-    <a href="#portfolio" class="text-3xl text-white ml-16">Portfolio</a>
-    <a href="#contact" class="text-3xl text-white ml-16">Contact</a>
+    <a
+      href="#home"
+      (click)="scrollToElement('home')"
+      class="text-3xl text-white ml-16"
+      >Home</a
+    >
+    <a
+      href="#about"
+      (click)="scrollToElement('about')"
+      class="text-3xl text-white ml-16"
+      >About</a
+    >
+    <a
+      href="#services"
+      (click)="scrollToElement('services')"
+      class="text-3xl text-white ml-16"
+      >Services</a
+    >
+    <a
+      href="#portfolio"
+      (click)="scrollToElement('portfolio')"
+      class="text-3xl text-white ml-16"
+      >Portfolio</a
+    >
+    <a
+      href="#contact"
+      (click)="scrollToElement('contact')"
+      class="text-3xl text-white ml-16"
+      >Contact</a
+    >
   </nav>
 </header>
 
 <!-- home section design -->
-<section class="flex justify-center items-center" id="home">
+<section class="flex justify-center items-center" id="home" #home>
   <div class="home-content">
     <h3 class="!text-5xl !font-bold">Hello, It's Me</h3>
     <h1 class="!text-6xl !font-bold">Viktor Szőke</h1>
@@ -67,6 +92,7 @@
 <section
   class="about bg-primary-second flex justify-center items-center gap-8"
   id="about"
+  #about
 >
   <div class="about-img">
     <!-- <img src="images/about.png" alt="" /> -->
@@ -92,7 +118,7 @@
 </section>
 
 <!-- services section design -->
-<section class="services" id="services">
+<section class="services" id="services" #services>
   <h2 class="text-center text-7xl">My <span>Services</span></h2>
 
   <div
@@ -146,7 +172,7 @@
 </section>
 
 <!-- portfolio section design -->
-<section class="portfolio bg-primary-second" id="portfolio">
+<section class="portfolio bg-primary-second" id="portfolio" #portfolio>
   <h2 class="text-center text-7xl">Latest <span>Project</span></h2>
 
   <div class="portfolio-container grid items-center">
@@ -261,7 +287,7 @@
 </section>
 
 <!-- contact section design -->
-<section class="contact pb-28" id="contact">
+<section class="contact pb-28" id="contact" #contact>
   <h2 class="text-center text-7xl mb-12">Contact <span>Me!</span></h2>
 
   <form action="#" class="text-center mb-12 my-4 mx-auto">
