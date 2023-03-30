@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
@@ -13,4 +14,8 @@ body {
 body {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif !important;
+}
+
+*::selection {
+  @apply bg-custom-blue text-primary;
 }

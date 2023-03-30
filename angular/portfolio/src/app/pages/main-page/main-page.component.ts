@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent {
-  // Typed.js
+  // TODO - Add Typed.js
   // https://www.jsdelivr.com/package/npm/typed.js
 }
