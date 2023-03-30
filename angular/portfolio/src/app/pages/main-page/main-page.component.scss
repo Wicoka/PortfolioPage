@@ -197,3 +197,50 @@ span {
   font-size: 1.6rem;
   margin: 2rem 0 3rem;
 }
+
+/* SERVICES */
+.services {
+  min-height: auto;
+  padding-bottom: 10rem;
+}
+
+.services h2 {
+  margin-bottom: 5rem;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.services-container .services-box {
+  @apply bg-primary-second;
+  flex: 1 1 30rem;
+  padding: 3rem 2rem 4rem;
+  border-radius: 2rem;
+  text-align: center;
+  border: 0.2rem solid "#1f242d";
+  transition: 0.5s ease;
+}
+
+.services-container .services-box:hover {
+  border-color: "#00eeff";
+  transform: scale(1.02);
+}
+
+.services-box i {
+  @apply text-custom-blue;
+  font-size: 7rem;
+}
+
+.services-box h3 {
+  font-size: 2.6rem;
+}
+
+.services-box p {
+  font-size: 1.6rem;
+  margin: 1rem 0 3rem;
+}
