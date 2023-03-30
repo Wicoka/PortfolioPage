@@ -2,36 +2,59 @@
 <header
   class="header z-[100] fixed top-0 left-0 w-full flex justify-between items-center bg-primary"
 >
-  <a href="#" class="logo">Portfolio.</a>
+  <a href="#" class="logo text-white font-semibold">Portfolio.</a>
 
-  <div class="bx bx-menu" id="menu-icon"></div>
+  <div class="bx bx-menu text-6xl text-white hidden" id="menu-icon"></div>
 
   <nav class="navbar">
-    <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
+    <!-- TODO - Active -->
+    <a href="#home" class="active text-3xl text-white ml-16">Home</a>
+    <a href="#about" class="text-3xl text-white ml-16">About</a>
+    <a href="#services" class="text-3xl text-white ml-16">Services</a>
+    <a href="#portfolio" class="text-3xl text-white ml-16">Portfolio</a>
+    <a href="#contact" class="text-3xl text-white ml-16">Contact</a>
   </nav>
 </header>
 
 <!-- home section design -->
-<section class="home" id="home">
+<section class="flex justify-center items-center" id="home">
   <div class="home-content">
-    <h3>Hello, It's Me</h3>
-    <h1>Viktor Szőke</h1>
-    <h3>And I'm a <span class="multiple-text">Frontend Developer</span></h3>
+    <h3 class="!text-5xl !font-bold">Hello, It's Me</h3>
+    <h1 class="!text-6xl !font-bold">Viktor Szőke</h1>
+    <h3 class="!text-5xl !font-bold mb-8">
+      And I'm a <span class="multiple-text">Frontend Developer</span>
+    </h3>
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquam,
       modi aspernatur placeat architecto amet laudantium id.
     </p>
     <div class="social-media">
-      <a href="#"><i class="bx bxl-facebook"></i></a>
-      <a href="#"><i class="bx bxl-twitter"></i></a>
-      <a href="#"><i class="bx bxl-instagram-alt"></i></a>
-      <a href="#"><i class="bx bxl-linkedin"></i></a>
+      <a
+        href="#"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-facebook"></i
+      ></a>
+      <a
+        href="#"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-twitter"></i
+      ></a>
+      <a
+        href="#"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-instagram-alt"></i
+      ></a>
+      <a
+        href="#"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-linkedin"></i
+      ></a>
     </div>
-    <a href="#" class="btn">Download CV</a>
+    <a
+      href="#"
+      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+      >Download CV</a
+    >
   </div>
 
   <div class="home-img">
@@ -57,7 +80,11 @@
       repudiandae, amet ea eos alias corporis laborum nobis. Tempore deserunt
       repellendus quos nihil voluptas aut est suscipit.
     </p>
-    <a href="#" class="btn">Read More</a>
+    <a
+      href="#"
+      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+      >Read More</a
+    >
   </div>
 </section>
 
@@ -74,7 +101,11 @@
         dignissimos vitae magni aut commodi non laborum nisi alias iusto
         voluptatibus.
       </p>
-      <a href="#" class="btn">Read More</a>
+      <a
+        href="#"
+        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+        >Read More</a
+      >
     </div>
 
     <div class="services-box">
@@ -85,7 +116,11 @@
         dignissimos vitae magni aut commodi non laborum nisi alias iusto
         voluptatibus.
       </p>
-      <a href="#" class="btn">Read More</a>
+      <a
+        href="#"
+        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+        >Read More</a
+      >
     </div>
 
     <div class="services-box">
@@ -96,7 +131,11 @@
         dignissimos vitae magni aut commodi non laborum nisi alias iusto
         voluptatibus.
       </p>
-      <a href="#" class="btn">Read More</a>
+      <a
+        href="#"
+        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+        >Read More</a
+      >
     </div>
   </div>
 </section>
@@ -200,7 +239,11 @@
       rows="10"
       placeholder="Your Message"
     ></textarea>
-    <input type="submit" value="Send Message" class="btn" />
+    <input
+      type="submit"
+      value="Send Message"
+      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+    />
   </form>
 </section>
 
