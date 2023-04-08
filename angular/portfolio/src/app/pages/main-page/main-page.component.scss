@@ -279,11 +279,6 @@ span {
 }
 
 /* BREAKPOINTS */
-@media (max-width: 1200px) {
-  html {
-    font-size: 55%;
-  }
-}
 
 @media (max-width: 991px) {
   .header {
@@ -366,10 +361,6 @@ span {
 }
 
 @media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
-
   .contact form .input-box input {
     width: 100%;
   }
