@@ -52,8 +52,10 @@
       And I'm a <span class="multiple-text" id="typer"></span>
     </h3>
     <p [ngsReveal]="{ origin: 'right' }">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquam,
-      modi aspernatur placeat architecto amet laudantium id.
+      I have been studying Computer Engineering at Budapest University of
+      Technology and Economics. My main interest is web development, but I am
+      also interested in UX/Ul design. I have
+      {{ experience }} years experience as a Frontend Developer.
     </p>
     <div class="social-media">
       <a
@@ -77,11 +79,12 @@
         ><i class="bx bxl-linkedin"></i
       ></a>
     </div>
-    <a
-      href="#"
+    <button
+      (click)="downloadCV()"
       class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
-      >Download CV</a
     >
+      Download CV
+    </button>
   </div>
 
   <div class="home-img" [ngsReveal]="{ origin: 'bottom' }">
@@ -107,17 +110,19 @@
     </h2>
     <h3>Frontend Developer!</h3>
     <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore officia
-      asperiores labore officiis suscipit ex at non impedit nostrum animi illum
-      mollitia itaque reprehenderit laudantium molestiae eum porro molestias
-      repudiandae, amet ea eos alias corporis laborum nobis. Tempore deserunt
-      repellendus quos nihil voluptas aut est suscipit.
+      I am pleased to introduce myself as an excellent Frontend developer who
+      has a special specialization in the Angular framework. The focus of my
+      interest is the UI/UX design, which ensures that the user interfaces I
+      make are user -friendly and aesthetic. In my free time, I like to program
+      and follow the latest trends, and I also like to drive and play with video
+      games. My goal is to provide maximum performance in each project and
+      provide the best possible user experience.
     </p>
-    <a
+    <!-- <a
       href="#"
       class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
       >Read More</a
-    >
+    > -->
   </div>
 </section>
 
@@ -321,7 +326,7 @@
   >
     Contact <span>Me!</span>
   </h2>
-
+  <!-- TODO: Bekötni -->
   <form
     action="#"
     class="text-center mb-12 my-4 mx-auto"

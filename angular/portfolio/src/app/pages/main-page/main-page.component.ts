@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgsRevealConfig } from 'ngx-scrollreveal';
 import Typed from 'typed.js';
+import { MainPageService } from './main-page.service';
 
 @Component({
   selector: 'app-main-page',
@@ -15,13 +16,18 @@ export class MainPageComponent implements OnInit {
   @ViewChild('contact') contact: ElementRef | undefined;
 
   date = new Date();
+  experience = this.date.getFullYear() - 2018;
 
-  constructor(config: NgsRevealConfig) {
+  constructor(
+    private readonly mainPageService: MainPageService,
+    config: NgsRevealConfig
+  ) {
     config.duration = 2000;
     config.reset = false;
     config.distance = '80px';
     config.delay = 200;
   }
+
   ngOnInit(): void {
     const typed = new Typed('#typer', {
       strings: ['Frontend Developer', 'Team Leader', 'Casual Gamer'],
@@ -30,6 +36,10 @@ export class MainPageComponent implements OnInit {
       backDelay: 1000,
       loop: true,
     });
+  }
+
+  downloadCV(): void {
+    this.mainPageService.downloadCV();
   }
 
   scrollToElement(element: string): void {
