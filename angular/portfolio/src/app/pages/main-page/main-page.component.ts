@@ -9,6 +9,7 @@ import { MainPageService } from './main-page.service';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
+  // TODO - Change colors
   @ViewChild('home') home: ElementRef | undefined;
   @ViewChild('about') about: ElementRef | undefined;
   @ViewChild('services') services: ElementRef | undefined;
