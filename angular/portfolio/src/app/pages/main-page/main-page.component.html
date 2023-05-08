@@ -59,22 +59,26 @@
     </p>
     <div class="social-media">
       <a
-        href="#"
+        href="fb://profile/100000383629148"
+        target="_blank"
         class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
         ><i class="bx bxl-facebook"></i
       ></a>
       <a
-        href="#"
+        href="https://twitter.com/Wicoka00"
+        target="_blank"
         class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
         ><i class="bx bxl-twitter"></i
       ></a>
       <a
-        href="#"
+        href="https://www.instagram.com/szoke.viktor95/"
+        target="_blank"
         class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
         ><i class="bx bxl-instagram-alt"></i
       ></a>
       <a
-        href="#"
+        href="https://www.linkedin.com/in/viktor-szőke-2a680112a/"
+        target="_blank"
         class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
         ><i class="bx bxl-linkedin"></i
       ></a>
@@ -133,10 +137,12 @@
   </h2>
 
   <div
-    class="services-container flex justify-center items-center flex-wrap gap-8"
+    class="services-container flex justify-center items-stretch flex-wrap gap-8"
     [ngsReveal]="{ origin: 'bottom' }"
   >
-    <div class="services-box bg-primary-second">
+    <div
+      class="services-box bg-primary-second flex flex-col items-center justify-center"
+    >
       <i class="bx bx-code-alt text-custom-blue"></i>
       <h3>Web Development</h3>
       <p>
@@ -207,16 +213,20 @@
       <div
         class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
       >
-        <h4>Web Design</h4>
+        <h4>Robotic Application Platform</h4>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-          ratione.
+          This is an automated platform for building, running, monitoring, and
+          re-deploying collaborative applications. It automates the process of
+          getting a robotic application up and running, allowing deployment
+          directly on the manufacturing floor, with zero programming and zero
+          simulations. With this, complete applications can be deployed in just
+          a few hours.
         </p>
-        <a
+        <!-- <a
           href="#"
           class="bg-white inline-flex justify-center items-center w-20 h-20"
           ><i class="bx bx-link-external text-primary-second"></i
-        ></a>
+        ></a> -->
       </div>
     </div>
 
@@ -228,16 +238,19 @@
       <div
         class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
       >
-        <h4>Web Design</h4>
+        <h4>AI Powered Webshop</h4>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-          ratione.
+          An AI-powered webshop can recommend new or similar products based on
+          user behavior. This improves the user experience and increases sales
+          by offering personalized recommendations tailored to the user's
+          preferences. We used AWS personalize to build a recommendation engine
+          for a webshop. The engine was trained on a dataset of 5000 products.
         </p>
-        <a
+        <!-- <a
           href="#"
           class="bg-white inline-flex justify-center items-center w-20 h-20"
           ><i class="bx bx-link-external text-primary-second"></i
-        ></a>
+        ></a> -->
       </div>
     </div>
 
@@ -368,7 +381,7 @@
 <footer class="footer">
   <div class="footer-text">
     <p>
-      Copyright &copy; {{ date.getFullYear() }} by Codehal | All Rights
+      Copyright &copy; {{ date.getFullYear() }} by Viktor Szőke | All Rights
       Reserved.
     </p>
   </div>
