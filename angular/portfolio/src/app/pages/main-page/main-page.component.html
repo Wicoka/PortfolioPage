@@ -152,11 +152,11 @@
         to enhance user experience. Let me help bring your online presence to
         life.
       </p>
-      <a
+      <!-- <a
         href="#"
         class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
         >Read More</a
-      >
+      > -->
     </div>
 
     <div class="services-box bg-primary-second">
@@ -170,11 +170,11 @@
         environment, resulting in increased productivity, job satisfaction, and
         employee retention. Let me help take your team to the next level.
       </p>
-      <a
+      <!-- <a
         href="#"
         class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
         >Read More</a
-      >
+      > -->
     </div>
 
     <div class="services-box bg-primary-second">
@@ -189,11 +189,11 @@
         confidence, skills, and overall growth. Let me help you unlock your full
         potential.
       </p>
-      <a
+      <!-- <a
         href="#"
         class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
         >Read More</a
-      >
+      > -->
     </div>
   </div>
 </section>
@@ -201,140 +201,29 @@
 <!-- portfolio section design -->
 <section class="portfolio bg-primary-second" id="portfolio" #portfolio>
   <h2 class="heading text-center text-7xl" [ngsReveal]="{ origin: 'top' }">
-    Latest <span>Project</span>
+    Latest <span>Projects</span>
   </h2>
 
   <div class="portfolio-container grid items-center">
     <div
-      class="portfolio-box relative overflow-hidden flex"
+      class="portfolio-box relative overflow-hidden flex cursor-pointer"
       [ngsReveal]="{ origin: 'bottom' }"
+      *ngFor="let project of projects"
+      (click)="openProjectDialog(project.id)"
     >
-      <img src="assets/portfolio1.jpg" alt="" class="w-full" />
+      <img [src]="project.image" [alt]="project.title" class="w-full" />
       <div
         class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
       >
-        <h4>Robotic Application Platform</h4>
+        <h4>{{ project.title }}</h4>
         <p>
-          This is an automated platform for building, running, monitoring, and
-          re-deploying collaborative applications. It automates the process of
-          getting a robotic application up and running, allowing deployment
-          directly on the manufacturing floor, with zero programming and zero
-          simulations. With this, complete applications can be deployed in just
-          a few hours.
+          {{ project.subtitle }}
         </p>
         <!-- <a
           href="#"
           class="bg-white inline-flex justify-center items-center w-20 h-20"
           ><i class="bx bx-link-external text-primary-second"></i
         ></a> -->
-      </div>
-    </div>
-
-    <div
-      class="portfolio-box relative overflow-hidden flex"
-      [ngsReveal]="{ origin: 'bottom' }"
-    >
-      <img src="assets/portfolio1.jpg" alt="" class="w-full" />
-      <div
-        class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
-      >
-        <h4>AI Powered Webshop</h4>
-        <p>
-          An AI-powered webshop can recommend new or similar products based on
-          user behavior. This improves the user experience and increases sales
-          by offering personalized recommendations tailored to the user's
-          preferences. We used AWS personalize to build a recommendation engine
-          for a webshop. The engine was trained on a dataset of 5000 products.
-        </p>
-        <!-- <a
-          href="#"
-          class="bg-white inline-flex justify-center items-center w-20 h-20"
-          ><i class="bx bx-link-external text-primary-second"></i
-        ></a> -->
-      </div>
-    </div>
-
-    <div
-      class="portfolio-box relative overflow-hidden flex"
-      [ngsReveal]="{ origin: 'bottom' }"
-    >
-      <img src="assets/portfolio1.jpg" alt="" class="w-full" />
-      <div
-        class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
-      >
-        <h4>Web Design</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-          ratione.
-        </p>
-        <a
-          href="#"
-          class="bg-white inline-flex justify-center items-center w-20 h-20"
-          ><i class="bx bx-link-external text-primary-second"></i
-        ></a>
-      </div>
-    </div>
-
-    <div
-      class="portfolio-box relative overflow-hidden flex"
-      [ngsReveal]="{ origin: 'bottom' }"
-    >
-      <img src="assets/portfolio1.jpg" alt="" class="w-full" />
-      <div
-        class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
-      >
-        <h4>Web Design</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-          ratione.
-        </p>
-        <a
-          href="#"
-          class="bg-white inline-flex justify-center items-center w-20 h-20"
-          ><i class="bx bx-link-external text-primary-second"></i
-        ></a>
-      </div>
-    </div>
-
-    <div
-      class="portfolio-box relative overflow-hidden flex"
-      [ngsReveal]="{ origin: 'bottom' }"
-    >
-      <img src="assets/portfolio1.jpg" alt="" class="w-full" />
-      <div
-        class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
-      >
-        <h4>Web Design</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-          ratione.
-        </p>
-        <a
-          href="#"
-          class="bg-white inline-flex justify-center items-center w-20 h-20"
-          ><i class="bx bx-link-external text-primary-second"></i
-        ></a>
-      </div>
-    </div>
-
-    <div
-      class="portfolio-box relative overflow-hidden flex"
-      [ngsReveal]="{ origin: 'bottom' }"
-    >
-      <img src="assets/portfolio1.jpg" alt="" class="w-full" />
-      <div
-        class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
-      >
-        <h4>Web Design</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-          ratione.
-        </p>
-        <a
-          href="#"
-          class="bg-white inline-flex justify-center items-center w-20 h-20"
-          ><i class="bx bx-link-external text-primary-second"></i
-        ></a>
       </div>
     </div>
   </div>

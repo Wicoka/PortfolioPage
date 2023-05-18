@@ -1,7 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NgsRevealConfig } from 'ngx-scrollreveal';
 import Typed from 'typed.js';
+import { ProjectDialogComponent } from './components/project-dialog/project-dialog.component';
 import { MainPageService } from './main-page.service';
+import { Project } from './models/project.model';
 
 @Component({
   selector: 'app-main-page',
@@ -16,11 +19,14 @@ export class MainPageComponent implements OnInit {
   @ViewChild('portfolio') portfolio: ElementRef | undefined;
   @ViewChild('contact') contact: ElementRef | undefined;
 
+  projects: Project[] = [];
+
   date = new Date();
   experience = this.date.getFullYear() - 2018;
 
   constructor(
     private readonly mainPageService: MainPageService,
+    public dialog: MatDialog,
     config: NgsRevealConfig
   ) {
     config.duration = 2000;
@@ -37,10 +43,21 @@ export class MainPageComponent implements OnInit {
       backDelay: 1000,
       loop: true,
     });
+    this.projects = this.mainPageService.getProjects();
   }
 
   downloadCV(): void {
     this.mainPageService.downloadCV();
+  }
+
+  openProjectDialog(id: number): void {
+    const project = this.projects.find((project) => project.id === id);
+    if (!project) return;
+    const dialogRef = this.dialog.open(ProjectDialogComponent, {
+      data: project,
+    });
+
+    dialogRef.afterClosed().subscribe();
   }
 
   scrollToElement(element: string): void {
