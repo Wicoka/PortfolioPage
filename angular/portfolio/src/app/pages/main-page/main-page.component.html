@@ -1,20 +1,283 @@
-<div class="main-content">
+<!-- header design -->
+<header
+  class="header z-[100] fixed top-0 left-0 w-full flex justify-between items-center bg-primary"
+>
+  <a href="#" class="logo text-white font-semibold">Portfolio.</a>
+
+  <div class="bx bx-menu text-6xl text-white hidden" id="menu-icon"></div>
+
+  <nav class="navbar">
+    <!-- TODO - Active -->
+    <a
+      href="#home"
+      (click)="scrollToElement('home')"
+      class="text-3xl text-white ml-16"
+      >Home</a
+    >
+    <a
+      href="#about"
+      (click)="scrollToElement('about')"
+      class="text-3xl text-white ml-16"
+      >About</a
+    >
+    <a
+      href="#services"
+      (click)="scrollToElement('services')"
+      class="text-3xl text-white ml-16"
+      >Services</a
+    >
+    <a
+      href="#portfolio"
+      (click)="scrollToElement('portfolio')"
+      class="text-3xl text-white ml-16"
+      >Portfolio</a
+    >
+    <a
+      href="#contact"
+      (click)="scrollToElement('contact')"
+      class="text-3xl text-white ml-16"
+      >Contact</a
+    >
+  </nav>
+</header>
+
+<!-- home section design -->
+<section class="home flex justify-center items-center" id="home" #home>
+  <div class="home-content" [ngsReveal]="{ origin: 'top' }">
+    <h3 class="!text-5xl !font-bold">Hello, It's Me</h3>
+    <h1 class="!text-6xl !font-bold" [ngsReveal]="{ origin: 'left' }">
+      Viktor Szőke
+    </h1>
+    <h3 class="!text-5xl !font-bold mb-8">
+      And I'm a <span class="multiple-text" id="typer"></span>
+    </h3>
+    <p [ngsReveal]="{ origin: 'right' }">
+      I have been studying Computer Engineering at Budapest University of
+      Technology and Economics. My main interest is web development, but I am
+      also interested in UX/Ul design. I have
+      {{ experience }} years experience as a Frontend Developer.
+    </p>
+    <div class="social-media">
+      <a
+        href="fb://profile/100000383629148"
+        target="_blank"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-facebook"></i
+      ></a>
+      <a
+        href="https://twitter.com/Wicoka00"
+        target="_blank"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-twitter"></i
+      ></a>
+      <a
+        href="https://www.instagram.com/szoke.viktor95/"
+        target="_blank"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-instagram-alt"></i
+      ></a>
+      <a
+        href="https://www.linkedin.com/in/viktor-szőke-2a680112a/"
+        target="_blank"
+        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
+        ><i class="bx bxl-linkedin"></i
+      ></a>
+    </div>
+    <button
+      (click)="downloadCV()"
+      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+    >
+      Download CV
+    </button>
+  </div>
+
+  <div class="home-img" [ngsReveal]="{ origin: 'bottom' }">
+    <!-- <img src="images/home.png" alt="" /> -->
+    <img src="assets/portre-4.png" alt="" />
+  </div>
+</section>
+
+<!-- about section design -->
+<section
+  class="about bg-primary-second flex justify-center items-center gap-8"
+  id="about"
+  #about
+>
+  <div class="about-img" [ngsReveal]="{ origin: 'left' }">
+    <!-- <img src="images/about.png" alt="" /> -->
+    <img src="assets/portre-3.png" alt="" />
+  </div>
+
+  <div class="about-content" [ngsReveal]="{ origin: 'right' }">
+    <h2 class="heading text-center text-7xl" [ngsReveal]="{ origin: 'top' }">
+      About <span>Me</span>
+    </h2>
+    <h3>Frontend Developer!</h3>
+    <p>
+      I am pleased to introduce myself as an excellent Frontend developer who
+      has a special specialization in the Angular framework. The focus of my
+      interest is the UI/UX design, which ensures that the user interfaces I
+      make are user -friendly and aesthetic. In my free time, I like to program
+      and follow the latest trends, and I also like to drive and play with video
+      games. My goal is to provide maximum performance in each project and
+      provide the best possible user experience.
+    </p>
+    <!-- <a
+      href="#"
+      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+      >Read More</a
+    > -->
+  </div>
+</section>
+
+<!-- services section design -->
+<section class="services" id="services" #services>
+  <h2 class="heading text-center text-7xl" [ngsReveal]="{ origin: 'top' }">
+    My <span>Services</span>
+  </h2>
+
   <div
-    class="box h-fit flex items-center justify-center gap-1 pb-5 text-center"
+    class="services-container flex justify-center items-stretch flex-wrap gap-8"
+    [ngsReveal]="{ origin: 'bottom' }"
   >
     <div
-      class="title !m-0 !font-extrabold !text-4xl sm:!text-9xl sm:!leading-normal"
+      class="services-box bg-primary-second flex flex-col items-center justify-center"
     >
-      Coming Soon!
+      <i class="bx bx-code-alt text-custom-blue"></i>
+      <h3>Web Development</h3>
+      <p>
+        As a web developer, my service includes creating and maintaining
+        websites. I specialize in building interactive and engaging websites for
+        businesses and individuals, incorporating modern design and technology
+        to enhance user experience. Let me help bring your online presence to
+        life.
+      </p>
+      <!-- <a
+        href="#"
+        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+        >Read More</a
+      > -->
     </div>
-    <span class="text-4xl sm:text-9xl sm:!leading-normal">🚀</span>
+
+    <div class="services-box bg-primary-second">
+      <i class="bx bx-user text-custom-blue"></i>
+      <h3>Team Leading</h3>
+      <p>
+        As a team leader, my service involves managing and motivating groups of
+        individuals to achieve common goals. Through effective communication,
+        delegation, problem-solving, and coaching, I help teams reach their full
+        potential. I am committed to fostering a positive and productive work
+        environment, resulting in increased productivity, job satisfaction, and
+        employee retention. Let me help take your team to the next level.
+      </p>
+      <!-- <a
+        href="#"
+        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+        >Read More</a
+      > -->
+    </div>
+
+    <div class="services-box bg-primary-second">
+      <i class="bx bx-donate-heart text-custom-blue"></i>
+      <h3>Mentoring</h3>
+      <p>
+        As a mentor, my service involves providing guidance and support to
+        individuals in their personal and professional development. Through
+        sharing my knowledge, skills, and experience, I help my mentees reach
+        their goals and achieve success. I am committed to fostering a positive
+        and productive mentoring relationship, resulting in increased
+        confidence, skills, and overall growth. Let me help you unlock your full
+        potential.
+      </p>
+      <!-- <a
+        href="#"
+        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+        >Read More</a
+      > -->
+    </div>
   </div>
-  <div
-    class="flex flex-col sm:flex-row items-center justify-center gap-1 text-base font-extrabold text-center"
+</section>
+
+<!-- portfolio section design -->
+<section class="portfolio bg-primary-second" id="portfolio" #portfolio>
+  <h2 class="heading text-center text-7xl" [ngsReveal]="{ origin: 'top' }">
+    Latest <span>Projects</span>
+  </h2>
+
+  <div class="portfolio-container grid items-center">
+    <div
+      class="portfolio-box relative overflow-hidden flex cursor-pointer"
+      [ngsReveal]="{ origin: 'bottom' }"
+      *ngFor="let project of projects"
+      (click)="openProjectDialog(project.id)"
+    >
+      <img [src]="project.image" [alt]="project.title" class="w-full" />
+      <div
+        class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
+      >
+        <h4>{{ project.title }}</h4>
+        <p>
+          {{ project.subtitle }}
+        </p>
+        <!-- <a
+          href="#"
+          class="bg-white inline-flex justify-center items-center w-20 h-20"
+          ><i class="bx bx-link-external text-primary-second"></i
+        ></a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- contact section design -->
+<section class="contact pb-28" id="contact" #contact>
+  <h2
+    class="heading text-center text-7xl mb-12"
+    [ngsReveal]="{ origin: 'top' }"
   >
-    <div class="subtitle !m-0">
-      My website is under construction. Stay tuned!
+    Contact <span>Me!</span>
+  </h2>
+  <!-- TODO: Bekötni -->
+  <form
+    action="#"
+    class="text-center mb-12 my-4 mx-auto"
+    [ngsReveal]="{ origin: 'bottom' }"
+  >
+    <div class="input-box">
+      <input type="text" placeholder="Full Name" />
+      <input type="email" placeholder="Email Address" />
     </div>
-    <span>👀</span>
+    <div class="input-box">
+      <input type="text" placeholder="Mobile Number" />
+      <input type="text" placeholder="Email Subject" />
+    </div>
+    <textarea
+      name=""
+      id=""
+      cols="30"
+      rows="10"
+      placeholder="Your Message"
+    ></textarea>
+    <input
+      type="submit"
+      value="Send Message"
+      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+    />
+  </form>
+</section>
+
+<!-- footer design -->
+<footer class="footer">
+  <div class="footer-text">
+    <p>
+      Copyright &copy; {{ date.getFullYear() }} by Viktor Szőke | All Rights
+      Reserved.
+    </p>
   </div>
-</div>
+
+  <div
+    class="footer-iconTop bg-custom-blue inline-flex justify-center items-center p-3 rounded-lg"
+  >
+    <a href="#home"><i class="bx bx-up-arrow-alt text-primary-second"></i></a>
+  </div>
+</footer>

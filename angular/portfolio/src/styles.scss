@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
 html,
 body {
   height: 100%;
@@ -10,4 +15,25 @@ body {
 body {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif !important;
+}
+
+*::selection {
+  @apply bg-custom-blue text-primary;
+}
+
+.typed-cursor {
+  @apply text-custom-blue;
+}
+/* Breakpoints */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
 }

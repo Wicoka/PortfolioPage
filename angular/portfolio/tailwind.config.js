@@ -3,8 +3,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: { DEFAULT: "#00a486" },
+        primary: {
+          DEFAULT: "#1f242d",
+          second: "#323946",
+        },
         neutral: { white: "#FFFFFF" },
+        "custom-blue": {
+          DEFAULT: "#F3BA2F",
+        },
       },
       textColor: {
         white: "#FFF",
