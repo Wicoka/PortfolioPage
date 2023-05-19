@@ -47,7 +47,7 @@ section {
 
 /* HOME */
 .home-img img {
-  width: 35vw;
+  width: 70vw;
   animation: floatImage 4s ease-in-out infinite;
 }
 
@@ -78,7 +78,7 @@ span {
 }
 
 .social-media a {
-  border: 0.2rem solid #00eeff;
+  border: 0.2rem solid #f3ba2f;
   border-radius: 50%;
   margin: 3rem 1.5rem 3rem 0;
   transition: 0.5s ease;
@@ -86,7 +86,7 @@ span {
 
 .social-media a:hover {
   @apply bg-custom-blue text-primary-second;
-  box-shadow: 0 0 1rem #00eeff;
+  box-shadow: 0 0 1rem #f3ba2f;
 }
 
 .btn {
@@ -98,7 +98,7 @@ span {
 
 .btn:hover {
   // box-shadow: none;
-  box-shadow: 0 0 1rem #00eeff;
+  box-shadow: 0 0 1rem #f3ba2f;
 }
 
 /* ABOUT */
@@ -141,7 +141,7 @@ span {
 }
 
 .services-container .services-box:hover {
-  border-color: #00eeff;
+  border-color: #f3ba2f;
   transform: scale(1.02);
 }
 
@@ -187,7 +187,7 @@ span {
 }
 
 .portfolio-box .portfolio-layer {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), #00eeff);
+  background: linear-gradient(rgba(0, 0, 0, 0.1), #f3ba2f);
   padding: 0 4rem;
   transform: translateY(100%);
   transition: 0.5s ease;
@@ -271,7 +271,7 @@ span {
 }
 
 .footer-iconTop a:hover {
-  box-shadow: 0 0 1rem #00eeff;
+  box-shadow: 0 0 1rem #f3ba2f;
 }
 
 .footer-iconTop a i {

@@ -5,12 +5,12 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: "#1f242d",
-          second: "#323946"
+          second: "#323946",
         },
         neutral: { white: "#FFFFFF" },
-        'custom-blue': {
-          DEFAULT: "#00eeff"
-        }
+        "custom-blue": {
+          DEFAULT: "#F3BA2F",
+        },
       },
       textColor: {
         white: "#FFF",
