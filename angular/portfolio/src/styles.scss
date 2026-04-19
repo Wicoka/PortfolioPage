@@ -34,7 +34,7 @@ body {
   margin: 0;
   background: #07111f;
   color: var(--text);
-  font-family: 'DM Sans', sans-serif !important;
+  font-family: 'Space Grotesk', sans-serif !important;
 }
 
 *,
@@ -169,7 +169,6 @@ textarea {
 .stack-panel h2,
 .contact__intro h2 {
   margin: 1.6rem 0 1.2rem;
-  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(3.4rem, 5vw, 5.6rem);
   line-height: 1;
   letter-spacing: -0.05em;
@@ -249,7 +248,6 @@ textarea {
   border-radius: 1.6rem;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(251, 113, 133, 0.2));
   border: 1px solid rgba(245, 158, 11, 0.22);
-  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -351,7 +349,6 @@ textarea {
 
 .hero h1 {
   margin: 0;
-  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(4.8rem, 8vw, 8.8rem);
   line-height: 0.94;
   letter-spacing: -0.07em;
@@ -495,7 +492,6 @@ textarea {
 }
 
 .proof-card__value {
-  font-family: 'Space Grotesk', sans-serif;
   font-size: 3rem;
   font-weight: 700;
 }
@@ -570,7 +566,6 @@ textarea {
   display: inline-block;
   margin-bottom: 2rem;
   color: rgba(245, 158, 11, 0.9);
-  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
 }
