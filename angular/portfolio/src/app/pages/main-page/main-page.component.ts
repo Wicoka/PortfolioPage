@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NgsRevealConfig } from 'ngx-scrollreveal';
 import Typed from 'typed.js';
 import { ProjectDialogComponent } from './components/project-dialog/project-dialog.component';
-import { MainPageService } from './main-page.service';
+import { ContactFormPayload, MainPageService } from './main-page.service';
 import { Project } from './models/project.model';
 
 @Component({
@@ -20,6 +21,10 @@ export class MainPageComponent implements OnInit {
   @ViewChild('contact') contact: ElementRef | undefined;
 
   projects: Project[] = [];
+  contactFormModel: ContactFormPayload = this.createEmptyContactForm();
+  isSubmitting = false;
+  submitSuccessMessage = '';
+  submitErrorMessage = '';
 
   date = new Date();
   experience = this.date.getFullYear() - 2018;
@@ -86,5 +91,41 @@ export class MainPageComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  submitContactForm(form: NgForm): void {
+    if (form.invalid || this.isSubmitting) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.submitSuccessMessage = '';
+    this.submitErrorMessage = '';
+
+    this.mainPageService.sendContactMessage(this.contactFormModel).subscribe({
+      next: () => {
+        this.submitSuccessMessage =
+          'Your message has been sent successfully. I will get back to you soon.';
+        this.contactFormModel = this.createEmptyContactForm();
+        form.resetForm(this.contactFormModel);
+        this.isSubmitting = false;
+      },
+      error: () => {
+        this.submitErrorMessage =
+          'Sending failed. Please try again later.';
+        this.isSubmitting = false;
+      },
+    });
+  }
+
+  private createEmptyContactForm(): ContactFormPayload {
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    };
   }
 }

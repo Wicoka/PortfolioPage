@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgsRevealModule } from 'ngx-scrollreveal';
 
@@ -11,6 +12,7 @@ import { ProjectDialogComponent } from './components/project-dialog/project-dial
   declarations: [MainPageComponent, ProjectDialogComponent],
   imports: [
     CommonModule,
+    FormsModule,
     MainPageRoutingModule,
     NgsRevealModule,
     MatDialogModule,

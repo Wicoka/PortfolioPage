@@ -237,30 +237,75 @@
   >
     Contact <span>Me!</span>
   </h2>
-  <!-- TODO: Bekötni -->
   <form
-    action="#"
+    #contactForm="ngForm"
     class="text-center mb-12 my-4 mx-auto"
     [ngsReveal]="{ origin: 'bottom' }"
+    (ngSubmit)="submitContactForm(contactForm)"
+    novalidate
   >
     <div class="input-box">
-      <input type="text" placeholder="Full Name" />
-      <input type="email" placeholder="Email Address" />
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="contactFormModel.name"
+        placeholder="Full Name"
+        required
+        #nameField="ngModel"
+      />
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="contactFormModel.email"
+        placeholder="Email Address"
+        required
+        email
+        #emailField="ngModel"
+      />
     </div>
     <div class="input-box">
-      <input type="text" placeholder="Mobile Number" />
-      <input type="text" placeholder="Email Subject" />
+      <input
+        type="text"
+        name="phone"
+        [(ngModel)]="contactFormModel.phone"
+        placeholder="Mobile Number"
+      />
+      <input
+        type="text"
+        name="subject"
+        [(ngModel)]="contactFormModel.subject"
+        placeholder="Email Subject"
+      />
     </div>
     <textarea
-      name=""
-      id=""
+      name="message"
+      [(ngModel)]="contactFormModel.message"
       cols="30"
       rows="10"
       placeholder="Your Message"
+      required
+      #messageField="ngModel"
     ></textarea>
+    <p
+      class="form-feedback form-feedback-error"
+      *ngIf="
+        (nameField.invalid && nameField.touched) ||
+        (emailField.invalid && emailField.touched) ||
+        (messageField.invalid && messageField.touched)
+      "
+    >
+      Please fill in your name, a valid email address, and your message.
+    </p>
+    <p class="form-feedback form-feedback-success" *ngIf="submitSuccessMessage">
+      {{ submitSuccessMessage }}
+    </p>
+    <p class="form-feedback form-feedback-error" *ngIf="submitErrorMessage">
+      {{ submitErrorMessage }}
+    </p>
     <input
       type="submit"
-      value="Send Message"
+      [value]="isSubmitting ? 'Sending...' : 'Send Message'"
+      [disabled]="isSubmitting"
       class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
     />
   </form>

@@ -1,11 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Project } from './models/project.model';
+
+export interface ContactFormPayload {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class MainPageService {
+  private readonly contactEndpoint =
+    'https://formsubmit.co/ajax/viktorszoke@viktorszoke.com';
+
   constructor(private http: HttpClient) {}
 
   downloadCV() {
@@ -22,6 +34,25 @@ export class MainPageService {
 
   getProjects(): Project[] {
     return projects;
+  }
+
+  sendContactMessage(payload: ContactFormPayload): Observable<string> {
+    return this.http.post(
+      this.contactEndpoint,
+      {
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        message: payload.message,
+        _subject: payload.subject.trim() || `Website contact from ${payload.name}`,
+      },
+      {
+        headers: {
+          Accept: 'application/json',
+        },
+      responseType: 'text',
+      }
+    );
   }
 }
 
