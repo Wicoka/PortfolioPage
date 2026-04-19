@@ -1,328 +1,342 @@
-<!-- header design -->
-<header
-  class="header z-[100] fixed top-0 left-0 w-full flex justify-between items-center bg-primary"
->
-  <a href="#" class="logo text-white font-semibold">Portfolio.</a>
+<div class="portfolio-page">
+  <div class="page-orb page-orb--gold"></div>
+  <div class="page-orb page-orb--rose"></div>
+  <div class="page-grid"></div>
 
-  <div class="bx bx-menu text-6xl text-white hidden" id="menu-icon"></div>
+  <header class="site-header" [class.site-header--elevated]="isHeaderElevated">
+    <a class="brand" href="#home" (click)="scrollToElement('home')">
+      <span class="brand__mark">VS</span>
+      <span class="brand__text">
+        <strong>Viktor Szőke</strong>
+        <span>Angular Frontend Engineer</span>
+      </span>
+    </a>
 
-  <nav class="navbar">
-    <!-- TODO - Active -->
-    <a
-      href="#home"
-      (click)="scrollToElement('home')"
-      class="text-3xl text-white ml-16"
-      >Home</a
-    >
-    <a
-      href="#about"
-      (click)="scrollToElement('about')"
-      class="text-3xl text-white ml-16"
-      >About</a
-    >
-    <a
-      href="#services"
-      (click)="scrollToElement('services')"
-      class="text-3xl text-white ml-16"
-      >Services</a
-    >
-    <a
-      href="#portfolio"
-      (click)="scrollToElement('portfolio')"
-      class="text-3xl text-white ml-16"
-      >Portfolio</a
-    >
-    <a
-      href="#contact"
-      (click)="scrollToElement('contact')"
-      class="text-3xl text-white ml-16"
-      >Contact</a
-    >
-  </nav>
-</header>
-
-<!-- home section design -->
-<section class="home flex justify-center items-center" id="home" #home>
-  <div class="home-content" [ngsReveal]="{ origin: 'top' }">
-    <h3 class="!text-5xl !font-bold">Hello, It's Me</h3>
-    <h1 class="!text-6xl !font-bold" [ngsReveal]="{ origin: 'left' }">
-      Viktor Szőke
-    </h1>
-    <h3 class="!text-5xl !font-bold mb-8">
-      And I'm a <span class="multiple-text" id="typer"></span>
-    </h3>
-    <p [ngsReveal]="{ origin: 'right' }">
-      I have been studying Computer Engineering at Budapest University of
-      Technology and Economics. My main interest is web development, but I am
-      also interested in UX/Ul design. I have
-      {{ experience }} years experience as a Frontend Developer.
-    </p>
-    <div class="social-media">
-      <a
-        href="fb://profile/100000383629148"
-        target="_blank"
-        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
-        ><i class="bx bxl-facebook"></i
-      ></a>
-      <a
-        href="https://twitter.com/Wicoka00"
-        target="_blank"
-        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
-        ><i class="bx bxl-twitter"></i
-      ></a>
-      <a
-        href="https://www.instagram.com/szoke.viktor95/"
-        target="_blank"
-        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
-        ><i class="bx bxl-instagram-alt"></i
-      ></a>
-      <a
-        href="https://www.linkedin.com/in/viktor-szőke-2a680112a/"
-        target="_blank"
-        class="inline-flex justify-center items-center w-16 h-16 bg-transparent text-3xl text-custom-blue"
-        ><i class="bx bxl-linkedin"></i
-      ></a>
-    </div>
     <button
-      (click)="downloadCV()"
-      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="mobileMenuOpen"
+      aria-label="Toggle menu"
+      (click)="toggleMobileMenu()"
     >
-      Download CV
+      <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
     </button>
-  </div>
 
-  <div class="home-img" [ngsReveal]="{ origin: 'bottom' }">
-    <!-- <img src="images/home.png" alt="" /> -->
-    <img src="assets/portre-4.png" alt="" />
-  </div>
-</section>
-
-<!-- about section design -->
-<section
-  class="about bg-primary-second flex justify-center items-center gap-8"
-  id="about"
-  #about
->
-  <div class="about-img" [ngsReveal]="{ origin: 'left' }">
-    <!-- <img src="images/about.png" alt="" /> -->
-    <img src="assets/portre-3.png" alt="" />
-  </div>
-
-  <div class="about-content" [ngsReveal]="{ origin: 'right' }">
-    <h2 class="heading text-center text-7xl" [ngsReveal]="{ origin: 'top' }">
-      About <span>Me</span>
-    </h2>
-    <h3>Frontend Developer!</h3>
-    <p>
-      I am pleased to introduce myself as an excellent Frontend developer who
-      has a special specialization in the Angular framework. The focus of my
-      interest is the UI/UX design, which ensures that the user interfaces I
-      make are user -friendly and aesthetic. In my free time, I like to program
-      and follow the latest trends, and I also like to drive and play with video
-      games. My goal is to provide maximum performance in each project and
-      provide the best possible user experience.
-    </p>
-    <!-- <a
-      href="#"
-      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
-      >Read More</a
-    > -->
-  </div>
-</section>
-
-<!-- services section design -->
-<section class="services" id="services" #services>
-  <h2 class="heading text-center text-7xl" [ngsReveal]="{ origin: 'top' }">
-    My <span>Services</span>
-  </h2>
-
-  <div
-    class="services-container flex justify-center items-stretch flex-wrap gap-8"
-    [ngsReveal]="{ origin: 'bottom' }"
-  >
-    <div
-      class="services-box bg-primary-second flex flex-col items-center justify-center"
-    >
-      <i class="bx bx-code-alt text-custom-blue"></i>
-      <h3>Web Development</h3>
-      <p>
-        As a web developer, my service includes creating and maintaining
-        websites. I specialize in building interactive and engaging websites for
-        businesses and individuals, incorporating modern design and technology
-        to enhance user experience. Let me help bring your online presence to
-        life.
-      </p>
-      <!-- <a
-        href="#"
-        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
-        >Read More</a
-      > -->
-    </div>
-
-    <div class="services-box bg-primary-second">
-      <i class="bx bx-user text-custom-blue"></i>
-      <h3>Team Leading</h3>
-      <p>
-        As a team leader, my service involves managing and motivating groups of
-        individuals to achieve common goals. Through effective communication,
-        delegation, problem-solving, and coaching, I help teams reach their full
-        potential. I am committed to fostering a positive and productive work
-        environment, resulting in increased productivity, job satisfaction, and
-        employee retention. Let me help take your team to the next level.
-      </p>
-      <!-- <a
-        href="#"
-        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
-        >Read More</a
-      > -->
-    </div>
-
-    <div class="services-box bg-primary-second">
-      <i class="bx bx-donate-heart text-custom-blue"></i>
-      <h3>Mentoring</h3>
-      <p>
-        As a mentor, my service involves providing guidance and support to
-        individuals in their personal and professional development. Through
-        sharing my knowledge, skills, and experience, I help my mentees reach
-        their goals and achieve success. I am committed to fostering a positive
-        and productive mentoring relationship, resulting in increased
-        confidence, skills, and overall growth. Let me help you unlock your full
-        potential.
-      </p>
-      <!-- <a
-        href="#"
-        class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
-        >Read More</a
-      > -->
-    </div>
-  </div>
-</section>
-
-<!-- portfolio section design -->
-<section class="portfolio bg-primary-second" id="portfolio" #portfolio>
-  <h2 class="heading text-center text-7xl" [ngsReveal]="{ origin: 'top' }">
-    Latest <span>Projects</span>
-  </h2>
-
-  <div class="portfolio-container grid items-center">
-    <div
-      class="portfolio-box relative overflow-hidden flex cursor-pointer"
-      [ngsReveal]="{ origin: 'bottom' }"
-      *ngFor="let project of projects"
-      (click)="openProjectDialog(project.id)"
-    >
-      <img [src]="project.image" [alt]="project.title" class="w-full" />
-      <div
-        class="portfolio-layer absolute bottom-0 left-0 w-full h-full flex justify-center items-center flex-col text-center"
+    <nav class="site-nav" [class.site-nav--open]="mobileMenuOpen">
+      <a
+        *ngFor="let item of navItems"
+        [href]="'#' + item.id"
+        [class.is-active]="activeSection === item.id"
+        (click)="scrollToElement(item.id)"
       >
-        <h4>{{ project.title }}</h4>
+        {{ item.label }}
+      </a>
+      <button class="site-nav__cta" type="button" (click)="scrollToElement('contact')">
+        Let's Talk
+      </button>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="hero section" id="home" #home>
+      <div class="hero__copy" [ngsReveal]="{ origin: 'left' }">
+        <span class="eyebrow">Open to ambitious product teams</span>
+        <div class="hero__pills">
+          <span *ngFor="let pill of heroPills">{{ pill }}</span>
+        </div>
+        <h1>
+          Modern Angular interfaces with the polish, clarity, and execution
+          quality serious companies expect.
+        </h1>
+        <h2>
+          Viktor Szőke
+          <span class="hero__typed">I'm a <span id="typer"></span></span>
+        </h2>
         <p>
-          {{ project.subtitle }}
+          I studied Computer Engineering at Budapest University of Technology
+          and Economics, and I focus on frontend engineering where product
+          quality, usability, and implementation discipline all matter. I have
+          {{ experience }} years of frontend development experience and I enjoy
+          building interfaces that feel refined, fast, and ready for scale.
         </p>
-        <!-- <a
-          href="#"
-          class="bg-white inline-flex justify-center items-center w-20 h-20"
-          ><i class="bx bx-link-external text-primary-second"></i
-        ></a> -->
+        <p>
+          My background spans Angular development, UX/UI sensitivity, team
+          leadership, and mentoring. I am especially motivated by environments
+          with high standards, whether that means a fast product team or a
+          company with Apple-level expectations around craft.
+        </p>
+
+        <div class="hero__actions">
+          <button class="button button--primary" type="button" (click)="scrollToElement('contact')">
+            Start a Conversation
+          </button>
+          <button class="button button--secondary" type="button" (click)="downloadCV()">
+            Download CV
+          </button>
+        </div>
+
+        <div class="social-links">
+          <a
+            *ngFor="let link of socialLinks"
+            [href]="link.href"
+            target="_blank"
+            rel="noreferrer"
+            [attr.aria-label]="link.label"
+          >
+            <i class="bx" [ngClass]="link.icon"></i>
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- contact section design -->
-<section class="contact pb-28" id="contact" #contact>
-  <h2
-    class="heading text-center text-7xl mb-12"
-    [ngsReveal]="{ origin: 'top' }"
-  >
-    Contact <span>Me!</span>
-  </h2>
-  <form
-    #contactForm="ngForm"
-    class="text-center mb-12 my-4 mx-auto"
-    [ngsReveal]="{ origin: 'bottom' }"
-    (ngSubmit)="submitContactForm(contactForm)"
-    novalidate
-  >
-    <div class="input-box">
-      <input
-        type="text"
-        name="name"
-        [(ngModel)]="contactFormModel.name"
-        placeholder="Full Name"
-        required
-        #nameField="ngModel"
-      />
-      <input
-        type="email"
-        name="email"
-        [(ngModel)]="contactFormModel.email"
-        placeholder="Email Address"
-        required
-        email
-        #emailField="ngModel"
-      />
-    </div>
-    <div class="input-box">
-      <input
-        type="text"
-        name="phone"
-        [(ngModel)]="contactFormModel.phone"
-        placeholder="Mobile Number"
-      />
-      <input
-        type="text"
-        name="subject"
-        [(ngModel)]="contactFormModel.subject"
-        placeholder="Email Subject"
-      />
-    </div>
-    <textarea
-      name="message"
-      [(ngModel)]="contactFormModel.message"
-      cols="30"
-      rows="10"
-      placeholder="Your Message"
-      required
-      #messageField="ngModel"
-    ></textarea>
-    <p
-      class="form-feedback form-feedback-error"
-      *ngIf="
-        (nameField.invalid && nameField.touched) ||
-        (emailField.invalid && emailField.touched) ||
-        (messageField.invalid && messageField.touched)
-      "
-    >
-      Please fill in your name, a valid email address, and your message.
-    </p>
-    <p class="form-feedback form-feedback-success" *ngIf="submitSuccessMessage">
-      {{ submitSuccessMessage }}
-    </p>
-    <p class="form-feedback form-feedback-error" *ngIf="submitErrorMessage">
-      {{ submitErrorMessage }}
-    </p>
-    <input
-      type="submit"
-      [value]="isSubmitting ? 'Sending...' : 'Send Message'"
-      [disabled]="isSubmitting"
-      class="btn inline-block text-2xl font-semibold bg-custom-blue text-primary-second"
-    />
-  </form>
-</section>
+      <div class="hero__visual" [ngsReveal]="{ origin: 'right' }">
+        <div class="hero-card">
+          <img src="assets/portre-3.png" alt="Portrait of Viktor Szőke" />
+          <div class="hero-card__meta">
+            <div>
+              <span>Focus</span>
+              <strong>Angular, UX, AI-aware product work</strong>
+            </div>
+            <div>
+              <span>Strength</span>
+              <strong>Clear execution with visual precision</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- footer design -->
-<footer class="footer">
-  <div class="footer-text">
+    <section class="proof-strip">
+      <article class="proof-card proof-card--accent">
+        <span class="proof-card__value">{{ experience }}+</span>
+        <span class="proof-card__label">Years in frontend delivery</span>
+      </article>
+      <article class="proof-card" *ngFor="let metric of credibilityMetrics">
+        <span class="proof-card__value">{{ metric.value }}</span>
+        <span class="proof-card__label">{{ metric.label }}</span>
+      </article>
+    </section>
+
+    <section class="about section" id="about" #about>
+      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
+        <span class="eyebrow">About me</span>
+        <h2>Frontend engineering with product maturity.</h2>
+        <p>
+          I specialize in Angular and enjoy building digital products where the
+          interface quality is as important as the underlying execution. I care
+          about clean component architecture, intuitive interaction design, and
+          experiences that feel trustworthy from the first click.
+        </p>
+      </div>
+
+      <div class="about__layout">
+        <div class="about__content" [ngsReveal]="{ origin: 'right' }">
+          <div class="about__intro">
+            <h3>
+              I enjoy web development, UI/UX design, continuous learning, and
+              solving real product problems with practical engineering.
+            </h3>
+            <p>
+              My goal in every project is to combine maximum performance with a
+              user experience that feels simple, coherent, and thoughtfully
+              crafted. Outside work, I like programming, following trends,
+              driving, and gaming, which keeps me curious about systems,
+              feedback loops, and interaction quality.
+            </p>
+          </div>
+
+          <div class="about__cards">
+            <article class="detail-card" *ngFor="let card of valueCards">
+              <h4>{{ card.title }}</h4>
+              <p>{{ card.description }}</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section" id="services" #services>
+      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
+        <span class="eyebrow">What I bring</span>
+        <h2>The mix of delivery, leadership, and design awareness modern teams need.</h2>
+        <p>
+          My strongest contribution happens where frontend craft, product
+          thinking, and team effectiveness meet. That is where high-trust teams
+          compound.
+        </p>
+      </div>
+
+      <div class="services__grid" [ngsReveal]="{ origin: 'bottom' }">
+        <article class="service-card" *ngFor="let card of servicesCards; let index = index">
+          <span class="service-card__number">0{{ index + 1 }}</span>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio section" id="portfolio" #portfolio>
+      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
+        <span class="eyebrow">Selected work</span>
+        <h2>Projects that combine engineering with usability and clear outcomes.</h2>
+        <p>
+          The work below reflects the type of challenges I enjoy most: complex
+          products, strong UX expectations, and interfaces that need to support
+          real business goals.
+        </p>
+      </div>
+
+      <div class="portfolio__grid">
+        <article
+          class="project-card"
+          *ngFor="let project of projects"
+          [ngsReveal]="{ origin: 'bottom' }"
+        >
+          <div class="project-card__content">
+            <span class="project-card__category">{{ project.category }}</span>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.subtitle }}</p>
+            <p class="project-card__description">{{ project.description }}</p>
+            <div class="project-card__tags">
+              <span *ngFor="let tag of project.tags">{{ tag }}</span>
+            </div>
+            <div class="project-card__footer">
+              <span class="project-card__impact-label">Impact</span>
+              <strong>{{ project.outcome }}</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="craft section">
+      <div class="craft__panel" [ngsReveal]="{ origin: 'left' }">
+        <span class="eyebrow">How I work</span>
+        <h2>Built for teams that value quality without slowing down.</h2>
+        <div class="craft__principles">
+          <article class="principle" *ngFor="let principle of workPrinciples">
+            <h3>{{ principle.title }}</h3>
+            <p>{{ principle.description }}</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="stack-panel" [ngsReveal]="{ origin: 'right' }">
+        <span class="eyebrow">Capability snapshot</span>
+        <h2>Technical depth plus product judgment.</h2>
+        <div class="stack-panel__groups">
+          <article class="stack-group" *ngFor="let group of stackGroups">
+            <h3>{{ group.title }}</h3>
+            <div class="stack-group__items">
+              <span *ngFor="let item of group.items">{{ item }}</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact" #contact>
+      <div class="contact__intro" [ngsReveal]="{ origin: 'left' }">
+        <span class="eyebrow">Contact</span>
+        <h2>Let’s build something that looks sharp and performs at a high level.</h2>
+        <p>
+          If you are hiring for frontend, product engineering, design systems,
+          or AI-enhanced user experiences, I am open to conversations about how
+          I can contribute.
+        </p>
+
+        <div class="contact__cards">
+
+          <article class="contact-card">
+            <span>Best fit</span>
+            <p>Angular teams, product-driven companies, high-craft environments</p>
+          </article>
+        </div>
+      </div>
+
+      <form
+        #contactForm="ngForm"
+        class="contact-form"
+        [ngsReveal]="{ origin: 'right' }"
+        (ngSubmit)="submitContactForm(contactForm)"
+        novalidate
+      >
+        <div class="contact-form__grid">
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="contactFormModel.name"
+            placeholder="Full Name"
+            required
+            #nameField="ngModel"
+          />
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="contactFormModel.email"
+            placeholder="Email Address"
+            required
+            email
+            #emailField="ngModel"
+          />
+          <input
+            type="text"
+            name="phone"
+            [(ngModel)]="contactFormModel.phone"
+            placeholder="Mobile Number"
+          />
+          <input
+            type="text"
+            name="subject"
+            [(ngModel)]="contactFormModel.subject"
+            placeholder="Subject"
+          />
+        </div>
+
+        <textarea
+          name="message"
+          [(ngModel)]="contactFormModel.message"
+          rows="8"
+          placeholder="Tell me about the role, team, or project."
+          required
+          #messageField="ngModel"
+        ></textarea>
+
+        <p
+          class="form-feedback form-feedback-error"
+          *ngIf="
+            (nameField.invalid && nameField.touched) ||
+            (emailField.invalid && emailField.touched) ||
+            (messageField.invalid && messageField.touched)
+          "
+        >
+          Please fill in your name, a valid email address, and your message.
+        </p>
+        <p class="form-feedback form-feedback-success" *ngIf="submitSuccessMessage">
+          {{ submitSuccessMessage }}
+        </p>
+        <p class="form-feedback form-feedback-error" *ngIf="submitErrorMessage">
+          {{ submitErrorMessage }}
+        </p>
+
+        <button
+          class="button button--primary contact-form__submit"
+          type="submit"
+          [disabled]="isSubmitting"
+        >
+          {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <p>
-      Copyright &copy; {{ date.getFullYear() }} by Viktor Szőke | All Rights
-      Reserved.
+      Copyright &copy; {{ date.getFullYear() }} Viktor Szőke. Designed to stand
+      out with clarity, taste, and modern frontend craft.
     </p>
-  </div>
-
-  <div
-    class="footer-iconTop bg-custom-blue inline-flex justify-center items-center p-3 rounded-lg"
-  >
-    <a href="#home"><i class="bx bx-up-arrow-alt text-primary-second"></i></a>
-  </div>
-</footer>
+    <button class="site-footer__top" type="button" (click)="scrollToElement('home')">
+      Back to top
+      <i class="bx bx-up-arrow-alt"></i>
+    </button>
+  </footer>
+</div>

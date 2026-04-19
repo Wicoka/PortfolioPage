@@ -13,10 +13,6 @@ export class ProjectDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Project
   ) {}
 
-  getUrl() {
-    return `url('${this.data.image}')`;
-  }
-
   close(): void {
     this.dialogRef.close();
   }
