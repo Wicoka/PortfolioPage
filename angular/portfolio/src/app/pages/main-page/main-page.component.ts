@@ -58,72 +58,62 @@ export class MainPageComponent
 
   heroPills = [
     'Angular Specialist',
-    'UX-aware Frontend Delivery',
-    'AI-ready Product Thinking',
+    'UX-aware',
+    'AI-ready',
   ];
 
   credibilityMetrics = [
-    { value: 'Angular', label: 'Primary framework' },
-    { value: 'UI/UX', label: 'Design-sensitive execution' },
-    { value: 'Remote + Hybrid', label: 'Collaboration ready' },
+    { value: 'Angular', label: 'Core framework' },
+    { value: 'UI/UX', label: 'Design-aware' },
+    { value: 'Remote + Hybrid', label: 'Flexible' },
   ];
 
   valueCards: ContentCard[] = [
     {
-      title: 'Product-grade frontend engineering',
-      description:
-        'I build interfaces that are fast, resilient, and ready for real users, not just demos.',
+      title: 'Product engineering',
+      description: 'Fast, reliable interfaces for real users.',
     },
     {
-      title: 'Design sensitivity with technical discipline',
-      description:
-        'My UI decisions are shaped by usability, visual hierarchy, and implementation quality at the same time.',
+      title: 'Design awareness',
+      description: 'Usable, polished, and consistent UI.',
     },
     {
-      title: 'Calm leadership under delivery pressure',
-      description:
-        'I can contribute as an individual engineer, lead a team, or mentor others without losing momentum.',
+      title: 'Calm leadership',
+      description: 'Clear direction without losing momentum.',
     },
   ];
 
   servicesCards: ContentCard[] = [
     {
       title: 'Web Development',
-      description:
-        'I create and maintain modern web experiences with a strong focus on interaction quality, responsiveness, and long-term maintainability.',
+      description: 'Modern, responsive, maintainable web products.',
     },
     {
       title: 'Team Leading',
-      description:
-        'I help teams align on execution, communicate clearly, and keep delivery moving while maintaining quality standards.',
+      description: 'Clear priorities. Strong delivery. High standards.',
     },
     {
       title: 'Mentoring',
-      description:
-        'I support growth through practical guidance, technical coaching, and the kind of feedback that improves confidence and output.',
+      description: 'Practical guidance and useful feedback.',
     },
     {
       title: 'AI-enhanced Product Work',
-      description:
-        'I am comfortable integrating AI concepts into product experiences when they improve relevance, speed, or decision-making for users.',
+      description: 'Useful AI features with clear product value.',
     },
   ];
 
   workPrinciples: ContentCard[] = [
     {
       title: 'Craft matters',
-      description:
-        'The strongest products feel clear, refined, and intentional in both micro-interactions and architecture.',
+      description: 'Every detail should have a purpose.',
     },
     {
       title: 'Speed needs structure',
-      description:
-        'Good delivery comes from reusable components, predictable patterns, and focused execution.',
+      description: 'Reusable parts make delivery faster.',
     },
     {
       title: 'Teams scale through clarity',
-      description:
-        'Strong communication, ownership, and thoughtful mentoring make ambitious products possible.',
+      description: 'Clear ownership keeps teams moving.',
     },
   ];
 
@@ -263,8 +253,7 @@ export class MainPageComponent
 
     this.mainPageService.sendContactMessage(this.contactFormModel).subscribe({
       next: () => {
-        this.submitSuccessMessage =
-          'Your message has been sent successfully. I will get back to you soon.';
+        this.submitSuccessMessage = "Message sent. I'll reply soon.";
         this.contactFormModel = this.createEmptyContactForm();
         form.resetForm(this.contactFormModel);
         this.isSubmitting = false;

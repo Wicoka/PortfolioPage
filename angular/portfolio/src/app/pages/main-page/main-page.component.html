@@ -32,7 +32,7 @@
         {{ item.label }}
       </a>
       <button class="site-nav__cta" type="button" (click)="scrollToElement('contact')">
-        Let's Talk
+        Contact
       </button>
     </nav>
   </header>
@@ -40,35 +40,24 @@
   <main class="page-main">
     <section class="hero section" id="home" #home>
       <div class="hero__copy" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">Open to ambitious product teams</span>
+        <span class="eyebrow">Open to new opportunities</span>
         <div class="hero__pills">
           <span *ngFor="let pill of heroPills">{{ pill }}</span>
         </div>
         <h1>
-          Modern Angular interfaces with the polish, clarity, and execution
-          quality serious companies expect.
+          Clear, fast Angular products.
         </h1>
         <h2>
           Viktor Szőke
           <span class="hero__typed">I'm a <span id="typer"></span></span>
         </h2>
         <p>
-          I studied Computer Engineering at Budapest University of Technology
-          and Economics, and I focus on frontend engineering where product
-          quality, usability, and implementation discipline all matter. I have
-          {{ experience }} years of frontend development experience and I enjoy
-          building interfaces that feel refined, fast, and ready for scale.
-        </p>
-        <p>
-          My background spans Angular development, UX/UI sensitivity, team
-          leadership, and mentoring. I am especially motivated by environments
-          with high standards, whether that means a fast product team or a
-          company with Apple-level expectations around craft.
+          {{ experience }} years in frontend. Angular, UX, leadership, and mentoring.
         </p>
 
         <div class="hero__actions">
           <button class="button button--primary" type="button" (click)="scrollToElement('contact')">
-            Start a Conversation
+            Let's Talk
           </button>
           <button class="button button--secondary" type="button" (click)="downloadCV()">
             Download CV
@@ -94,11 +83,11 @@
           <div class="hero-card__meta">
             <div>
               <span>Focus</span>
-              <strong>Angular, UX, AI-aware product work</strong>
+              <strong>Angular, UX, AI</strong>
             </div>
             <div>
               <span>Strength</span>
-              <strong>Clear execution with visual precision</strong>
+              <strong>Clear, polished delivery</strong>
             </div>
           </div>
         </div>
@@ -108,7 +97,7 @@
     <section class="proof-strip">
       <article class="proof-card proof-card--accent">
         <span class="proof-card__value">{{ experience }}+</span>
-        <span class="proof-card__label">Years in frontend delivery</span>
+        <span class="proof-card__label">Years in frontend</span>
       </article>
       <article class="proof-card" *ngFor="let metric of credibilityMetrics">
         <span class="proof-card__value">{{ metric.value }}</span>
@@ -119,12 +108,9 @@
     <section class="about section" id="about" #about>
       <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
         <span class="eyebrow">About me</span>
-        <h2>Frontend engineering with product maturity.</h2>
+        <h2>Engineering meets product thinking.</h2>
         <p>
-          I specialize in Angular and enjoy building digital products where the
-          interface quality is as important as the underlying execution. I care
-          about clean component architecture, intuitive interaction design, and
-          experiences that feel trustworthy from the first click.
+          I build reliable Angular products with clear, intuitive interfaces.
         </p>
       </div>
 
@@ -132,15 +118,10 @@
         <div class="about__content" [ngsReveal]="{ origin: 'right' }">
           <div class="about__intro">
             <h3>
-              I enjoy web development, UI/UX design, continuous learning, and
-              solving real product problems with practical engineering.
+              Practical engineering. Thoughtful design.
             </h3>
             <p>
-              My goal in every project is to combine maximum performance with a
-              user experience that feels simple, coherent, and thoughtfully
-              crafted. Outside work, I like programming, following trends,
-              driving, and gaming, which keeps me curious about systems,
-              feedback loops, and interaction quality.
+              I turn complex product needs into simple, fast experiences.
             </p>
           </div>
 
@@ -157,12 +138,7 @@
     <section class="services section" id="services" #services>
       <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
         <span class="eyebrow">What I bring</span>
-        <h2>The mix of delivery, leadership, and design awareness modern teams need.</h2>
-        <p>
-          My strongest contribution happens where frontend craft, product
-          thinking, and team effectiveness meet. That is where high-trust teams
-          compound.
-        </p>
+        <h2>Code, design, and leadership.</h2>
       </div>
 
       <div class="services__grid" [ngsReveal]="{ origin: 'bottom' }">
@@ -177,12 +153,7 @@
     <section class="portfolio section" id="portfolio" #portfolio>
       <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
         <span class="eyebrow">Selected work</span>
-        <h2>Projects that combine engineering with usability and clear outcomes.</h2>
-        <p>
-          The work below reflects the type of challenges I enjoy most: complex
-          products, strong UX expectations, and interfaces that need to support
-          real business goals.
-        </p>
+        <h2>Products built for real users.</h2>
       </div>
 
       <div class="portfolio__grid">
@@ -195,7 +166,6 @@
             <span class="project-card__category">{{ project.category }}</span>
             <h3>{{ project.title }}</h3>
             <p>{{ project.subtitle }}</p>
-            <p class="project-card__description">{{ project.description }}</p>
             <div class="project-card__tags">
               <span *ngFor="let tag of project.tags">{{ tag }}</span>
             </div>
@@ -211,7 +181,7 @@
     <section class="craft section">
       <div class="craft__panel" [ngsReveal]="{ origin: 'left' }">
         <span class="eyebrow">How I work</span>
-        <h2>Built for teams that value quality without slowing down.</h2>
+        <h2>Quality without the slowdown.</h2>
         <div class="craft__principles">
           <article class="principle" *ngFor="let principle of workPrinciples">
             <h3>{{ principle.title }}</h3>
@@ -222,7 +192,7 @@
 
       <div class="stack-panel" [ngsReveal]="{ origin: 'right' }">
         <span class="eyebrow">Capability snapshot</span>
-        <h2>Technical depth plus product judgment.</h2>
+        <h2>Tech and product skills.</h2>
         <div class="stack-panel__groups">
           <article class="stack-group" *ngFor="let group of stackGroups">
             <h3>{{ group.title }}</h3>
@@ -237,18 +207,16 @@
     <section class="contact section" id="contact" #contact>
       <div class="contact__intro" [ngsReveal]="{ origin: 'left' }">
         <span class="eyebrow">Contact</span>
-        <h2>Let’s build something that looks sharp and performs at a high level.</h2>
+        <h2>Let’s build something great.</h2>
         <p>
-          If you are hiring for frontend, product engineering, design systems,
-          or AI-enhanced user experiences, I am open to conversations about how
-          I can contribute.
+          Hiring or building a product? Let’s talk.
         </p>
 
         <div class="contact__cards">
 
           <article class="contact-card">
             <span>Best fit</span>
-            <p>Angular teams, product-driven companies, high-craft environments</p>
+            <p>Angular teams and product companies</p>
           </article>
         </div>
       </div>
@@ -296,7 +264,7 @@
           name="message"
           [(ngModel)]="contactFormModel.message"
           rows="8"
-          placeholder="Tell me about the role, team, or project."
+          placeholder="Tell me about the role or project."
           required
           #messageField="ngModel"
         ></textarea>
@@ -309,7 +277,7 @@
             (messageField.invalid && messageField.touched)
           "
         >
-          Please fill in your name, a valid email address, and your message.
+          Add your name, a valid email, and a message.
         </p>
         <p class="form-feedback form-feedback-success" *ngIf="submitSuccessMessage">
           {{ submitSuccessMessage }}
@@ -331,8 +299,7 @@
 
   <footer class="site-footer">
     <p>
-      Copyright &copy; {{ date.getFullYear() }} Viktor Szőke. Designed to stand
-      out with clarity, taste, and modern frontend craft.
+      &copy; {{ date.getFullYear() }} Viktor Szőke
     </p>
     <button class="site-footer__top" type="button" (click)="scrollToElement('home')">
       Back to top

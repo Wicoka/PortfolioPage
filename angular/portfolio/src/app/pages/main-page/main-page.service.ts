@@ -61,15 +61,9 @@ const projects: Project[] = [
     id: 1,
     title: 'Crypto Trading Backtester',
     category: 'FinTech Tooling',
-    subtitle: `A backtester application where trading robots can be created,
-    configured, and evaluated for crypto trading strategies.`,
-    description: `This project focused on a backtester application designed for
-    creating and testing crypto trading robots. The product allowed users to
-    define trading logic, configure strategy parameters, and evaluate
-    historical performance in a structured environment before moving toward
-    live market usage.`,
-    outcome:
-      'Enabled strategy experimentation and faster decision-making through a clearer workflow for building and validating trading robots.',
+    subtitle: 'Build and test crypto trading robots.',
+    description: 'Configure strategies and check their historical performance.',
+    outcome: 'Faster strategy testing and validation.',
     tags: ['Angular', 'Crypto', 'Backtesting', 'Product UX'],
     image: 'assets/robot.png',
   },
@@ -77,15 +71,9 @@ const projects: Project[] = [
     id: 2,
     title: 'Agricultural Monitoring Platform',
     category: 'AgriTech Operations',
-    subtitle: `An agricultural application for registering devices and monitoring
-    the values they send back from the fields.`,
-    description: `This application supported agricultural operations by making it
-    possible to register field devices and monitor incoming values from remote
-    environments. The interface had to help users keep track of device status,
-    incoming measurements, and operational context in a way that remained
-    easy to understand.`,
-    outcome:
-      'Improved visibility into field data and device activity with a cleaner monitoring interface for day-to-day operations.',
+    subtitle: 'Register devices and monitor live field data.',
+    description: 'Track device status and measurements in one clear dashboard.',
+    outcome: 'Clearer daily monitoring.',
     tags: ['Angular', 'Monitoring', 'IoT', 'Dashboard Design'],
     image: 'assets/language-exam.png',
   },
@@ -93,15 +81,9 @@ const projects: Project[] = [
     id: 3,
     title: 'Modern CNC Machine Interface',
     category: 'Industrial UI',
-    subtitle: `Implementation of modern interfaces for CNC machines with strong
-    focus on clarity, usability, and operator workflows.`,
-    description: `This work involved implementing modern user interfaces for CNC
-    machines where clarity, speed, and operator confidence were essential.
-    The challenge was to translate complex machine workflows into interfaces
-    that felt contemporary, understandable, and efficient in real industrial
-    contexts.`,
-    outcome:
-      'Delivered a more modern machine-facing experience that supported better operator usability and clearer industrial workflows.',
+    subtitle: 'Clear interfaces for complex CNC workflows.',
+    description: 'Modern machine controls built for speed and operator confidence.',
+    outcome: 'Simpler, faster operator workflows.',
     tags: ['Angular', 'Industrial UX', 'Machine UI', 'Frontend Implementation'],
     image: 'assets/robot.png',
   },
@@ -109,16 +91,9 @@ const projects: Project[] = [
     id: 4,
     title: 'Robotic Application Platform',
     category: 'Industrial Product Platform',
-    subtitle: `This is an automated platform for building, running, monitoring, and
-      re-deploying collaborative applications.`,
-    description: `This is an automated platform for building, running, monitoring, and
-    re-deploying collaborative applications. It automates the process of
-    getting a robotic application up and running, allowing deployment
-    directly on the manufacturing floor, with zero programming and zero
-    simulations. With this, complete applications can be deployed in just
-    a few hours.`,
-    outcome:
-      'Reduced deployment complexity for robotics teams and enabled much faster rollout on the manufacturing floor.',
+    subtitle: 'Build and deploy robotic applications without code.',
+    description: 'Run and monitor automation directly on the factory floor.',
+    outcome: 'Deployment cut from days to hours.',
     tags: ['Angular', 'Automation', 'Industrial UX', 'Platform Thinking'],
     image: 'assets/robot.png',
   },
@@ -126,15 +101,9 @@ const projects: Project[] = [
     id: 5,
     title: 'AI Powered Webshop',
     category: 'Commerce Personalization',
-    subtitle: `An AI-powered webshop can recommend new or similar products based on
-    user behavior.`,
-    description: `An AI-powered webshop can recommend new or similar products based on
-    user behavior. This improves the user experience and increases sales
-    by offering personalized recommendations tailored to the user's
-    preferences. We used AWS personalize to build a recommendation engine
-    for a webshop. The engine was trained on a dataset of 5000 products.`,
-    outcome:
-      'Combined modern commerce UX with AI-driven recommendation logic to improve discovery and relevance.',
+    subtitle: 'Personalized product discovery with AI.',
+    description: 'AWS Personalize recommendations trained on 5,000 products.',
+    outcome: 'More relevant product recommendations.',
     tags: ['Angular', 'AI', 'AWS Personalize', 'E-commerce'],
     image: 'assets/webshop-2.png',
   },
@@ -142,17 +111,9 @@ const projects: Project[] = [
     id: 6,
     title: 'Language Exam',
     category: 'EdTech Experience',
-    subtitle: `This online language exam web application is designed to allow users
-    to take language proficiency exams remotely.`,
-    description: `This online language exam web application is designed to allow users
-    to take language proficiency exams remotely. Built using the Angular
-    framework for the front-end and ASP.NET Core for the back-end, the
-    application provides a seamless user experience with intuitive
-    navigation and responsive design. Users can easily sign up, choose
-    their preferred language and level, and take the exam online from any
-    device with internet access.`,
-    outcome:
-      'Delivered a reliable remote exam flow with responsive UI and clear task progression for learners.',
+    subtitle: 'Take language exams from any device.',
+    description: 'A responsive exam flow built with Angular and ASP.NET Core.',
+    outcome: 'A clear, reliable remote exam flow.',
     tags: ['Angular', 'ASP.NET Core', 'Responsive UI', 'Remote Testing'],
     image: 'assets/language-exam.png',
   },
