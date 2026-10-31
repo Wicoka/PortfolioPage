@@ -18,6 +18,9 @@ type SectionId = 'home' | 'work' | 'about' | 'contact';
 type NavKey = keyof PageCopy['nav'];
 type SubmitStatus = 'success' | 'error' | null;
 
+// Required fields in DOM order; the first invalid one gets focus on a failed submit.
+const REQUIRED_FIELDS = ['name', 'email', 'message'] as const;
+
 interface SocialLink {
   label: string;
   href: string;
@@ -34,6 +37,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   @ViewChild('work') work?: ElementRef<HTMLElement>;
   @ViewChild('about') about?: ElementRef<HTMLElement>;
   @ViewChild('contact') contact?: ElementRef<HTMLElement>;
+  @ViewChild('main') main?: ElementRef<HTMLElement>;
+  @ViewChild('menuToggle') menuToggle?: ElementRef<HTMLButtonElement>;
 
   readonly date = new Date();
   readonly experience = this.date.getFullYear() - 2018;
@@ -114,6 +119,17 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.updateActiveSection();
   }
 
+  // Escape closes the mobile menu and puts focus back on the button that opened it.
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (!this.mobileMenuOpen) {
+      return;
+    }
+
+    this.mobileMenuOpen = false;
+    this.menuToggle?.nativeElement.focus();
+  }
+
   setLanguage(language: Language): void {
     this.languageService.setLanguage(language);
     this.loadProjects();
@@ -143,16 +159,30 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     this.mobileMenuOpen = false;
   }
 
+  // Moves focus along with the scroll, so keyboard and screen reader users continue from there.
   scrollToElement(id: SectionId): void {
     this.mobileMenuOpen = false;
-    this.sectionRef(id)?.nativeElement.scrollIntoView({
+    const element = this.sectionRef(id)?.nativeElement;
+
+    element?.scrollIntoView({
       behavior: this.prefersReducedMotion ? 'auto' : 'smooth',
     });
+    element?.focus({ preventScroll: true });
   }
 
-  submitContactForm(form: NgForm): void {
-    if (form.invalid || this.isSubmitting) {
+  skipToContent(event: Event): void {
+    event.preventDefault();
+    this.main?.nativeElement.focus();
+  }
+
+  submitContactForm(form: NgForm, formElement: HTMLFormElement): void {
+    if (this.isSubmitting) {
+      return;
+    }
+
+    if (form.invalid) {
       form.control.markAllAsTouched();
+      this.focusFirstInvalidField(form, formElement);
       return;
     }
 
@@ -170,6 +200,22 @@ export class MainPageComponent implements OnInit, AfterViewInit {
         this.submitStatus = 'error';
         this.isSubmitting = false;
       },
+    });
+  }
+
+  private focusFirstInvalidField(form: NgForm, formElement: HTMLFormElement): void {
+    const firstInvalid = REQUIRED_FIELDS.find((name) => form.controls[name]?.invalid);
+
+    const field = firstInvalid
+      ? formElement.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)
+      : null;
+
+    // focus() alone scrolls just enough to show the field, which can leave it under the
+    // sticky header; scrollIntoView respects scroll-padding-top.
+    field?.focus({ preventScroll: true });
+    field?.scrollIntoView({
+      block: 'center',
+      behavior: this.prefersReducedMotion ? 'auto' : 'smooth',
     });
   }
 

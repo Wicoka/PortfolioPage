@@ -23,6 +23,8 @@ const clamp01 = (value: number): number => Math.min(1, Math.max(0, value));
   `,
   styleUrls: ['./ambient-background.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // Purely decorative.
+  host: { 'aria-hidden': 'true' },
 })
 export class AmbientBackgroundComponent implements OnInit, OnDestroy {
   private current = { x: START_X, y: START_Y };

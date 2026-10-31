@@ -1,6 +1,8 @@
 <app-ambient-background></app-ambient-background>
 
 <div class="portfolio-page">
+  <a class="skip-link" href="#main" (click)="skipToContent($event)">{{ copy.skipToContent }}</a>
+
   <header class="site-header" [class.site-header--elevated]="isHeaderElevated || mobileMenuOpen">
     <div class="site-header__inner">
       <a class="brand" href="#home" (click)="closeMobileMenu()">
@@ -40,6 +42,7 @@
         </div>
 
         <button
+          #menuToggle
           class="menu-toggle"
           type="button"
           [attr.aria-expanded]="mobileMenuOpen"
@@ -47,14 +50,14 @@
           [attr.aria-label]="copy.menuLabel"
           (click)="toggleMobileMenu()"
         >
-          <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
+          <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'" aria-hidden="true"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="page-main">
-    <section class="hero" id="home" #home>
+  <main class="page-main" id="main" #main tabindex="-1">
+    <section class="hero" id="home" #home tabindex="-1">
       <div class="hero__copy" [ngsReveal]="{ origin: 'bottom' }">
         <h1>
           {{ copy.hero.title }}
@@ -67,7 +70,7 @@
             {{ copy.hero.sayHi }}
           </button>
           <button class="button button--link" type="button" (click)="downloadCV()">
-            {{ copy.hero.downloadCv }} <i class="bx bx-chevron-right"></i>
+            {{ copy.hero.downloadCv }} <i class="bx bx-chevron-right" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -92,7 +95,7 @@
       </div>
     </section>
 
-    <section class="section" id="work" #work>
+    <section class="section" id="work" #work tabindex="-1">
       <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
         <span class="eyebrow">{{ copy.work.eyebrow }}</span>
         <h2>{{ copy.work.heading }}</h2>
@@ -111,7 +114,7 @@
           <p class="project-card__details">{{ project.description }}</p>
           <div class="project-card__footer">
             <span class="project-card__outcome">{{ project.outcome }}</span>
-            <ul class="tags" [attr.aria-label]="copy.work.technologiesLabel">
+            <ul class="tags" role="list" [attr.aria-label]="copy.work.technologiesLabel">
               <li *ngFor="let tag of project.tags">{{ tag }}</li>
             </ul>
           </div>
@@ -119,9 +122,9 @@
       </div>
     </section>
 
-    <section class="section about" id="about" #about>
+    <section class="section about" id="about" #about tabindex="-1">
       <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
-        <span class="eyebrow">{{ copy.about.eyebrow }}</span>
+        <h2 class="eyebrow">{{ copy.about.eyebrow }}</h2>
       </header>
       <p class="about__statement" [ngsReveal]="{ origin: 'bottom' }">
         {{ copy.about.statement }}
@@ -141,6 +144,7 @@
 
       <ul
         class="tags tags--large"
+        role="list"
         [attr.aria-label]="copy.about.toolboxLabel"
         [ngsReveal]="{ origin: 'bottom' }"
       >
@@ -148,7 +152,7 @@
       </ul>
     </section>
 
-    <section class="section contact" id="contact" #contact>
+    <section class="section contact" id="contact" #contact tabindex="-1">
       <header class="section-heading section-heading--center" [ngsReveal]="{ origin: 'bottom' }">
         <span class="eyebrow">{{ copy.contact.eyebrow }}</span>
         <h2>{{ copy.contact.heading }}</h2>
@@ -157,9 +161,10 @@
 
       <form
         #contactForm="ngForm"
+        #contactFormElement
         class="contact-form"
         [ngsReveal]="{ origin: 'bottom' }"
-        (ngSubmit)="submitContactForm(contactForm)"
+        (ngSubmit)="submitContactForm(contactForm, contactFormElement)"
         novalidate
       >
         <div class="contact-form__grid">
@@ -172,6 +177,8 @@
               [(ngModel)]="contactFormModel.name"
               required
               #nameField="ngModel"
+              [attr.aria-invalid]="nameField.invalid && nameField.touched ? 'true' : null"
+              [attr.aria-describedby]="nameField.invalid && nameField.touched ? 'contact-form-error' : null"
             />
           </label>
           <label class="field">
@@ -184,6 +191,8 @@
               required
               email
               #emailField="ngModel"
+              [attr.aria-invalid]="emailField.invalid && emailField.touched ? 'true' : null"
+              [attr.aria-describedby]="emailField.invalid && emailField.touched ? 'contact-form-error' : null"
             />
           </label>
           <label class="field">
@@ -210,6 +219,8 @@
             [(ngModel)]="contactFormModel.message"
             required
             #messageField="ngModel"
+            [attr.aria-invalid]="messageField.invalid && messageField.touched ? 'true' : null"
+            [attr.aria-describedby]="messageField.invalid && messageField.touched ? 'contact-form-error' : null"
           ></textarea>
         </label>
 
@@ -217,13 +228,14 @@
           <button
             class="button button--primary"
             type="submit"
-            [disabled]="isSubmitting"
+            [attr.aria-disabled]="isSubmitting ? 'true' : null"
           >
             {{ isSubmitting ? copy.contact.sending : copy.contact.send }}
           </button>
 
           <div class="contact-form__feedback" aria-live="polite">
             <p
+              id="contact-form-error"
               class="form-feedback form-feedback--error"
               *ngIf="
                 (nameField.invalid && nameField.touched) ||
@@ -254,14 +266,14 @@
         [href]="link.href"
         target="_blank"
         rel="noreferrer"
-        [attr.aria-label]="link.label"
+        [attr.aria-label]="link.label + ' (' + copy.opensInNewTab + ')'"
       >
-        <i class="bx" [ngClass]="link.icon"></i>
+        <i class="bx" [ngClass]="link.icon" aria-hidden="true"></i>
       </a>
     </div>
 
     <button class="site-footer__top" type="button" (click)="scrollToElement('home')">
-      {{ copy.backToTop }} <i class="bx bx-up-arrow-alt"></i>
+      {{ copy.backToTop }} <i class="bx bx-up-arrow-alt" aria-hidden="true"></i>
     </button>
   </footer>
 </div>

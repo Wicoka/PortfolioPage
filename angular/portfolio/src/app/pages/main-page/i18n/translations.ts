@@ -40,6 +40,9 @@ export interface PageCopy {
   resume: string;
   menuLabel: string;
   languageLabel: string;
+  skipToContent: string;
+  // Appended to the accessible name of links with target="_blank".
+  opensInNewTab: string;
   hero: {
     title: string;
     highlight: string;
@@ -91,12 +94,14 @@ const en: PageCopy = {
   resume: 'Résumé',
   menuLabel: 'Toggle menu',
   languageLabel: 'Language',
+  skipToContent: 'Skip to content',
+  opensInNewTab: 'opens in a new tab',
   hero: {
     title: 'I make complicated software',
     highlight: 'feel simple.',
     lead: (years) =>
       `${years} years of frontend, mostly Angular. I also lead and mentor developers.`,
-    sayHi: 'Say hi',
+    sayHi: 'Say hello',
     downloadCv: 'Download CV',
   },
   stats: {
@@ -186,6 +191,8 @@ const de: PageCopy = {
   resume: 'Lebenslauf',
   menuLabel: 'Menü ein- oder ausblenden',
   languageLabel: 'Sprache',
+  skipToContent: 'Zum Inhalt springen',
+  opensInNewTab: 'öffnet in einem neuen Tab',
   hero: {
     title: 'Komplizierte Software,',
     highlight: 'einfach gemacht.',
@@ -286,6 +293,8 @@ const hu: PageCopy = {
   resume: 'Önéletrajz',
   menuLabel: 'Menü megnyitása vagy bezárása',
   languageLabel: 'Nyelv',
+  skipToContent: 'Ugrás a tartalomhoz',
+  opensInNewTab: 'új lapon nyílik meg',
   hero: {
     title: 'A bonyolult szoftvert',
     highlight: 'egyszerűvé teszem.',

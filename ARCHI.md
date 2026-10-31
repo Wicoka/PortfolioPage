@@ -36,6 +36,10 @@ files) is old static templates and earlier builds. They are not wired into the A
 ```
 src/
   index.html, styles.scss          global shell + ALL page styles (see Conventions)
+  favicon.svg / favicon.ico /      site icon: "VS" monogram on the hero gradient. The SVG is the
+  apple-touch-icon.png             source; the .ico (16+32) and the 180px touch icon are rasters
+                                   of it (touch icon without rounded corners, iOS adds them).
+                                   New root-level files must also be listed in angular.json assets.
   assets/                          images, CV pdf (portrait.webp is the one used by the hero)
   app/
     app.module.ts / app-routing    root, lazy route to main-page
@@ -105,6 +109,32 @@ src/
   re-animate them.
 - Form results are stored as a status (`submitStatus`), not as a message string, so the text
   follows a language switch.
+
+### Accessibility (normative for new markup)
+
+- Target: WCAG 2.2 AA. Text contrast >= 4.5:1 against `--bg`/`--field` in both themes; do not
+  dim secondary text with `opacity` (that is what broke the "optional" labels and the
+  placeholder before), use a token.
+- Every section has a heading; where the visible label is only an eyebrow, the eyebrow itself
+  is the `h2` (`.section-heading h2.eyebrow` keeps it looking the same).
+- Decorative icons (`<i class="bx">`) get `aria-hidden="true"`; icon-only controls get an
+  `aria-label` from `PageCopy`. Links with `target="_blank"` append `copy.opensInNewTab`.
+- Lists styled with `list-style: none` (Tailwind preflight does this to every `ul`) need
+  `role="list"`, otherwise Safari/VoiceOver stops announcing them as lists.
+- Focus: `main` and the sections have `tabindex="-1"`. `scrollToElement()` moves focus with
+  the scroll and the skip link focuses `main`. Code that scrolls to a control must not rely on
+  `focus()` alone: it scrolls minimally and can leave the control under the sticky header, so
+  focus with `preventScroll` and then `scrollIntoView` (which honours `scroll-padding-top`).
+- Escape closes the mobile menu and returns focus to its toggle (`onEscape`).
+- Form: required fields carry `aria-invalid` + `aria-describedby="contact-form-error"` once
+  touched and invalid; a failed submit focuses the first invalid field. While sending, the
+  submit button uses `aria-disabled` (not `disabled`, which would drop keyboard focus) and
+  `submitContactForm` ignores repeat submits.
+- `prefers-contrast: more` firms up `--text-soft`, `--hairline`, `--field`;
+  `forced-colors: active` replaces the gradient text and adds borders to shapes that are
+  otherwise drawn only with background/shadow. Transparent outlines (not `outline: none`) on
+  focused inputs, so forced-colors mode still shows focus.
+- Touch targets >= 24x24 CSS px (WCAG 2.5.8); the menu toggle is 44x44.
 
 ## Build and verification
 
