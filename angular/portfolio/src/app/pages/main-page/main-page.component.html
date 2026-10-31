@@ -1,342 +1,267 @@
+<app-ambient-background></app-ambient-background>
+
 <div class="portfolio-page">
-  <div class="page-orb page-orb--gold"></div>
-  <div class="page-orb page-orb--rose"></div>
-  <div class="page-grid"></div>
-
-  <header class="site-header" [class.site-header--elevated]="isHeaderElevated">
-    <a class="brand" href="#home" (click)="scrollToElement('home')">
-      <span class="brand__mark">VS</span>
-      <span class="brand__text">
-        <strong>Viktor Szőke</strong>
-        <span>Angular Frontend Engineer</span>
-      </span>
-    </a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      [attr.aria-expanded]="mobileMenuOpen"
-      aria-label="Toggle menu"
-      (click)="toggleMobileMenu()"
-    >
-      <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
-    </button>
-
-    <nav class="site-nav" [class.site-nav--open]="mobileMenuOpen">
-      <a
-        *ngFor="let item of navItems"
-        [href]="'#' + item.id"
-        [class.is-active]="activeSection === item.id"
-        (click)="scrollToElement(item.id)"
-      >
-        {{ item.label }}
+  <header class="site-header" [class.site-header--elevated]="isHeaderElevated || mobileMenuOpen">
+    <div class="site-header__inner">
+      <a class="brand" href="#home" (click)="closeMobileMenu()">
+        {{ copy.name }}
       </a>
-      <button class="site-nav__cta" type="button" (click)="scrollToElement('contact')">
-        Let's Talk
-      </button>
-    </nav>
+
+      <div class="site-header__end">
+        <nav id="site-nav" class="site-nav" [class.site-nav--open]="mobileMenuOpen">
+          <a
+            *ngFor="let id of navItems"
+            [href]="'#' + id"
+            [class.is-active]="activeSection === id"
+            [attr.aria-current]="activeSection === id ? 'true' : null"
+            (click)="closeMobileMenu()"
+          >
+            {{ copy.nav[id] }}
+          </a>
+          <button class="site-nav__cta" type="button" (click)="downloadCV()">
+            {{ copy.resume }}
+          </button>
+        </nav>
+
+        <div class="lang-switch" role="group" [attr.aria-label]="copy.languageLabel">
+          <button
+            *ngFor="let language of languages"
+            class="lang-switch__option"
+            type="button"
+            [class.is-active]="currentLanguage === language.code"
+            [attr.aria-pressed]="currentLanguage === language.code"
+            [attr.aria-label]="language.label"
+            [attr.lang]="language.code"
+            [title]="language.label"
+            (click)="setLanguage(language.code)"
+          >
+            {{ language.flag }}
+          </button>
+        </div>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          [attr.aria-expanded]="mobileMenuOpen"
+          aria-controls="site-nav"
+          [attr.aria-label]="copy.menuLabel"
+          (click)="toggleMobileMenu()"
+        >
+          <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
+        </button>
+      </div>
+    </div>
   </header>
 
   <main class="page-main">
-    <section class="hero section" id="home" #home>
-      <div class="hero__copy" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">Open to ambitious product teams</span>
-        <div class="hero__pills">
-          <span *ngFor="let pill of heroPills">{{ pill }}</span>
-        </div>
+    <section class="hero" id="home" #home>
+      <div class="hero__copy" [ngsReveal]="{ origin: 'bottom' }">
         <h1>
-          Modern Angular interfaces with the polish, clarity, and execution
-          quality serious companies expect.
+          {{ copy.hero.title }}
+          <span class="gradient-text">{{ copy.hero.highlight }}</span>
         </h1>
-        <h2>
-          Viktor Szőke
-          <span class="hero__typed">I'm a <span id="typer"></span></span>
-        </h2>
-        <p>
-          I studied Computer Engineering at Budapest University of Technology
-          and Economics, and I focus on frontend engineering where product
-          quality, usability, and implementation discipline all matter. I have
-          {{ experience }} years of frontend development experience and I enjoy
-          building interfaces that feel refined, fast, and ready for scale.
-        </p>
-        <p>
-          My background spans Angular development, UX/UI sensitivity, team
-          leadership, and mentoring. I am especially motivated by environments
-          with high standards, whether that means a fast product team or a
-          company with Apple-level expectations around craft.
-        </p>
+        <p class="hero__lead">{{ copy.hero.lead(experience) }}</p>
 
         <div class="hero__actions">
           <button class="button button--primary" type="button" (click)="scrollToElement('contact')">
-            Start a Conversation
+            {{ copy.hero.sayHi }}
           </button>
-          <button class="button button--secondary" type="button" (click)="downloadCV()">
-            Download CV
+          <button class="button button--link" type="button" (click)="downloadCV()">
+            {{ copy.hero.downloadCv }} <i class="bx bx-chevron-right"></i>
           </button>
         </div>
-
-        <div class="social-links">
-          <a
-            *ngFor="let link of socialLinks"
-            [href]="link.href"
-            target="_blank"
-            rel="noreferrer"
-            [attr.aria-label]="link.label"
-          >
-            <i class="bx" [ngClass]="link.icon"></i>
-          </a>
-        </div>
       </div>
 
-      <div class="hero__visual" [ngsReveal]="{ origin: 'right' }">
-        <div class="hero-card">
-          <img src="assets/portre-3.png" alt="Portrait of Viktor Szőke" />
-          <div class="hero-card__meta">
-            <div>
-              <span>Focus</span>
-              <strong>Angular, UX, AI-aware product work</strong>
-            </div>
-            <div>
-              <span>Strength</span>
-              <strong>Clear execution with visual precision</strong>
-            </div>
-          </div>
-        </div>
+      <div class="hero__portrait">
+        <img src="assets/portrait.webp" [alt]="copy.name" width="666" height="1000" />
       </div>
     </section>
 
-    <section class="proof-strip">
-      <article class="proof-card proof-card--accent">
-        <span class="proof-card__value">{{ experience }}+</span>
-        <span class="proof-card__label">Years in frontend delivery</span>
-      </article>
-      <article class="proof-card" *ngFor="let metric of credibilityMetrics">
-        <span class="proof-card__value">{{ metric.value }}</span>
-        <span class="proof-card__label">{{ metric.label }}</span>
-      </article>
-    </section>
-
-    <section class="about section" id="about" #about>
-      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">About me</span>
-        <h2>Frontend engineering with product maturity.</h2>
-        <p>
-          I specialize in Angular and enjoy building digital products where the
-          interface quality is as important as the underlying execution. I care
-          about clean component architecture, intuitive interaction design, and
-          experiences that feel trustworthy from the first click.
-        </p>
+    <section class="stats" [attr.aria-label]="copy.stats.label">
+      <div class="stat" [ngsReveal]="{ origin: 'bottom' }">
+        <strong>{{ experience }}+</strong>
+        <span>{{ copy.stats.years }}</span>
       </div>
-
-      <div class="about__layout">
-        <div class="about__content" [ngsReveal]="{ origin: 'right' }">
-          <div class="about__intro">
-            <h3>
-              I enjoy web development, UI/UX design, continuous learning, and
-              solving real product problems with practical engineering.
-            </h3>
-            <p>
-              My goal in every project is to combine maximum performance with a
-              user experience that feels simple, coherent, and thoughtfully
-              crafted. Outside work, I like programming, following trends,
-              driving, and gaming, which keeps me curious about systems,
-              feedback loops, and interaction quality.
-            </p>
-          </div>
-
-          <div class="about__cards">
-            <article class="detail-card" *ngFor="let card of valueCards">
-              <h4>{{ card.title }}</h4>
-              <p>{{ card.description }}</p>
-            </article>
-          </div>
-        </div>
+      <div class="stat" [ngsReveal]="{ origin: 'bottom' }">
+        <strong>Angular</strong>
+        <span>{{ copy.stats.angular }}</span>
+      </div>
+      <div class="stat" [ngsReveal]="{ origin: 'bottom' }">
+        <strong>{{ copy.stats.remoteValue }}</strong>
+        <span>{{ copy.stats.remote }}</span>
       </div>
     </section>
 
-    <section class="services section" id="services" #services>
-      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">What I bring</span>
-        <h2>The mix of delivery, leadership, and design awareness modern teams need.</h2>
-        <p>
-          My strongest contribution happens where frontend craft, product
-          thinking, and team effectiveness meet. That is where high-trust teams
-          compound.
-        </p>
-      </div>
+    <section class="section" id="work" #work>
+      <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
+        <span class="eyebrow">{{ copy.work.eyebrow }}</span>
+        <h2>{{ copy.work.heading }}</h2>
+      </header>
 
-      <div class="services__grid" [ngsReveal]="{ origin: 'bottom' }">
-        <article class="service-card" *ngFor="let card of servicesCards; let index = index">
-          <span class="service-card__number">0{{ index + 1 }}</span>
-          <h3>{{ card.title }}</h3>
-          <p>{{ card.description }}</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="portfolio section" id="portfolio" #portfolio>
-      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">Selected work</span>
-        <h2>Projects that combine engineering with usability and clear outcomes.</h2>
-        <p>
-          The work below reflects the type of challenges I enjoy most: complex
-          products, strong UX expectations, and interfaces that need to support
-          real business goals.
-        </p>
-      </div>
-
-      <div class="portfolio__grid">
+      <div class="work-grid">
         <article
           class="project-card"
-          *ngFor="let project of projects"
+          *ngFor="let project of projects; trackBy: trackById"
+          appSpotlight
           [ngsReveal]="{ origin: 'bottom' }"
         >
-          <div class="project-card__content">
-            <span class="project-card__category">{{ project.category }}</span>
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.subtitle }}</p>
-            <p class="project-card__description">{{ project.description }}</p>
-            <div class="project-card__tags">
-              <span *ngFor="let tag of project.tags">{{ tag }}</span>
-            </div>
-            <div class="project-card__footer">
-              <span class="project-card__impact-label">Impact</span>
-              <strong>{{ project.outcome }}</strong>
-            </div>
+          <span class="project-card__category">{{ project.category }}</span>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.subtitle }}</p>
+          <p class="project-card__details">{{ project.description }}</p>
+          <div class="project-card__footer">
+            <span class="project-card__outcome">{{ project.outcome }}</span>
+            <ul class="tags" [attr.aria-label]="copy.work.technologiesLabel">
+              <li *ngFor="let tag of project.tags">{{ tag }}</li>
+            </ul>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="craft section">
-      <div class="craft__panel" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">How I work</span>
-        <h2>Built for teams that value quality without slowing down.</h2>
-        <div class="craft__principles">
-          <article class="principle" *ngFor="let principle of workPrinciples">
-            <h3>{{ principle.title }}</h3>
-            <p>{{ principle.description }}</p>
-          </article>
-        </div>
+    <section class="section about" id="about" #about>
+      <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
+        <span class="eyebrow">{{ copy.about.eyebrow }}</span>
+      </header>
+      <p class="about__statement" [ngsReveal]="{ origin: 'bottom' }">
+        {{ copy.about.statement }}
+        <span>{{ copy.about.statementTail }}</span>
+      </p>
+
+      <div class="services">
+        <article
+          class="service"
+          *ngFor="let service of copy.about.services; trackBy: trackByIndex"
+          [ngsReveal]="{ origin: 'bottom' }"
+        >
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </article>
       </div>
 
-      <div class="stack-panel" [ngsReveal]="{ origin: 'right' }">
-        <span class="eyebrow">Capability snapshot</span>
-        <h2>Technical depth plus product judgment.</h2>
-        <div class="stack-panel__groups">
-          <article class="stack-group" *ngFor="let group of stackGroups">
-            <h3>{{ group.title }}</h3>
-            <div class="stack-group__items">
-              <span *ngFor="let item of group.items">{{ item }}</span>
-            </div>
-          </article>
-        </div>
-      </div>
+      <ul
+        class="tags tags--large"
+        [attr.aria-label]="copy.about.toolboxLabel"
+        [ngsReveal]="{ origin: 'bottom' }"
+      >
+        <li *ngFor="let tool of copy.about.toolbox; trackBy: trackByIndex">{{ tool }}</li>
+      </ul>
     </section>
 
-    <section class="contact section" id="contact" #contact>
-      <div class="contact__intro" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">Contact</span>
-        <h2>Let’s build something that looks sharp and performs at a high level.</h2>
-        <p>
-          If you are hiring for frontend, product engineering, design systems,
-          or AI-enhanced user experiences, I am open to conversations about how
-          I can contribute.
-        </p>
-
-        <div class="contact__cards">
-
-          <article class="contact-card">
-            <span>Best fit</span>
-            <p>Angular teams, product-driven companies, high-craft environments</p>
-          </article>
-        </div>
-      </div>
+    <section class="section contact" id="contact" #contact>
+      <header class="section-heading section-heading--center" [ngsReveal]="{ origin: 'bottom' }">
+        <span class="eyebrow">{{ copy.contact.eyebrow }}</span>
+        <h2>{{ copy.contact.heading }}</h2>
+        <p>{{ copy.contact.lead }}</p>
+      </header>
 
       <form
         #contactForm="ngForm"
         class="contact-form"
-        [ngsReveal]="{ origin: 'right' }"
+        [ngsReveal]="{ origin: 'bottom' }"
         (ngSubmit)="submitContactForm(contactForm)"
         novalidate
       >
         <div class="contact-form__grid">
-          <input
-            type="text"
-            name="name"
-            [(ngModel)]="contactFormModel.name"
-            placeholder="Full Name"
-            required
-            #nameField="ngModel"
-          />
-          <input
-            type="email"
-            name="email"
-            [(ngModel)]="contactFormModel.email"
-            placeholder="Email Address"
-            required
-            email
-            #emailField="ngModel"
-          />
-          <input
-            type="text"
-            name="phone"
-            [(ngModel)]="contactFormModel.phone"
-            placeholder="Mobile Number"
-          />
-          <input
-            type="text"
-            name="subject"
-            [(ngModel)]="contactFormModel.subject"
-            placeholder="Subject"
-          />
+          <label class="field">
+            <span>{{ copy.contact.name }}</span>
+            <input
+              type="text"
+              name="name"
+              autocomplete="name"
+              [(ngModel)]="contactFormModel.name"
+              required
+              #nameField="ngModel"
+            />
+          </label>
+          <label class="field">
+            <span>{{ copy.contact.email }}</span>
+            <input
+              type="email"
+              name="email"
+              autocomplete="email"
+              [(ngModel)]="contactFormModel.email"
+              required
+              email
+              #emailField="ngModel"
+            />
+          </label>
+          <label class="field">
+            <span>{{ copy.contact.phone }} <em>{{ copy.contact.optional }}</em></span>
+            <input
+              type="tel"
+              name="phone"
+              autocomplete="tel"
+              [(ngModel)]="contactFormModel.phone"
+            />
+          </label>
+          <label class="field">
+            <span>{{ copy.contact.subject }} <em>{{ copy.contact.optional }}</em></span>
+            <input type="text" name="subject" [(ngModel)]="contactFormModel.subject" />
+          </label>
         </div>
 
-        <textarea
-          name="message"
-          [(ngModel)]="contactFormModel.message"
-          rows="8"
-          placeholder="Tell me about the role, team, or project."
-          required
-          #messageField="ngModel"
-        ></textarea>
+        <label class="field">
+          <span>{{ copy.contact.message }}</span>
+          <textarea
+            name="message"
+            rows="6"
+            [placeholder]="copy.contact.messagePlaceholder"
+            [(ngModel)]="contactFormModel.message"
+            required
+            #messageField="ngModel"
+          ></textarea>
+        </label>
 
-        <p
-          class="form-feedback form-feedback-error"
-          *ngIf="
-            (nameField.invalid && nameField.touched) ||
-            (emailField.invalid && emailField.touched) ||
-            (messageField.invalid && messageField.touched)
-          "
-        >
-          Please fill in your name, a valid email address, and your message.
-        </p>
-        <p class="form-feedback form-feedback-success" *ngIf="submitSuccessMessage">
-          {{ submitSuccessMessage }}
-        </p>
-        <p class="form-feedback form-feedback-error" *ngIf="submitErrorMessage">
-          {{ submitErrorMessage }}
-        </p>
+        <div class="contact-form__footer">
+          <button
+            class="button button--primary"
+            type="submit"
+            [disabled]="isSubmitting"
+          >
+            {{ isSubmitting ? copy.contact.sending : copy.contact.send }}
+          </button>
 
-        <button
-          class="button button--primary contact-form__submit"
-          type="submit"
-          [disabled]="isSubmitting"
-        >
-          {{ isSubmitting ? 'Sending...' : 'Send Message' }}
-        </button>
+          <div class="contact-form__feedback" aria-live="polite">
+            <p
+              class="form-feedback form-feedback--error"
+              *ngIf="
+                (nameField.invalid && nameField.touched) ||
+                (emailField.invalid && emailField.touched) ||
+                (messageField.invalid && messageField.touched)
+              "
+            >
+              {{ copy.contact.invalid }}
+            </p>
+            <p class="form-feedback form-feedback--success" *ngIf="submitStatus === 'success'">
+              {{ copy.contact.success }}
+            </p>
+            <p class="form-feedback form-feedback--error" *ngIf="submitStatus === 'error'">
+              {{ copy.contact.error }}
+            </p>
+          </div>
+        </div>
       </form>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>
-      Copyright &copy; {{ date.getFullYear() }} Viktor Szőke. Designed to stand
-      out with clarity, taste, and modern frontend craft.
-    </p>
+    <p>&copy; {{ date.getFullYear() }} {{ copy.name }}</p>
+
+    <div class="social-links">
+      <a
+        *ngFor="let link of socialLinks"
+        [href]="link.href"
+        target="_blank"
+        rel="noreferrer"
+        [attr.aria-label]="link.label"
+      >
+        <i class="bx" [ngClass]="link.icon"></i>
+      </a>
+    </div>
+
     <button class="site-footer__top" type="button" (click)="scrollToElement('home')">
-      Back to top
-      <i class="bx bx-up-arrow-alt"></i>
+      {{ copy.backToTop }} <i class="bx bx-up-arrow-alt"></i>
     </button>
   </footer>
 </div>

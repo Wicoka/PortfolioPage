@@ -3,25 +3,20 @@ import {
   Component,
   ElementRef,
   HostListener,
-  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgsRevealConfig } from 'ngx-scrollreveal';
-import Typed from 'typed.js';
+import { LanguageService } from './i18n/language.service';
+import { Language, LanguageOption, PageCopy } from './i18n/translations';
 import { ContactFormPayload, MainPageService } from './main-page.service';
 import { Project } from './models/project.model';
 
-interface NavItem {
-  id: string;
-  label: string;
-}
+type SectionId = 'home' | 'work' | 'about' | 'contact';
 
-interface ContentCard {
-  title: string;
-  description: string;
-}
+type NavKey = keyof PageCopy['nav'];
+type SubmitStatus = 'success' | 'error' | null;
 
 interface SocialLink {
   label: string;
@@ -29,129 +24,27 @@ interface SocialLink {
   icon: string;
 }
 
-interface StackGroup {
-  title: string;
-  items: string[];
-}
-
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent
-  implements OnInit, AfterViewInit, OnDestroy
-{
+export class MainPageComponent implements OnInit, AfterViewInit {
   @ViewChild('home') home?: ElementRef<HTMLElement>;
+  @ViewChild('work') work?: ElementRef<HTMLElement>;
   @ViewChild('about') about?: ElementRef<HTMLElement>;
-  @ViewChild('services') services?: ElementRef<HTMLElement>;
-  @ViewChild('portfolio') portfolio?: ElementRef<HTMLElement>;
   @ViewChild('contact') contact?: ElementRef<HTMLElement>;
 
-  navItems: NavItem[] = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'services', label: 'Value' },
-    { id: 'portfolio', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
-  ];
+  readonly date = new Date();
+  readonly experience = this.date.getFullYear() - 2018;
 
-  heroPills = [
-    'Angular Specialist',
-    'UX-aware Frontend Delivery',
-    'AI-ready Product Thinking',
-  ];
-
-  credibilityMetrics = [
-    { value: 'Angular', label: 'Primary framework' },
-    { value: 'UI/UX', label: 'Design-sensitive execution' },
-    { value: 'Remote + Hybrid', label: 'Collaboration ready' },
-  ];
-
-  valueCards: ContentCard[] = [
-    {
-      title: 'Product-grade frontend engineering',
-      description:
-        'I build interfaces that are fast, resilient, and ready for real users, not just demos.',
-    },
-    {
-      title: 'Design sensitivity with technical discipline',
-      description:
-        'My UI decisions are shaped by usability, visual hierarchy, and implementation quality at the same time.',
-    },
-    {
-      title: 'Calm leadership under delivery pressure',
-      description:
-        'I can contribute as an individual engineer, lead a team, or mentor others without losing momentum.',
-    },
-  ];
-
-  servicesCards: ContentCard[] = [
-    {
-      title: 'Web Development',
-      description:
-        'I create and maintain modern web experiences with a strong focus on interaction quality, responsiveness, and long-term maintainability.',
-    },
-    {
-      title: 'Team Leading',
-      description:
-        'I help teams align on execution, communicate clearly, and keep delivery moving while maintaining quality standards.',
-    },
-    {
-      title: 'Mentoring',
-      description:
-        'I support growth through practical guidance, technical coaching, and the kind of feedback that improves confidence and output.',
-    },
-    {
-      title: 'AI-enhanced Product Work',
-      description:
-        'I am comfortable integrating AI concepts into product experiences when they improve relevance, speed, or decision-making for users.',
-    },
-  ];
-
-  workPrinciples: ContentCard[] = [
-    {
-      title: 'Craft matters',
-      description:
-        'The strongest products feel clear, refined, and intentional in both micro-interactions and architecture.',
-    },
-    {
-      title: 'Speed needs structure',
-      description:
-        'Good delivery comes from reusable components, predictable patterns, and focused execution.',
-    },
-    {
-      title: 'Teams scale through clarity',
-      description:
-        'Strong communication, ownership, and thoughtful mentoring make ambitious products possible.',
-    },
-  ];
-
-  stackGroups: StackGroup[] = [
-    {
-      title: 'Frontend',
-      items: ['Angular', 'TypeScript', 'Responsive UI', 'Component Systems'],
-    },
-    {
-      title: 'Product Thinking',
-      items: ['UX/UI Awareness', 'Interaction Design', 'Performance', 'Accessibility'],
-    },
-    {
-      title: 'Modern Delivery',
-      items: ['Team Leadership', 'Mentoring', 'Cross-functional Work', 'AI Features'],
-    },
-  ];
+  readonly navItems: Array<SectionId & NavKey> = ['work', 'about', 'contact'];
 
   socialLinks: SocialLink[] = [
     {
-      label: 'Facebook',
-      href: 'https://www.facebook.com/100000383629148',
-      icon: 'bxl-facebook',
-    },
-    {
-      label: 'Twitter',
-      href: 'https://twitter.com/Wicoka00',
-      icon: 'bxl-twitter',
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/viktor-szőke-2a680112a/',
+      icon: 'bxl-linkedin',
     },
     {
       label: 'Instagram',
@@ -159,64 +52,81 @@ export class MainPageComponent
       icon: 'bxl-instagram-alt',
     },
     {
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/viktor-szőke-2a680112a/',
-      icon: 'bxl-linkedin',
+      label: 'Twitter',
+      href: 'https://twitter.com/Wicoka00',
+      icon: 'bxl-twitter',
+    },
+    {
+      label: 'Facebook',
+      href: 'https://www.facebook.com/100000383629148',
+      icon: 'bxl-facebook',
     },
   ];
 
   projects: Project[] = [];
   contactFormModel: ContactFormPayload = this.createEmptyContactForm();
   isSubmitting = false;
-  submitSuccessMessage = '';
-  submitErrorMessage = '';
+  // A status rather than a message, so the text follows a language switch.
+  submitStatus: SubmitStatus = null;
   mobileMenuOpen = false;
-  activeSection = 'home';
+  activeSection: SectionId = 'home';
   isHeaderElevated = false;
 
-  readonly date = new Date();
-  readonly experience = this.date.getFullYear() - 2018;
-
-  private typedInstance?: Typed;
+  private readonly prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
 
   constructor(
     private readonly mainPageService: MainPageService,
+    private readonly languageService: LanguageService,
     config: NgsRevealConfig
   ) {
-    config.duration = 1200;
+    config.duration = this.prefersReducedMotion ? 0 : 900;
+    config.distance = this.prefersReducedMotion ? '0px' : '24px';
+    config.easing = 'cubic-bezier(0.22, 1, 0.36, 1)';
     config.reset = false;
-    config.distance = '48px';
-    config.delay = 120;
+    config.delay = 0;
+  }
+
+  get copy(): PageCopy {
+    return this.languageService.copy;
+  }
+
+  get currentLanguage(): Language {
+    return this.languageService.current;
+  }
+
+  get languages(): LanguageOption[] {
+    return this.languageService.languages;
   }
 
   ngOnInit(): void {
-    this.typedInstance = new Typed('#typer', {
-      strings: [
-        'Frontend Engineer',
-        'Team Leader',
-        'Casual Gamer',
-      ],
-      typeSpeed: 70,
-      backSpeed: 34,
-      backDelay: 1300,
-      loop: true,
-    });
-
-    this.projects = this.mainPageService.getProjects();
+    this.loadProjects();
   }
 
   ngAfterViewInit(): void {
     setTimeout(() => this.updateActiveSection(), 0);
   }
 
-  ngOnDestroy(): void {
-    this.typedInstance?.destroy();
-  }
-
   @HostListener('window:scroll')
   onWindowScroll(): void {
-    this.isHeaderElevated = window.scrollY > 24;
+    this.isHeaderElevated = window.scrollY > 8;
     this.updateActiveSection();
+  }
+
+  setLanguage(language: Language): void {
+    this.languageService.setLanguage(language);
+    this.loadProjects();
+  }
+
+  // Lists are rebuilt on a language switch; tracking keeps the DOM nodes,
+  // so ScrollReveal does not hide and re-animate cards that are already visible.
+  trackById(_: number, item: { id: number }): number {
+    return item.id;
+  }
+
+  trackByIndex(index: number): number {
+    return index;
   }
 
   downloadCV(): void {
@@ -227,28 +137,17 @@ export class MainPageComponent
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
-  scrollToElement(element: string): void {
+  // Header links are plain fragment links (so the URL and history stay right);
+  // CSS scroll-behavior and scroll-padding-top handle the smooth scroll and header offset.
+  closeMobileMenu(): void {
     this.mobileMenuOpen = false;
+  }
 
-    switch (element) {
-      case 'home':
-        this.home?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'about':
-        this.about?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'services':
-        this.services?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'portfolio':
-        this.portfolio?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'contact':
-        this.contact?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      default:
-        break;
-    }
+  scrollToElement(id: SectionId): void {
+    this.mobileMenuOpen = false;
+    this.sectionRef(id)?.nativeElement.scrollIntoView({
+      behavior: this.prefersReducedMotion ? 'auto' : 'smooth',
+    });
   }
 
   submitContactForm(form: NgForm): void {
@@ -258,22 +157,37 @@ export class MainPageComponent
     }
 
     this.isSubmitting = true;
-    this.submitSuccessMessage = '';
-    this.submitErrorMessage = '';
+    this.submitStatus = null;
 
     this.mainPageService.sendContactMessage(this.contactFormModel).subscribe({
       next: () => {
-        this.submitSuccessMessage =
-          'Your message has been sent successfully. I will get back to you soon.';
+        this.submitStatus = 'success';
         this.contactFormModel = this.createEmptyContactForm();
         form.resetForm(this.contactFormModel);
         this.isSubmitting = false;
       },
       error: () => {
-        this.submitErrorMessage = 'Sending failed. Please try again later.';
+        this.submitStatus = 'error';
         this.isSubmitting = false;
       },
     });
+  }
+
+  private loadProjects(): void {
+    this.projects = this.mainPageService.getProjects(this.languageService.current);
+  }
+
+  private sectionRef(id: SectionId): ElementRef<HTMLElement> | undefined {
+    switch (id) {
+      case 'home':
+        return this.home;
+      case 'work':
+        return this.work;
+      case 'about':
+        return this.about;
+      case 'contact':
+        return this.contact;
+    }
   }
 
   private createEmptyContactForm(): ContactFormPayload {
@@ -287,28 +201,30 @@ export class MainPageComponent
   }
 
   private updateActiveSection(): void {
-    const sections: Array<{ id: string; ref?: ElementRef<HTMLElement> }> = [
-      { id: 'home', ref: this.home },
-      { id: 'about', ref: this.about },
-      { id: 'services', ref: this.services },
-      { id: 'portfolio', ref: this.portfolio },
-      { id: 'contact', ref: this.contact },
-    ];
+    const sections: SectionId[] = ['home', 'work', 'about', 'contact'];
+    const scrolledToBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 2;
 
-    const scrollPosition = window.scrollY + 180;
+    // The last section is often shorter than the viewport, so it would never reach the probe line.
+    if (scrolledToBottom) {
+      this.activeSection = 'contact';
+      return;
+    }
 
-    for (const section of sections) {
-      const element = section.ref?.nativeElement;
+    const probe = 180;
+
+    for (const id of sections) {
+      const element = this.sectionRef(id)?.nativeElement;
 
       if (!element) {
         continue;
       }
 
-      const offsetTop = element.offsetTop;
-      const offsetBottom = offsetTop + element.offsetHeight;
+      const { top, bottom } = element.getBoundingClientRect();
 
-      if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-        this.activeSection = section.id;
+      if (probe >= top && probe < bottom) {
+        this.activeSection = id;
       }
     }
   }

@@ -1,0 +1,46 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient__blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90vmax;
+  height: 90vmax;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.ambient__blob--primary {
+  background: radial-gradient(
+    circle,
+    hsl(var(--hue) 95% 68% / var(--ambient-strength)) 0%,
+    transparent 62%
+  );
+  transform: translate3d(
+      calc(var(--pointer-x) * 100vw),
+      calc(var(--pointer-y) * 100vh),
+      0
+    )
+    translate(-50%, -50%);
+}
+
+// Mirrored across the centre so the two glows pull apart as the cursor moves.
+.ambient__blob--secondary {
+  background: radial-gradient(
+    circle,
+    hsl(calc(var(--hue) + 120) 90% 70% / calc(var(--ambient-strength) * 0.7)) 0%,
+    transparent 60%
+  );
+  transform: translate3d(
+      calc((1 - var(--pointer-x)) * 100vw),
+      calc((1 - var(--pointer-y)) * 100vh),
+      0
+    )
+    translate(-50%, -50%);
+}
