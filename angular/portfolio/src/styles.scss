@@ -494,14 +494,6 @@ textarea {
   opacity: 1;
 }
 
-// Phones have no hover: once tilt data arrives (.has-tilt, set by AmbientBackgroundComponent)
-// the highlight is always on and follows the tilt instead of the finger.
-.has-tilt .project-card::before {
-  --spot-x: calc(var(--pointer-x) * 100%);
-  --spot-y: calc(var(--pointer-y) * 100%);
-  opacity: 1;
-}
-
 .project-card > * {
   position: relative;
 }
