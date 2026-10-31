@@ -8,25 +8,15 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgsRevealConfig } from 'ngx-scrollreveal';
+import { LanguageService } from './i18n/language.service';
+import { Language, LanguageOption, PageCopy } from './i18n/translations';
 import { ContactFormPayload, MainPageService } from './main-page.service';
 import { Project } from './models/project.model';
 
 type SectionId = 'home' | 'work' | 'about' | 'contact';
 
-interface NavItem {
-  id: SectionId;
-  label: string;
-}
-
-interface ContentCard {
-  title: string;
-  description: string;
-}
-
-interface Stat {
-  value: string;
-  label: string;
-}
+type NavKey = keyof PageCopy['nav'];
+type SubmitStatus = 'success' | 'error' | null;
 
 interface SocialLink {
   label: string;
@@ -48,46 +38,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   readonly date = new Date();
   readonly experience = this.date.getFullYear() - 2018;
 
-  navItems: NavItem[] = [
-    { id: 'work', label: 'Work' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
-  stats: Stat[] = [
-    { value: `${this.experience}+`, label: 'years in frontend' },
-    { value: 'Angular', label: 'what I use most' },
-    { value: 'Remote', label: 'or hybrid, both work' },
-  ];
-
-  services: ContentCard[] = [
-    {
-      title: 'Frontend',
-      description: 'Angular apps that stay fast and easy to change.',
-    },
-    {
-      title: 'Team lead',
-      description: 'Clear priorities, honest code reviews, no drama.',
-    },
-    {
-      title: 'Mentoring',
-      description: 'Helping juniors get good faster.',
-    },
-    {
-      title: 'AI features',
-      description: 'Only where they actually help the user.',
-    },
-  ];
-
-  toolbox = [
-    'Angular',
-    'TypeScript',
-    'Component systems',
-    'Responsive UI',
-    'Accessibility',
-    'Performance',
-    'Interaction design',
-  ];
+  readonly navItems: Array<SectionId & NavKey> = ['work', 'about', 'contact'];
 
   socialLinks: SocialLink[] = [
     {
@@ -115,8 +66,8 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   projects: Project[] = [];
   contactFormModel: ContactFormPayload = this.createEmptyContactForm();
   isSubmitting = false;
-  submitSuccessMessage = '';
-  submitErrorMessage = '';
+  // A status rather than a message, so the text follows a language switch.
+  submitStatus: SubmitStatus = null;
   mobileMenuOpen = false;
   activeSection: SectionId = 'home';
   isHeaderElevated = false;
@@ -127,6 +78,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(
     private readonly mainPageService: MainPageService,
+    private readonly languageService: LanguageService,
     config: NgsRevealConfig
   ) {
     config.duration = this.prefersReducedMotion ? 0 : 900;
@@ -136,8 +88,20 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     config.delay = 0;
   }
 
+  get copy(): PageCopy {
+    return this.languageService.copy;
+  }
+
+  get currentLanguage(): Language {
+    return this.languageService.current;
+  }
+
+  get languages(): LanguageOption[] {
+    return this.languageService.languages;
+  }
+
   ngOnInit(): void {
-    this.projects = this.mainPageService.getProjects();
+    this.loadProjects();
   }
 
   ngAfterViewInit(): void {
@@ -148,6 +112,21 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   onWindowScroll(): void {
     this.isHeaderElevated = window.scrollY > 8;
     this.updateActiveSection();
+  }
+
+  setLanguage(language: Language): void {
+    this.languageService.setLanguage(language);
+    this.loadProjects();
+  }
+
+  // Lists are rebuilt on a language switch; tracking keeps the DOM nodes,
+  // so ScrollReveal does not hide and re-animate cards that are already visible.
+  trackById(_: number, item: { id: number }): number {
+    return item.id;
+  }
+
+  trackByIndex(index: number): number {
+    return index;
   }
 
   downloadCV(): void {
@@ -178,22 +157,24 @@ export class MainPageComponent implements OnInit, AfterViewInit {
     }
 
     this.isSubmitting = true;
-    this.submitSuccessMessage = '';
-    this.submitErrorMessage = '';
+    this.submitStatus = null;
 
     this.mainPageService.sendContactMessage(this.contactFormModel).subscribe({
       next: () => {
-        this.submitSuccessMessage = "Got it, thanks. I'll get back to you soon.";
+        this.submitStatus = 'success';
         this.contactFormModel = this.createEmptyContactForm();
         form.resetForm(this.contactFormModel);
         this.isSubmitting = false;
       },
       error: () => {
-        this.submitErrorMessage =
-          "That didn't go through. Mind trying again in a bit?";
+        this.submitStatus = 'error';
         this.isSubmitting = false;
       },
     });
+  }
+
+  private loadProjects(): void {
+    this.projects = this.mainPageService.getProjects(this.languageService.current);
   }
 
   private sectionRef(id: SectionId): ElementRef<HTMLElement> | undefined {

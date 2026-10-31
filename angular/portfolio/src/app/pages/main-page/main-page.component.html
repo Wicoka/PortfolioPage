@@ -4,93 +4,114 @@
   <header class="site-header" [class.site-header--elevated]="isHeaderElevated || mobileMenuOpen">
     <div class="site-header__inner">
       <a class="brand" href="#home" (click)="closeMobileMenu()">
-        Viktor Szőke
+        {{ copy.name }}
       </a>
 
-      <button
-        class="menu-toggle"
-        type="button"
-        [attr.aria-expanded]="mobileMenuOpen"
-        aria-controls="site-nav"
-        aria-label="Toggle menu"
-        (click)="toggleMobileMenu()"
-      >
-        <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
-      </button>
+      <div class="site-header__end">
+        <nav id="site-nav" class="site-nav" [class.site-nav--open]="mobileMenuOpen">
+          <a
+            *ngFor="let id of navItems"
+            [href]="'#' + id"
+            [class.is-active]="activeSection === id"
+            [attr.aria-current]="activeSection === id ? 'true' : null"
+            (click)="closeMobileMenu()"
+          >
+            {{ copy.nav[id] }}
+          </a>
+          <button class="site-nav__cta" type="button" (click)="downloadCV()">
+            {{ copy.resume }}
+          </button>
+        </nav>
 
-      <nav id="site-nav" class="site-nav" [class.site-nav--open]="mobileMenuOpen">
-        <a
-          *ngFor="let item of navItems"
-          [href]="'#' + item.id"
-          [class.is-active]="activeSection === item.id"
-          [attr.aria-current]="activeSection === item.id ? 'true' : null"
-          (click)="closeMobileMenu()"
+        <div class="lang-switch" role="group" [attr.aria-label]="copy.languageLabel">
+          <button
+            *ngFor="let language of languages"
+            class="lang-switch__option"
+            type="button"
+            [class.is-active]="currentLanguage === language.code"
+            [attr.aria-pressed]="currentLanguage === language.code"
+            [attr.aria-label]="language.label"
+            [attr.lang]="language.code"
+            [title]="language.label"
+            (click)="setLanguage(language.code)"
+          >
+            {{ language.flag }}
+          </button>
+        </div>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          [attr.aria-expanded]="mobileMenuOpen"
+          aria-controls="site-nav"
+          [attr.aria-label]="copy.menuLabel"
+          (click)="toggleMobileMenu()"
         >
-          {{ item.label }}
-        </a>
-        <button class="site-nav__cta" type="button" (click)="downloadCV()">
-          Résumé
+          <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
         </button>
-      </nav>
+      </div>
     </div>
   </header>
 
   <main class="page-main">
     <section class="hero" id="home" #home>
       <div class="hero__copy" [ngsReveal]="{ origin: 'bottom' }">
-        <span class="status">
-          <span class="status__dot"></span>
-          Open to new roles
-        </span>
         <h1>
-          I make complicated software
-          <span class="gradient-text">feel simple.</span>
+          {{ copy.hero.title }}
+          <span class="gradient-text">{{ copy.hero.highlight }}</span>
         </h1>
-        <p class="hero__lead">
-          {{ experience }} years of frontend, mostly Angular. I also lead and mentor developers.
-        </p>
+        <p class="hero__lead">{{ copy.hero.lead(experience) }}</p>
 
         <div class="hero__actions">
           <button class="button button--primary" type="button" (click)="scrollToElement('contact')">
-            Say hi
+            {{ copy.hero.sayHi }}
           </button>
           <button class="button button--link" type="button" (click)="downloadCV()">
-            Download CV <i class="bx bx-chevron-right"></i>
+            {{ copy.hero.downloadCv }} <i class="bx bx-chevron-right"></i>
           </button>
         </div>
       </div>
 
       <div class="hero__portrait">
-        <img src="assets/portrait.webp" alt="Viktor Szőke" width="666" height="1000" />
+        <img src="assets/portrait.webp" [alt]="copy.name" width="666" height="1000" />
       </div>
     </section>
 
-    <section class="stats" aria-label="Quick facts">
-      <div class="stat" *ngFor="let stat of stats" [ngsReveal]="{ origin: 'bottom' }">
-        <strong>{{ stat.value }}</strong>
-        <span>{{ stat.label }}</span>
+    <section class="stats" [attr.aria-label]="copy.stats.label">
+      <div class="stat" [ngsReveal]="{ origin: 'bottom' }">
+        <strong>{{ experience }}+</strong>
+        <span>{{ copy.stats.years }}</span>
+      </div>
+      <div class="stat" [ngsReveal]="{ origin: 'bottom' }">
+        <strong>Angular</strong>
+        <span>{{ copy.stats.angular }}</span>
+      </div>
+      <div class="stat" [ngsReveal]="{ origin: 'bottom' }">
+        <strong>{{ copy.stats.remoteValue }}</strong>
+        <span>{{ copy.stats.remote }}</span>
       </div>
     </section>
 
     <section class="section" id="work" #work>
       <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
-        <span class="eyebrow">Work</span>
-        <h2>A few things I've built.</h2>
+        <span class="eyebrow">{{ copy.work.eyebrow }}</span>
+        <h2>{{ copy.work.heading }}</h2>
       </header>
 
       <div class="work-grid">
         <article
           class="project-card"
-          *ngFor="let project of projects"
+          *ngFor="let project of projects; trackBy: trackById"
           appSpotlight
           [ngsReveal]="{ origin: 'bottom' }"
         >
           <span class="project-card__category">{{ project.category }}</span>
           <h3>{{ project.title }}</h3>
           <p>{{ project.subtitle }}</p>
+          <p class="project-card__details">{{ project.description }}</p>
           <div class="project-card__footer">
             <span class="project-card__outcome">{{ project.outcome }}</span>
-            <ul class="tags" aria-label="Technologies">
+            <ul class="tags" [attr.aria-label]="copy.work.technologiesLabel">
               <li *ngFor="let tag of project.tags">{{ tag }}</li>
             </ul>
           </div>
@@ -100,30 +121,38 @@
 
     <section class="section about" id="about" #about>
       <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
-        <span class="eyebrow">About</span>
+        <span class="eyebrow">{{ copy.about.eyebrow }}</span>
       </header>
       <p class="about__statement" [ngsReveal]="{ origin: 'bottom' }">
-        I care about the small stuff. Loading states, empty screens, the button that's two pixels off.
-        <span>That's usually where an app starts to feel good.</span>
+        {{ copy.about.statement }}
+        <span>{{ copy.about.statementTail }}</span>
       </p>
 
       <div class="services">
-        <article class="service" *ngFor="let service of services" [ngsReveal]="{ origin: 'bottom' }">
+        <article
+          class="service"
+          *ngFor="let service of copy.about.services; trackBy: trackByIndex"
+          [ngsReveal]="{ origin: 'bottom' }"
+        >
           <h3>{{ service.title }}</h3>
           <p>{{ service.description }}</p>
         </article>
       </div>
 
-      <ul class="tags tags--large" aria-label="Toolbox" [ngsReveal]="{ origin: 'bottom' }">
-        <li *ngFor="let tool of toolbox">{{ tool }}</li>
+      <ul
+        class="tags tags--large"
+        [attr.aria-label]="copy.about.toolboxLabel"
+        [ngsReveal]="{ origin: 'bottom' }"
+      >
+        <li *ngFor="let tool of copy.about.toolbox; trackBy: trackByIndex">{{ tool }}</li>
       </ul>
     </section>
 
     <section class="section contact" id="contact" #contact>
       <header class="section-heading section-heading--center" [ngsReveal]="{ origin: 'bottom' }">
-        <span class="eyebrow">Contact</span>
-        <h2>Got a project or a role?</h2>
-        <p>Tell me a bit about it and I'll get back to you.</p>
+        <span class="eyebrow">{{ copy.contact.eyebrow }}</span>
+        <h2>{{ copy.contact.heading }}</h2>
+        <p>{{ copy.contact.lead }}</p>
       </header>
 
       <form
@@ -135,7 +164,7 @@
       >
         <div class="contact-form__grid">
           <label class="field">
-            <span>Name</span>
+            <span>{{ copy.contact.name }}</span>
             <input
               type="text"
               name="name"
@@ -146,7 +175,7 @@
             />
           </label>
           <label class="field">
-            <span>Email</span>
+            <span>{{ copy.contact.email }}</span>
             <input
               type="email"
               name="email"
@@ -158,7 +187,7 @@
             />
           </label>
           <label class="field">
-            <span>Phone <em>optional</em></span>
+            <span>{{ copy.contact.phone }} <em>{{ copy.contact.optional }}</em></span>
             <input
               type="tel"
               name="phone"
@@ -167,17 +196,17 @@
             />
           </label>
           <label class="field">
-            <span>Subject <em>optional</em></span>
+            <span>{{ copy.contact.subject }} <em>{{ copy.contact.optional }}</em></span>
             <input type="text" name="subject" [(ngModel)]="contactFormModel.subject" />
           </label>
         </div>
 
         <label class="field">
-          <span>Message</span>
+          <span>{{ copy.contact.message }}</span>
           <textarea
             name="message"
             rows="6"
-            placeholder="What are you working on?"
+            [placeholder]="copy.contact.messagePlaceholder"
             [(ngModel)]="contactFormModel.message"
             required
             #messageField="ngModel"
@@ -190,7 +219,7 @@
             type="submit"
             [disabled]="isSubmitting"
           >
-            {{ isSubmitting ? 'Sending…' : 'Send' }}
+            {{ isSubmitting ? copy.contact.sending : copy.contact.send }}
           </button>
 
           <div class="contact-form__feedback" aria-live="polite">
@@ -202,13 +231,13 @@
                 (messageField.invalid && messageField.touched)
               "
             >
-              I need your name, a valid email and a short message.
+              {{ copy.contact.invalid }}
             </p>
-            <p class="form-feedback form-feedback--success" *ngIf="submitSuccessMessage">
-              {{ submitSuccessMessage }}
+            <p class="form-feedback form-feedback--success" *ngIf="submitStatus === 'success'">
+              {{ copy.contact.success }}
             </p>
-            <p class="form-feedback form-feedback--error" *ngIf="submitErrorMessage">
-              {{ submitErrorMessage }}
+            <p class="form-feedback form-feedback--error" *ngIf="submitStatus === 'error'">
+              {{ copy.contact.error }}
             </p>
           </div>
         </div>
@@ -217,7 +246,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; {{ date.getFullYear() }} Viktor Szőke</p>
+    <p>&copy; {{ date.getFullYear() }} {{ copy.name }}</p>
 
     <div class="social-links">
       <a
@@ -232,7 +261,7 @@
     </div>
 
     <button class="site-footer__top" type="button" (click)="scrollToElement('home')">
-      Back to top <i class="bx bx-up-arrow-alt"></i>
+      {{ copy.backToTop }} <i class="bx bx-up-arrow-alt"></i>
     </button>
   </footer>
 </div>

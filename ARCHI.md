@@ -43,6 +43,8 @@ src/
       main-page.component.*        the whole one-page site: header, hero, work, about, contact
       main-page.service.ts         CV download, project data, contact form POST
       models/project.model.ts      Project interface
+      i18n/translations.ts         ALL page copy, per language (en/de/hu)
+      i18n/language.service.ts     active language, persistence, <html lang> + document.title
       components/ambient-background/   fixed, pointer-reactive background
       directives/spotlight.directive.ts  per-element cursor highlight
       components/project-dialog/   ORPHANED: not declared in any module, not built
@@ -53,11 +55,19 @@ src/
 ## Reusable inventory
 
 - `MainPageService` (`pages/main-page/main-page.service.ts`)
-  - `getProjects()` — returns the static project list defined at the bottom of the file.
-    Project copy lives here, not in the template.
+  - `getProjects(language)` — merges the language-independent project data at the bottom of
+    the file (id, tags, image) with that language's project copy from `i18n/translations.ts`.
   - `sendContactMessage(payload)` — POSTs to FormSubmit; `subject` falls back to
     "Website contact from <name>" when empty. Returns `Observable<string>` (text response).
   - `downloadCV()` — fetches `assets/Viktor_Szoke_CV.pdf` as a blob and triggers a download.
+- `LanguageService` (`pages/main-page/i18n/language.service.ts`) — `current`, `copy` (the
+  active `PageCopy`), `languages` (flag + native name), `setLanguage()`. Default is English;
+  the browser language is intentionally ignored. A visitor's pick is stored in `localStorage`
+  (`portfolio.language`, wrapped in try/catch) and validated with `isLanguage()` on load.
+- `i18n/translations.ts` — `PageCopy` interface and one object per language. Adding a string
+  means adding it to the interface, so every language fails to compile until it is filled in.
+  Project copy is keyed by `ProjectId`, a literal union, for the same reason: add the id there
+  when adding a project. Strings that need a value take a function (`hero.lead(years)`).
 - `AmbientBackgroundComponent` (`<app-ambient-background>`) — fixed full-viewport layer. It
   writes three CSS custom properties on `document.documentElement`, eased toward the pointer
   in a `requestAnimationFrame` loop that runs outside `NgZone` and stops once settled:
@@ -85,7 +95,14 @@ src/
   `MainPageComponent` and `AmbientBackgroundComponent`).
 - High-frequency DOM listeners (pointer/scroll animation) run outside `NgZone` and write CSS
   variables directly instead of binding through the template.
-- Copy is short, first person, plain English.
+- No user-facing string in templates or component code: it goes into `PageCopy` for all three
+  languages. Copy is short, first person, plain. Hungarian uses the Hungarian name order
+  (`Szőke Viktor`).
+- Lists rendered from copy use `trackBy` (`trackById` / `trackByIndex`), so a language switch
+  updates text in place instead of recreating nodes, which would make ScrollReveal hide and
+  re-animate them.
+- Form results are stored as a status (`submitStatus`), not as a message string, so the text
+  follows a language switch.
 
 ## Build and verification
 
