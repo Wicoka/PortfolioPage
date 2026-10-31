@@ -13,7 +13,8 @@ export const LANGUAGES: LanguageOption[] = [
   { code: 'hu', flag: '🇭🇺', label: 'Magyar' },
 ];
 
-export const DEFAULT_LANGUAGE: Language = 'en';
+// Used when the device language is not one of the supported ones.
+export const FALLBACK_LANGUAGE: Language = 'en';
 
 // Every language must describe every project, so a missing translation is a compile error.
 export type ProjectId = 1 | 2 | 3;

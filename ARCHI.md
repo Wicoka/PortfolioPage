@@ -61,9 +61,11 @@ src/
     "Website contact from <name>" when empty. Returns `Observable<string>` (text response).
   - `downloadCV()` — fetches `assets/Viktor_Szoke_CV.pdf` as a blob and triggers a download.
 - `LanguageService` (`pages/main-page/i18n/language.service.ts`) — `current`, `copy` (the
-  active `PageCopy`), `languages` (flag + native name), `setLanguage()`. Default is English;
-  the browser language is intentionally ignored. A visitor's pick is stored in `localStorage`
-  (`portfolio.language`, wrapped in try/catch) and validated with `isLanguage()` on load.
+  active `PageCopy`), `languages` (flag + native name), `setLanguage()`. Starting language,
+  in order: the visitor's earlier pick (stored in `localStorage` as `portfolio.language`,
+  wrapped in try/catch, validated with `isLanguage()`), then the first supported entry of
+  `navigator.languages` (matched on the primary subtag, so `de-AT` → `de`), then
+  `FALLBACK_LANGUAGE` (English).
 - `i18n/translations.ts` — `PageCopy` interface and one object per language. Adding a string
   means adding it to the interface, so every language fails to compile until it is filled in.
   Project copy is keyed by `ProjectId`, a literal union, for the same reason: add the id there
@@ -78,6 +80,17 @@ src/
   Any element can read these (the hero headline gradient and the portrait parallax do).
   Defaults are declared on `:root` in `styles.scss`, so they are valid before the first move
   and under `prefers-reduced-motion` (where the component does not track at all).
+  On touch-only devices (`(hover: none) and (pointer: coarse)`) the same variables are driven
+  by `deviceorientation` (gyroscope) instead of the pointer. The tilt is measured against a
+  resting position that slowly follows how the phone is held, and is mapped to screen axes for
+  the current screen rotation. Once real tilt data arrives the component adds `has-tilt` to
+  `<html>` and stops listening to the pointer; CSS uses that class for effects that otherwise
+  need hover (the project card highlight). Traps:
+  - iOS 13+ only sends orientation events after `DeviceOrientationEvent.requestPermission()`
+    is called from a user gesture, so the component asks on the first `touchend`/`click`
+    anywhere on the page (the system prompt appears then).
+  - Orientation events need a secure context: HTTPS in production, and on a phone in the
+    local network `http://<ip>:4200` gets no events (localhost is fine).
 - `SpotlightDirective` (`[appSpotlight]`) — sets `--spot-x` / `--spot-y` (px, element-relative)
   on its host on pointer move, outside `NgZone`. Pair it with CSS that reads those vars
   (see `.project-card::before`). Use this instead of a `HostListener('mousemove')`, which would

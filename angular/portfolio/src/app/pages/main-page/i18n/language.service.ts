@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  DEFAULT_LANGUAGE,
+  FALLBACK_LANGUAGE,
   isLanguage,
   Language,
   LANGUAGES,
@@ -11,8 +11,8 @@ import {
 const STORAGE_KEY = 'portfolio.language';
 
 /**
- * Holds the active language and its copy. English unless the visitor picked
- * something else before; the browser language is deliberately not used.
+ * Holds the active language and its copy. Starts with the visitor's earlier pick,
+ * then the device language, then English.
  */
 @Injectable({
   providedIn: 'root',
@@ -20,10 +20,12 @@ const STORAGE_KEY = 'portfolio.language';
 export class LanguageService {
   readonly languages = LANGUAGES;
 
-  private currentLanguage: Language = DEFAULT_LANGUAGE;
+  private currentLanguage: Language = FALLBACK_LANGUAGE;
 
   constructor() {
-    this.apply(this.readStoredLanguage() ?? DEFAULT_LANGUAGE);
+    this.apply(
+      this.readStoredLanguage() ?? this.detectDeviceLanguage() ?? FALLBACK_LANGUAGE
+    );
   }
 
   get current(): Language {
@@ -52,6 +54,24 @@ export class LanguageService {
     this.currentLanguage = language;
     document.documentElement.lang = language;
     document.title = TRANSLATIONS[language].documentTitle;
+  }
+
+  // navigator.languages is the device's preference order, e.g. ['de-AT', 'en-US'];
+  // the first one we support wins, matched on the primary subtag.
+  private detectDeviceLanguage(): Language | null {
+    const preferred = navigator.languages?.length
+      ? navigator.languages
+      : [navigator.language];
+
+    for (const tag of preferred) {
+      const primary = tag?.split('-')[0].toLowerCase();
+
+      if (isLanguage(primary)) {
+        return primary;
+      }
+    }
+
+    return null;
   }
 
   private readStoredLanguage(): Language | null {
