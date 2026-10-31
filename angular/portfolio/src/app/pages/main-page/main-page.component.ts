@@ -3,18 +3,18 @@ import {
   Component,
   ElementRef,
   HostListener,
-  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NgsRevealConfig } from 'ngx-scrollreveal';
-import Typed from 'typed.js';
 import { ContactFormPayload, MainPageService } from './main-page.service';
 import { Project } from './models/project.model';
 
+type SectionId = 'home' | 'work' | 'about' | 'contact';
+
 interface NavItem {
-  id: string;
+  id: SectionId;
   label: string;
 }
 
@@ -23,15 +23,15 @@ interface ContentCard {
   description: string;
 }
 
+interface Stat {
+  value: string;
+  label: string;
+}
+
 interface SocialLink {
   label: string;
   href: string;
   icon: string;
-}
-
-interface StackGroup {
-  title: string;
-  items: string[];
 }
 
 @Component({
@@ -39,109 +39,61 @@ interface StackGroup {
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent
-  implements OnInit, AfterViewInit, OnDestroy
-{
+export class MainPageComponent implements OnInit, AfterViewInit {
   @ViewChild('home') home?: ElementRef<HTMLElement>;
+  @ViewChild('work') work?: ElementRef<HTMLElement>;
   @ViewChild('about') about?: ElementRef<HTMLElement>;
-  @ViewChild('services') services?: ElementRef<HTMLElement>;
-  @ViewChild('portfolio') portfolio?: ElementRef<HTMLElement>;
   @ViewChild('contact') contact?: ElementRef<HTMLElement>;
 
+  readonly date = new Date();
+  readonly experience = this.date.getFullYear() - 2018;
+
   navItems: NavItem[] = [
-    { id: 'home', label: 'Home' },
+    { id: 'work', label: 'Work' },
     { id: 'about', label: 'About' },
-    { id: 'services', label: 'Value' },
-    { id: 'portfolio', label: 'Projects' },
     { id: 'contact', label: 'Contact' },
   ];
 
-  heroPills = [
-    'Angular Specialist',
-    'UX-aware',
-    'AI-ready',
+  stats: Stat[] = [
+    { value: `${this.experience}+`, label: 'years in frontend' },
+    { value: 'Angular', label: 'what I use most' },
+    { value: 'Remote', label: 'or hybrid, both work' },
   ];
 
-  credibilityMetrics = [
-    { value: 'Angular', label: 'Core framework' },
-    { value: 'UI/UX', label: 'Design-aware' },
-    { value: 'Remote + Hybrid', label: 'Flexible' },
-  ];
-
-  valueCards: ContentCard[] = [
+  services: ContentCard[] = [
     {
-      title: 'Product engineering',
-      description: 'Fast, reliable interfaces for real users.',
+      title: 'Frontend',
+      description: 'Angular apps that stay fast and easy to change.',
     },
     {
-      title: 'Design awareness',
-      description: 'Usable, polished, and consistent UI.',
-    },
-    {
-      title: 'Calm leadership',
-      description: 'Clear direction without losing momentum.',
-    },
-  ];
-
-  servicesCards: ContentCard[] = [
-    {
-      title: 'Web Development',
-      description: 'Modern, responsive, maintainable web products.',
-    },
-    {
-      title: 'Team Leading',
-      description: 'Clear priorities. Strong delivery. High standards.',
+      title: 'Team lead',
+      description: 'Clear priorities, honest code reviews, no drama.',
     },
     {
       title: 'Mentoring',
-      description: 'Practical guidance and useful feedback.',
+      description: 'Helping juniors get good faster.',
     },
     {
-      title: 'AI-enhanced Product Work',
-      description: 'Useful AI features with clear product value.',
+      title: 'AI features',
+      description: 'Only where they actually help the user.',
     },
   ];
 
-  workPrinciples: ContentCard[] = [
-    {
-      title: 'Craft matters',
-      description: 'Every detail should have a purpose.',
-    },
-    {
-      title: 'Speed needs structure',
-      description: 'Reusable parts make delivery faster.',
-    },
-    {
-      title: 'Teams scale through clarity',
-      description: 'Clear ownership keeps teams moving.',
-    },
-  ];
-
-  stackGroups: StackGroup[] = [
-    {
-      title: 'Frontend',
-      items: ['Angular', 'TypeScript', 'Responsive UI', 'Component Systems'],
-    },
-    {
-      title: 'Product Thinking',
-      items: ['UX/UI Awareness', 'Interaction Design', 'Performance', 'Accessibility'],
-    },
-    {
-      title: 'Modern Delivery',
-      items: ['Team Leadership', 'Mentoring', 'Cross-functional Work', 'AI Features'],
-    },
+  toolbox = [
+    'Angular',
+    'TypeScript',
+    'Component systems',
+    'Responsive UI',
+    'Accessibility',
+    'Performance',
+    'Interaction design',
   ];
 
   socialLinks: SocialLink[] = [
     {
-      label: 'Facebook',
-      href: 'https://www.facebook.com/100000383629148',
-      icon: 'bxl-facebook',
-    },
-    {
-      label: 'Twitter',
-      href: 'https://twitter.com/Wicoka00',
-      icon: 'bxl-twitter',
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/viktor-szőke-2a680112a/',
+      icon: 'bxl-linkedin',
     },
     {
       label: 'Instagram',
@@ -149,9 +101,14 @@ export class MainPageComponent
       icon: 'bxl-instagram-alt',
     },
     {
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/viktor-szőke-2a680112a/',
-      icon: 'bxl-linkedin',
+      label: 'Twitter',
+      href: 'https://twitter.com/Wicoka00',
+      icon: 'bxl-twitter',
+    },
+    {
+      label: 'Facebook',
+      href: 'https://www.facebook.com/100000383629148',
+      icon: 'bxl-facebook',
     },
   ];
 
@@ -161,37 +118,25 @@ export class MainPageComponent
   submitSuccessMessage = '';
   submitErrorMessage = '';
   mobileMenuOpen = false;
-  activeSection = 'home';
+  activeSection: SectionId = 'home';
   isHeaderElevated = false;
 
-  readonly date = new Date();
-  readonly experience = this.date.getFullYear() - 2018;
-
-  private typedInstance?: Typed;
+  private readonly prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
 
   constructor(
     private readonly mainPageService: MainPageService,
     config: NgsRevealConfig
   ) {
-    config.duration = 1200;
+    config.duration = this.prefersReducedMotion ? 0 : 900;
+    config.distance = this.prefersReducedMotion ? '0px' : '24px';
+    config.easing = 'cubic-bezier(0.22, 1, 0.36, 1)';
     config.reset = false;
-    config.distance = '48px';
-    config.delay = 120;
+    config.delay = 0;
   }
 
   ngOnInit(): void {
-    this.typedInstance = new Typed('#typer', {
-      strings: [
-        'Frontend Engineer',
-        'Team Leader',
-        'Casual Gamer',
-      ],
-      typeSpeed: 70,
-      backSpeed: 34,
-      backDelay: 1300,
-      loop: true,
-    });
-
     this.projects = this.mainPageService.getProjects();
   }
 
@@ -199,13 +144,9 @@ export class MainPageComponent
     setTimeout(() => this.updateActiveSection(), 0);
   }
 
-  ngOnDestroy(): void {
-    this.typedInstance?.destroy();
-  }
-
   @HostListener('window:scroll')
   onWindowScroll(): void {
-    this.isHeaderElevated = window.scrollY > 24;
+    this.isHeaderElevated = window.scrollY > 8;
     this.updateActiveSection();
   }
 
@@ -217,28 +158,17 @@ export class MainPageComponent
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
-  scrollToElement(element: string): void {
+  // Header links are plain fragment links (so the URL and history stay right);
+  // CSS scroll-behavior and scroll-padding-top handle the smooth scroll and header offset.
+  closeMobileMenu(): void {
     this.mobileMenuOpen = false;
+  }
 
-    switch (element) {
-      case 'home':
-        this.home?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'about':
-        this.about?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'services':
-        this.services?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'portfolio':
-        this.portfolio?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      case 'contact':
-        this.contact?.nativeElement.scrollIntoView({ behavior: 'smooth' });
-        break;
-      default:
-        break;
-    }
+  scrollToElement(id: SectionId): void {
+    this.mobileMenuOpen = false;
+    this.sectionRef(id)?.nativeElement.scrollIntoView({
+      behavior: this.prefersReducedMotion ? 'auto' : 'smooth',
+    });
   }
 
   submitContactForm(form: NgForm): void {
@@ -253,16 +183,30 @@ export class MainPageComponent
 
     this.mainPageService.sendContactMessage(this.contactFormModel).subscribe({
       next: () => {
-        this.submitSuccessMessage = "Message sent. I'll reply soon.";
+        this.submitSuccessMessage = "Got it, thanks. I'll get back to you soon.";
         this.contactFormModel = this.createEmptyContactForm();
         form.resetForm(this.contactFormModel);
         this.isSubmitting = false;
       },
       error: () => {
-        this.submitErrorMessage = 'Sending failed. Please try again later.';
+        this.submitErrorMessage =
+          "That didn't go through. Mind trying again in a bit?";
         this.isSubmitting = false;
       },
     });
+  }
+
+  private sectionRef(id: SectionId): ElementRef<HTMLElement> | undefined {
+    switch (id) {
+      case 'home':
+        return this.home;
+      case 'work':
+        return this.work;
+      case 'about':
+        return this.about;
+      case 'contact':
+        return this.contact;
+    }
   }
 
   private createEmptyContactForm(): ContactFormPayload {
@@ -276,28 +220,30 @@ export class MainPageComponent
   }
 
   private updateActiveSection(): void {
-    const sections: Array<{ id: string; ref?: ElementRef<HTMLElement> }> = [
-      { id: 'home', ref: this.home },
-      { id: 'about', ref: this.about },
-      { id: 'services', ref: this.services },
-      { id: 'portfolio', ref: this.portfolio },
-      { id: 'contact', ref: this.contact },
-    ];
+    const sections: SectionId[] = ['home', 'work', 'about', 'contact'];
+    const scrolledToBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 2;
 
-    const scrollPosition = window.scrollY + 180;
+    // The last section is often shorter than the viewport, so it would never reach the probe line.
+    if (scrolledToBottom) {
+      this.activeSection = 'contact';
+      return;
+    }
 
-    for (const section of sections) {
-      const element = section.ref?.nativeElement;
+    const probe = 180;
+
+    for (const id of sections) {
+      const element = this.sectionRef(id)?.nativeElement;
 
       if (!element) {
         continue;
       }
 
-      const offsetTop = element.offsetTop;
-      const offsetBottom = offsetTop + element.offsetHeight;
+      const { top, bottom } = element.getBoundingClientRect();
 
-      if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-        this.activeSection = section.id;
+      if (probe >= top && probe < bottom) {
+        this.activeSection = id;
       }
     }
   }

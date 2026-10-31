@@ -1,309 +1,238 @@
+<app-ambient-background></app-ambient-background>
+
 <div class="portfolio-page">
-  <div class="page-orb page-orb--gold"></div>
-  <div class="page-orb page-orb--rose"></div>
-  <div class="page-grid"></div>
-
-  <header class="site-header" [class.site-header--elevated]="isHeaderElevated">
-    <a class="brand" href="#home" (click)="scrollToElement('home')">
-      <span class="brand__mark">VS</span>
-      <span class="brand__text">
-        <strong>Viktor Szőke</strong>
-        <span>Angular Frontend Engineer</span>
-      </span>
-    </a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      [attr.aria-expanded]="mobileMenuOpen"
-      aria-label="Toggle menu"
-      (click)="toggleMobileMenu()"
-    >
-      <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
-    </button>
-
-    <nav class="site-nav" [class.site-nav--open]="mobileMenuOpen">
-      <a
-        *ngFor="let item of navItems"
-        [href]="'#' + item.id"
-        [class.is-active]="activeSection === item.id"
-        (click)="scrollToElement(item.id)"
-      >
-        {{ item.label }}
+  <header class="site-header" [class.site-header--elevated]="isHeaderElevated || mobileMenuOpen">
+    <div class="site-header__inner">
+      <a class="brand" href="#home" (click)="closeMobileMenu()">
+        Viktor Szőke
       </a>
-      <button class="site-nav__cta" type="button" (click)="scrollToElement('contact')">
-        Contact
+
+      <button
+        class="menu-toggle"
+        type="button"
+        [attr.aria-expanded]="mobileMenuOpen"
+        aria-controls="site-nav"
+        aria-label="Toggle menu"
+        (click)="toggleMobileMenu()"
+      >
+        <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
       </button>
-    </nav>
+
+      <nav id="site-nav" class="site-nav" [class.site-nav--open]="mobileMenuOpen">
+        <a
+          *ngFor="let item of navItems"
+          [href]="'#' + item.id"
+          [class.is-active]="activeSection === item.id"
+          [attr.aria-current]="activeSection === item.id ? 'true' : null"
+          (click)="closeMobileMenu()"
+        >
+          {{ item.label }}
+        </a>
+        <button class="site-nav__cta" type="button" (click)="downloadCV()">
+          Résumé
+        </button>
+      </nav>
+    </div>
   </header>
 
   <main class="page-main">
-    <section class="hero section" id="home" #home>
-      <div class="hero__copy" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">Open to new opportunities</span>
-        <div class="hero__pills">
-          <span *ngFor="let pill of heroPills">{{ pill }}</span>
-        </div>
+    <section class="hero" id="home" #home>
+      <div class="hero__copy" [ngsReveal]="{ origin: 'bottom' }">
+        <span class="status">
+          <span class="status__dot"></span>
+          Open to new roles
+        </span>
         <h1>
-          Clear, fast Angular products.
+          I make complicated software
+          <span class="gradient-text">feel simple.</span>
         </h1>
-        <h2>
-          Viktor Szőke
-          <span class="hero__typed">I'm a <span id="typer"></span></span>
-        </h2>
-        <p>
-          {{ experience }} years in frontend. Angular, UX, leadership, and mentoring.
+        <p class="hero__lead">
+          {{ experience }} years of frontend, mostly Angular. I also lead and mentor developers.
         </p>
 
         <div class="hero__actions">
           <button class="button button--primary" type="button" (click)="scrollToElement('contact')">
-            Let's Talk
+            Say hi
           </button>
-          <button class="button button--secondary" type="button" (click)="downloadCV()">
-            Download CV
+          <button class="button button--link" type="button" (click)="downloadCV()">
+            Download CV <i class="bx bx-chevron-right"></i>
           </button>
         </div>
-
-        <div class="social-links">
-          <a
-            *ngFor="let link of socialLinks"
-            [href]="link.href"
-            target="_blank"
-            rel="noreferrer"
-            [attr.aria-label]="link.label"
-          >
-            <i class="bx" [ngClass]="link.icon"></i>
-          </a>
-        </div>
       </div>
 
-      <div class="hero__visual" [ngsReveal]="{ origin: 'right' }">
-        <div class="hero-card">
-          <img src="assets/portre-3.png" alt="Portrait of Viktor Szőke" />
-          <div class="hero-card__meta">
-            <div>
-              <span>Focus</span>
-              <strong>Angular, UX, AI</strong>
-            </div>
-            <div>
-              <span>Strength</span>
-              <strong>Clear, polished delivery</strong>
-            </div>
-          </div>
-        </div>
+      <div class="hero__portrait">
+        <img src="assets/portrait.webp" alt="Viktor Szőke" width="666" height="1000" />
       </div>
     </section>
 
-    <section class="proof-strip">
-      <article class="proof-card proof-card--accent">
-        <span class="proof-card__value">{{ experience }}+</span>
-        <span class="proof-card__label">Years in frontend</span>
-      </article>
-      <article class="proof-card" *ngFor="let metric of credibilityMetrics">
-        <span class="proof-card__value">{{ metric.value }}</span>
-        <span class="proof-card__label">{{ metric.label }}</span>
-      </article>
-    </section>
-
-    <section class="about section" id="about" #about>
-      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">About me</span>
-        <h2>Engineering meets product thinking.</h2>
-        <p>
-          I build reliable Angular products with clear, intuitive interfaces.
-        </p>
-      </div>
-
-      <div class="about__layout">
-        <div class="about__content" [ngsReveal]="{ origin: 'right' }">
-          <div class="about__intro">
-            <h3>
-              Practical engineering. Thoughtful design.
-            </h3>
-            <p>
-              I turn complex product needs into simple, fast experiences.
-            </p>
-          </div>
-
-          <div class="about__cards">
-            <article class="detail-card" *ngFor="let card of valueCards">
-              <h4>{{ card.title }}</h4>
-              <p>{{ card.description }}</p>
-            </article>
-          </div>
-        </div>
+    <section class="stats" aria-label="Quick facts">
+      <div class="stat" *ngFor="let stat of stats" [ngsReveal]="{ origin: 'bottom' }">
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
       </div>
     </section>
 
-    <section class="services section" id="services" #services>
-      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">What I bring</span>
-        <h2>Code, design, and leadership.</h2>
-      </div>
+    <section class="section" id="work" #work>
+      <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
+        <span class="eyebrow">Work</span>
+        <h2>A few things I've built.</h2>
+      </header>
 
-      <div class="services__grid" [ngsReveal]="{ origin: 'bottom' }">
-        <article class="service-card" *ngFor="let card of servicesCards; let index = index">
-          <span class="service-card__number">0{{ index + 1 }}</span>
-          <h3>{{ card.title }}</h3>
-          <p>{{ card.description }}</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="portfolio section" id="portfolio" #portfolio>
-      <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">Selected work</span>
-        <h2>Products built for real users.</h2>
-      </div>
-
-      <div class="portfolio__grid">
+      <div class="work-grid">
         <article
           class="project-card"
           *ngFor="let project of projects"
+          appSpotlight
           [ngsReveal]="{ origin: 'bottom' }"
         >
-          <div class="project-card__content">
-            <span class="project-card__category">{{ project.category }}</span>
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.subtitle }}</p>
-            <div class="project-card__tags">
-              <span *ngFor="let tag of project.tags">{{ tag }}</span>
-            </div>
-            <div class="project-card__footer">
-              <span class="project-card__impact-label">Impact</span>
-              <strong>{{ project.outcome }}</strong>
-            </div>
+          <span class="project-card__category">{{ project.category }}</span>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.subtitle }}</p>
+          <div class="project-card__footer">
+            <span class="project-card__outcome">{{ project.outcome }}</span>
+            <ul class="tags" aria-label="Technologies">
+              <li *ngFor="let tag of project.tags">{{ tag }}</li>
+            </ul>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="craft section">
-      <div class="craft__panel" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">How I work</span>
-        <h2>Quality without the slowdown.</h2>
-        <div class="craft__principles">
-          <article class="principle" *ngFor="let principle of workPrinciples">
-            <h3>{{ principle.title }}</h3>
-            <p>{{ principle.description }}</p>
-          </article>
-        </div>
+    <section class="section about" id="about" #about>
+      <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
+        <span class="eyebrow">About</span>
+      </header>
+      <p class="about__statement" [ngsReveal]="{ origin: 'bottom' }">
+        I care about the small stuff. Loading states, empty screens, the button that's two pixels off.
+        <span>That's usually where an app starts to feel good.</span>
+      </p>
+
+      <div class="services">
+        <article class="service" *ngFor="let service of services" [ngsReveal]="{ origin: 'bottom' }">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </article>
       </div>
 
-      <div class="stack-panel" [ngsReveal]="{ origin: 'right' }">
-        <span class="eyebrow">Capability snapshot</span>
-        <h2>Tech and product skills.</h2>
-        <div class="stack-panel__groups">
-          <article class="stack-group" *ngFor="let group of stackGroups">
-            <h3>{{ group.title }}</h3>
-            <div class="stack-group__items">
-              <span *ngFor="let item of group.items">{{ item }}</span>
-            </div>
-          </article>
-        </div>
-      </div>
+      <ul class="tags tags--large" aria-label="Toolbox" [ngsReveal]="{ origin: 'bottom' }">
+        <li *ngFor="let tool of toolbox">{{ tool }}</li>
+      </ul>
     </section>
 
-    <section class="contact section" id="contact" #contact>
-      <div class="contact__intro" [ngsReveal]="{ origin: 'left' }">
+    <section class="section contact" id="contact" #contact>
+      <header class="section-heading section-heading--center" [ngsReveal]="{ origin: 'bottom' }">
         <span class="eyebrow">Contact</span>
-        <h2>Let’s build something great.</h2>
-        <p>
-          Hiring or building a product? Let’s talk.
-        </p>
-
-        <div class="contact__cards">
-
-          <article class="contact-card">
-            <span>Best fit</span>
-            <p>Angular teams and product companies</p>
-          </article>
-        </div>
-      </div>
+        <h2>Got a project or a role?</h2>
+        <p>Tell me a bit about it and I'll get back to you.</p>
+      </header>
 
       <form
         #contactForm="ngForm"
         class="contact-form"
-        [ngsReveal]="{ origin: 'right' }"
+        [ngsReveal]="{ origin: 'bottom' }"
         (ngSubmit)="submitContactForm(contactForm)"
         novalidate
       >
         <div class="contact-form__grid">
-          <input
-            type="text"
-            name="name"
-            [(ngModel)]="contactFormModel.name"
-            placeholder="Full Name"
-            required
-            #nameField="ngModel"
-          />
-          <input
-            type="email"
-            name="email"
-            [(ngModel)]="contactFormModel.email"
-            placeholder="Email Address"
-            required
-            email
-            #emailField="ngModel"
-          />
-          <input
-            type="text"
-            name="phone"
-            [(ngModel)]="contactFormModel.phone"
-            placeholder="Mobile Number"
-          />
-          <input
-            type="text"
-            name="subject"
-            [(ngModel)]="contactFormModel.subject"
-            placeholder="Subject"
-          />
+          <label class="field">
+            <span>Name</span>
+            <input
+              type="text"
+              name="name"
+              autocomplete="name"
+              [(ngModel)]="contactFormModel.name"
+              required
+              #nameField="ngModel"
+            />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input
+              type="email"
+              name="email"
+              autocomplete="email"
+              [(ngModel)]="contactFormModel.email"
+              required
+              email
+              #emailField="ngModel"
+            />
+          </label>
+          <label class="field">
+            <span>Phone <em>optional</em></span>
+            <input
+              type="tel"
+              name="phone"
+              autocomplete="tel"
+              [(ngModel)]="contactFormModel.phone"
+            />
+          </label>
+          <label class="field">
+            <span>Subject <em>optional</em></span>
+            <input type="text" name="subject" [(ngModel)]="contactFormModel.subject" />
+          </label>
         </div>
 
-        <textarea
-          name="message"
-          [(ngModel)]="contactFormModel.message"
-          rows="8"
-          placeholder="Tell me about the role or project."
-          required
-          #messageField="ngModel"
-        ></textarea>
+        <label class="field">
+          <span>Message</span>
+          <textarea
+            name="message"
+            rows="6"
+            placeholder="What are you working on?"
+            [(ngModel)]="contactFormModel.message"
+            required
+            #messageField="ngModel"
+          ></textarea>
+        </label>
 
-        <p
-          class="form-feedback form-feedback-error"
-          *ngIf="
-            (nameField.invalid && nameField.touched) ||
-            (emailField.invalid && emailField.touched) ||
-            (messageField.invalid && messageField.touched)
-          "
-        >
-          Add your name, a valid email, and a message.
-        </p>
-        <p class="form-feedback form-feedback-success" *ngIf="submitSuccessMessage">
-          {{ submitSuccessMessage }}
-        </p>
-        <p class="form-feedback form-feedback-error" *ngIf="submitErrorMessage">
-          {{ submitErrorMessage }}
-        </p>
+        <div class="contact-form__footer">
+          <button
+            class="button button--primary"
+            type="submit"
+            [disabled]="isSubmitting"
+          >
+            {{ isSubmitting ? 'Sending…' : 'Send' }}
+          </button>
 
-        <button
-          class="button button--primary contact-form__submit"
-          type="submit"
-          [disabled]="isSubmitting"
-        >
-          {{ isSubmitting ? 'Sending...' : 'Send Message' }}
-        </button>
+          <div class="contact-form__feedback" aria-live="polite">
+            <p
+              class="form-feedback form-feedback--error"
+              *ngIf="
+                (nameField.invalid && nameField.touched) ||
+                (emailField.invalid && emailField.touched) ||
+                (messageField.invalid && messageField.touched)
+              "
+            >
+              I need your name, a valid email and a short message.
+            </p>
+            <p class="form-feedback form-feedback--success" *ngIf="submitSuccessMessage">
+              {{ submitSuccessMessage }}
+            </p>
+            <p class="form-feedback form-feedback--error" *ngIf="submitErrorMessage">
+              {{ submitErrorMessage }}
+            </p>
+          </div>
+        </div>
       </form>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>
-      &copy; {{ date.getFullYear() }} Viktor Szőke
-    </p>
+    <p>&copy; {{ date.getFullYear() }} Viktor Szőke</p>
+
+    <div class="social-links">
+      <a
+        *ngFor="let link of socialLinks"
+        [href]="link.href"
+        target="_blank"
+        rel="noreferrer"
+        [attr.aria-label]="link.label"
+      >
+        <i class="bx" [ngClass]="link.icon"></i>
+      </a>
+    </div>
+
     <button class="site-footer__top" type="button" (click)="scrollToElement('home')">
-      Back to top
-      <i class="bx bx-up-arrow-alt"></i>
+      Back to top <i class="bx bx-up-arrow-alt"></i>
     </button>
   </footer>
 </div>
