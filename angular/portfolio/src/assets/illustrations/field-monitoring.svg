@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <style>
+    .bg-1 { stop-color: #eaf1fd; }
+    .bg-2 { stop-color: #f6effc; }
+    .win { fill: #ffffff; }
+    .rule { stroke: #000000; stroke-opacity: 0.08; }
+    .muted { fill: #000000; fill-opacity: 0.08; }
+    .faint { fill: #000000; fill-opacity: 0.04; }
+    .map { fill: #e8f3ea; }
+    .plot-1 { fill: #bfe3c6; }
+    .plot-2 { fill: #d6ecc2; }
+    .plot-3 { fill: #a9d8b4; }
+    .road { stroke: #ffffff; }
+    .ok { fill: #1a7f37; }
+    .ok-line { stroke: #1a7f37; }
+    .warn { fill: #c25e00; }
+    .warn-line { stroke: #c25e00; }
+    .accent { fill: #0071e3; }
+    .accent-line { stroke: #0071e3; }
+    .pin-ring { fill: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      .bg-1 { stop-color: #0c1424; }
+      .bg-2 { stop-color: #1a1027; }
+      .win { fill: #1c1c1e; }
+      .rule { stroke: #ffffff; stroke-opacity: 0.1; }
+      .muted { fill: #ffffff; fill-opacity: 0.14; }
+      .faint { fill: #ffffff; fill-opacity: 0.06; }
+      .map { fill: #14241a; }
+      .plot-1 { fill: #1f4029; }
+      .plot-2 { fill: #2b4423; }
+      .plot-3 { fill: #1b4a2c; }
+      .road { stroke: #2c2c2e; }
+      .ok { fill: #30d158; }
+      .ok-line { stroke: #30d158; }
+      .warn { fill: #ff9f0a; }
+      .warn-line { stroke: #ff9f0a; }
+      .accent { fill: #2997ff; }
+      .accent-line { stroke: #2997ff; }
+      .pin-ring { fill: #1c1c1e; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop class="bg-1" />
+      <stop offset="1" class="bg-2" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.12" />
+    </filter>
+    <clipPath id="map-clip">
+      <rect x="76" y="108" width="264" height="292" rx="14" />
+    </clipPath>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#bg)" />
+
+  <!-- App window, cropped by the bottom edge -->
+  <rect x="56" y="44" width="528" height="380" rx="18" class="win" filter="url(#shadow)" />
+  <circle cx="80" cy="66" r="5" fill="#ff5f57" />
+  <circle cx="96" cy="66" r="5" fill="#febc2e" />
+  <circle cx="112" cy="66" r="5" fill="#28c840" />
+  <rect x="236" y="58" width="168" height="16" rx="8" class="faint" />
+  <line x1="56" y1="88" x2="584" y2="88" class="rule" />
+
+  <!-- Field map -->
+  <g clip-path="url(#map-clip)">
+    <rect x="76" y="108" width="264" height="292" class="map" />
+    <path d="M60 170 L180 132 L214 220 L94 262 Z" class="plot-1" />
+    <path d="M196 124 L330 98 L356 190 L228 214 Z" class="plot-2" />
+    <path d="M104 280 L226 236 L256 340 L132 386 Z" class="plot-3" />
+    <path d="M240 230 L360 206 L372 318 L270 340 Z" class="plot-1" />
+    <path d="M70 330 L120 300 L140 410 L70 410 Z" class="plot-2" />
+    <path d="M60 272 C 140 250, 210 232, 360 196" class="road" stroke-width="6" stroke-linecap="round" />
+  </g>
+
+  <!-- Device pins -->
+  <circle cx="140" cy="200" r="13" class="pin-ring" />
+  <circle cx="140" cy="200" r="8" class="ok" />
+  <circle cx="276" cy="162" r="13" class="pin-ring" />
+  <circle cx="276" cy="162" r="8" class="ok" />
+  <circle cx="190" cy="312" r="18" class="warn" fill-opacity="0.2" />
+  <circle cx="190" cy="312" r="13" class="pin-ring" />
+  <circle cx="190" cy="312" r="8" class="warn" />
+  <circle cx="306" cy="282" r="13" class="pin-ring" />
+  <circle cx="306" cy="282" r="8" class="ok" />
+
+  <!-- Device list with live readings -->
+  <rect x="356" y="108" width="208" height="58" rx="12" class="faint" />
+  <circle cx="374" cy="128" r="5" class="ok" />
+  <rect x="386" y="124" width="64" height="8" rx="4" class="muted" />
+  <rect x="368" y="142" width="44" height="6" rx="3" class="muted" />
+  <polyline points="476,148 492,136 508,142 524,126 540,132 552,122" class="ok-line" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <rect x="356" y="176" width="208" height="58" rx="12" class="faint" />
+  <circle cx="374" cy="196" r="5" class="warn" />
+  <rect x="386" y="192" width="78" height="8" rx="4" class="muted" />
+  <rect x="368" y="210" width="36" height="6" rx="3" class="muted" />
+  <polyline points="476,200 492,206 508,198 524,214 540,210 552,222" class="warn-line" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <rect x="356" y="244" width="208" height="58" rx="12" class="faint" />
+  <circle cx="374" cy="264" r="5" class="ok" />
+  <rect x="386" y="260" width="56" height="8" rx="4" class="muted" />
+  <rect x="368" y="278" width="50" height="6" rx="3" class="muted" />
+  <polyline points="476,282 492,276 508,280 524,268 540,272 552,262" class="ok-line" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <rect x="356" y="312" width="208" height="58" rx="12" class="faint" />
+  <circle cx="374" cy="332" r="5" class="ok" />
+  <rect x="386" y="328" width="70" height="8" rx="4" class="muted" />
+  <rect x="368" y="346" width="40" height="6" rx="3" class="muted" />
+  <polyline points="476,350 492,340 508,346 524,336 540,342 552,332" class="accent-line" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

@@ -62,11 +62,24 @@ export class MainPageService {
 interface ProjectMeta {
   id: ProjectId;
   tags: string[];
+  // Decorative illustration (16:10, adapts to dark mode on its own).
   image: string;
 }
 
 const projects: ProjectMeta[] = [
-  { id: 1, tags: ['Angular', 'Crypto', 'Backtesting'], image: 'assets/robot.png' },
-  { id: 2, tags: ['Angular', 'IoT', 'Dashboards'], image: 'assets/language-exam.png' },
-  { id: 3, tags: ['Angular', 'Industrial UX', 'Machine UI'], image: 'assets/robot.png' },
+  {
+    id: 1,
+    tags: ['Angular', 'Crypto', 'Backtesting'],
+    image: 'assets/illustrations/backtester.svg',
+  },
+  {
+    id: 2,
+    tags: ['Angular', 'IoT', 'Dashboards'],
+    image: 'assets/illustrations/field-monitoring.svg',
+  },
+  {
+    id: 3,
+    tags: ['Angular', 'Industrial UX', 'Machine UI'],
+    image: 'assets/illustrations/machine-interface.svg',
+  },
 ];

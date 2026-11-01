@@ -1,6 +1,6 @@
 # ARCHI.md — PortfolioPage
 
-_Last updated: 2026-10-31_
+_Last updated: 2026-11-01_
 
 Personal portfolio site of Viktor Szőke. The live app is the Angular project in
 `angular/portfolio/`. **All commands and paths below are relative to `angular/portfolio/`**
@@ -41,6 +41,9 @@ src/
                                    of it (touch icon without rounded corners, iOS adds them).
                                    New root-level files must also be listed in angular.json assets.
   assets/                          images, CV pdf (portrait.webp is the one used by the hero)
+  assets/illustrations/            hand-written SVG mockups (project cards, About); see Conventions.
+                                   The older PNGs/JPG in assets/ (robot, language-exam, webshop-*,
+                                   portre*, portfolio1) are not referenced by the app.
   app/
     app.module.ts / app-routing    root, lazy route to main-page
     pages/main-page/
@@ -109,6 +112,12 @@ src/
   re-animate them.
 - Form results are stored as a status (`submitStatus`), not as a message string, so the text
   follows a language switch.
+- Illustrations (`assets/illustrations/*.svg`) are standalone SVGs in the page palette (`#0071e3`
+  → `#b14be6` brand gradient, hairline greys, the status colours of the `:root` tokens). CSS custom
+  properties do not reach into an `<img>`, so each file carries its own
+  `@media (prefers-color-scheme: dark)` block; keep the two palettes in sync with `styles.scss` by
+  hand. No text inside them (it would not be translated); they are decorative, so `alt=""`.
+  Corners come from CSS `border-radius`, not from the SVG, so they stay right at every size.
 
 ### Accessibility (normative for new markup)
 

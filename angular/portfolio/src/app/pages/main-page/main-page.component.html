@@ -67,6 +67,7 @@
 
         <div class="hero__actions">
           <button class="button button--primary" type="button" (click)="scrollToElement('contact')">
+            <span class="emoji emoji--wave" aria-hidden="true">👋</span>
             {{ copy.hero.sayHi }}
           </button>
           <button class="button button--link" type="button" (click)="downloadCV()">
@@ -108,6 +109,16 @@
           appSpotlight
           [ngsReveal]="{ origin: 'bottom' }"
         >
+          <div class="project-card__media">
+            <img
+              [src]="project.image"
+              alt=""
+              width="640"
+              height="400"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
           <span class="project-card__category">{{ project.category }}</span>
           <h3>{{ project.title }}</h3>
           <p>{{ project.subtitle }}</p>
@@ -126,10 +137,22 @@
       <header class="section-heading" [ngsReveal]="{ origin: 'bottom' }">
         <h2 class="eyebrow">{{ copy.about.eyebrow }}</h2>
       </header>
-      <p class="about__statement" [ngsReveal]="{ origin: 'bottom' }">
-        {{ copy.about.statement }}
-        <span>{{ copy.about.statementTail }}</span>
-      </p>
+      <div class="about__intro">
+        <p class="about__statement" [ngsReveal]="{ origin: 'bottom' }">
+          {{ copy.about.statement }}
+          <span>{{ copy.about.statementTail }}</span>
+        </p>
+        <img
+          class="about__illustration"
+          src="assets/illustrations/pixel-detail.svg"
+          alt=""
+          width="480"
+          height="400"
+          loading="lazy"
+          decoding="async"
+          [ngsReveal]="{ origin: 'bottom' }"
+        />
+      </div>
 
       <div class="services">
         <article

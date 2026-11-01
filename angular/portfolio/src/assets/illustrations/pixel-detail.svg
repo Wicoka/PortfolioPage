@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 400" fill="none">
+  <style>
+    .bg-1 { stop-color: #eaf1fd; }
+    .bg-2 { stop-color: #f6effc; }
+    .win { fill: #ffffff; }
+    .muted { fill: #000000; fill-opacity: 0.08; }
+    .faint { fill: #000000; fill-opacity: 0.04; }
+    .ghost { stroke: #000000; stroke-opacity: 0.22; }
+    .guide { stroke: #d70015; }
+    .guide-fill { fill: #d70015; }
+    .ok { fill: #1a7f37; }
+    .skeleton { fill: #000000; fill-opacity: 0.06; }
+    @media (prefers-color-scheme: dark) {
+      .bg-1 { stop-color: #0c1424; }
+      .bg-2 { stop-color: #1a1027; }
+      .win { fill: #1c1c1e; }
+      .muted { fill: #ffffff; fill-opacity: 0.14; }
+      .faint { fill: #ffffff; fill-opacity: 0.06; }
+      .ghost { stroke: #ffffff; stroke-opacity: 0.3; }
+      .guide { stroke: #ff453a; }
+      .guide-fill { fill: #ff453a; }
+      .ok { fill: #30d158; }
+      .skeleton { fill: #ffffff; fill-opacity: 0.08; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop class="bg-1" />
+      <stop offset="1" class="bg-2" />
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#0071e3" />
+      <stop offset="1" stop-color="#b14be6" />
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="480" height="400" fill="url(#bg)" />
+
+  <!-- A card being polished: loading skeleton, then the real content -->
+  <rect x="64" y="56" width="352" height="288" rx="22" class="win" filter="url(#shadow)" />
+  <circle cx="108" cy="104" r="20" fill="url(#brand)" />
+  <rect x="140" y="92" width="120" height="10" rx="5" class="muted" />
+  <rect x="140" y="110" width="80" height="8" rx="4" class="faint" />
+  <circle cx="380" cy="100" r="9" class="ok" />
+  <path d="M375 100 L379 104 L386 96" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <rect x="88" y="146" width="304" height="10" rx="5" class="skeleton" />
+  <rect x="88" y="166" width="268" height="10" rx="5" class="skeleton" />
+  <rect x="88" y="186" width="210" height="10" rx="5" class="skeleton" />
+
+  <!-- Where the button was: two pixels off -->
+  <rect x="90" y="244" width="140" height="44" rx="22" class="ghost" stroke-width="1.5" stroke-dasharray="4 4" />
+  <rect x="88" y="242" width="140" height="44" rx="22" fill="url(#brand)" />
+  <rect x="120" y="260" width="76" height="8" rx="4" fill="#ffffff" fill-opacity="0.9" />
+  <rect x="248" y="242" width="120" height="44" rx="22" class="faint" />
+  <rect x="276" y="260" width="64" height="8" rx="4" class="muted" />
+
+  <!-- Alignment guides -->
+  <line x1="88" y1="224" x2="88" y2="312" class="guide" stroke-width="1.5" />
+  <line x1="90" y1="224" x2="90" y2="312" class="guide" stroke-width="1.5" stroke-dasharray="3 3" />
+  <line x1="40" y1="242" x2="440" y2="242" class="guide" stroke-width="1" stroke-opacity="0.5" />
+  <rect x="58" y="314" width="62" height="24" rx="12" class="guide-fill" />
+  <rect x="70" y="324" width="10" height="4" rx="2" fill="#ffffff" />
+  <rect x="84" y="322" width="24" height="8" rx="4" fill="#ffffff" fill-opacity="0.85" />
+</svg>

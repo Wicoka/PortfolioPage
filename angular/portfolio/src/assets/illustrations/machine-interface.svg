@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <style>
+    .bg-1 { stop-color: #eaf1fd; }
+    .bg-2 { stop-color: #f6effc; }
+    .win { fill: #ffffff; }
+    .rule { stroke: #000000; stroke-opacity: 0.08; }
+    .muted { fill: #000000; fill-opacity: 0.08; }
+    .faint { fill: #000000; fill-opacity: 0.04; }
+    .screen { fill: #f2f5fa; }
+    .dot { fill: #000000; fill-opacity: 0.1; }
+    .path-done { stroke: #0071e3; }
+    .path-todo { stroke: #000000; stroke-opacity: 0.16; }
+    .track { fill: #000000; fill-opacity: 0.08; }
+    .step-off { fill: #000000; fill-opacity: 0.1; }
+    .step-line { stroke: #000000; stroke-opacity: 0.1; }
+    .go { fill: #1a7f37; }
+    .hold { fill: #c25e00; }
+    .stop { fill: #d70015; }
+    .head { fill: #ffffff; stroke: #0071e3; }
+    @media (prefers-color-scheme: dark) {
+      .bg-1 { stop-color: #0c1424; }
+      .bg-2 { stop-color: #1a1027; }
+      .win { fill: #1c1c1e; }
+      .rule { stroke: #ffffff; stroke-opacity: 0.1; }
+      .muted { fill: #ffffff; fill-opacity: 0.14; }
+      .faint { fill: #ffffff; fill-opacity: 0.06; }
+      .screen { fill: #0f1726; }
+      .dot { fill: #ffffff; fill-opacity: 0.12; }
+      .path-done { stroke: #2997ff; }
+      .path-todo { stroke: #ffffff; stroke-opacity: 0.2; }
+      .track { fill: #ffffff; fill-opacity: 0.14; }
+      .step-off { fill: #ffffff; fill-opacity: 0.16; }
+      .step-line { stroke: #ffffff; stroke-opacity: 0.14; }
+      .go { fill: #30d158; }
+      .hold { fill: #ff9f0a; }
+      .stop { fill: #ff453a; }
+      .head { fill: #1c1c1e; stroke: #2997ff; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop class="bg-1" />
+      <stop offset="1" class="bg-2" />
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#0071e3" />
+      <stop offset="1" stop-color="#b14be6" />
+    </linearGradient>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" class="dot" />
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#bg)" />
+
+  <!-- App window, cropped by the bottom edge -->
+  <rect x="56" y="44" width="528" height="380" rx="18" class="win" filter="url(#shadow)" />
+  <circle cx="80" cy="66" r="5" fill="#ff5f57" />
+  <circle cx="96" cy="66" r="5" fill="#febc2e" />
+  <circle cx="112" cy="66" r="5" fill="#28c840" />
+  <line x1="56" y1="88" x2="584" y2="88" class="rule" />
+
+  <!-- Toolpath preview -->
+  <rect x="76" y="108" width="284" height="192" rx="14" class="screen" />
+  <rect x="76" y="108" width="284" height="192" rx="14" fill="url(#dots)" />
+  <path
+    d="M118 140 H318 V268 H118 V160 H298 V248 H138 V180 H278 V228 H158 V200 H258"
+    class="path-todo"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-dasharray="5 7"
+  />
+  <path
+    d="M118 140 H318 V268 H118 V160 H298 V248 H138 V180 H238"
+    class="path-done"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="238" cy="180" r="9" class="head" stroke-width="3" />
+
+  <!-- Job progress -->
+  <rect x="76" y="318" width="284" height="10" rx="5" class="track" />
+  <rect x="76" y="318" width="178" height="10" rx="5" fill="url(#brand)" />
+
+  <!-- Steps: one at a time -->
+  <line x1="92" y1="358" x2="344" y2="358" class="step-line" stroke-width="2" />
+  <circle cx="92" cy="358" r="9" fill="url(#brand)" />
+  <circle cx="155" cy="358" r="9" fill="url(#brand)" />
+  <circle cx="218" cy="358" r="11" class="head" stroke-width="3" />
+  <circle cx="281" cy="358" r="9" class="step-off" />
+  <circle cx="344" cy="358" r="9" class="step-off" />
+
+  <!-- Big, glove-friendly controls -->
+  <rect x="380" y="108" width="184" height="148" rx="18" class="faint" />
+  <circle cx="472" cy="182" r="50" class="go" />
+  <path d="M460 160 L492 182 L460 204 Z" fill="#ffffff" />
+
+  <rect x="380" y="270" width="86" height="72" rx="16" class="hold" />
+  <rect x="412" y="292" width="8" height="28" rx="3" fill="#ffffff" />
+  <rect x="426" y="292" width="8" height="28" rx="3" fill="#ffffff" />
+
+  <rect x="478" y="270" width="86" height="72" rx="16" class="stop" />
+  <rect x="507" y="292" width="28" height="28" rx="5" fill="#ffffff" />
+
+  <rect x="380" y="356" width="184" height="44" rx="12" class="faint" />
+  <rect x="396" y="372" width="56" height="8" rx="4" class="muted" />
+  <rect x="500" y="368" width="48" height="16" rx="8" class="muted" />
+</svg>

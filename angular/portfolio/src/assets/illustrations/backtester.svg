@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <style>
+    .bg-1 { stop-color: #eaf1fd; }
+    .bg-2 { stop-color: #f6effc; }
+    .win { fill: #ffffff; }
+    .rule { stroke: #000000; stroke-opacity: 0.08; }
+    .muted { fill: #000000; fill-opacity: 0.08; }
+    .faint { fill: #000000; fill-opacity: 0.04; }
+    .track { fill: #000000; fill-opacity: 0.08; }
+    .grid { stroke: #000000; stroke-opacity: 0.07; }
+    .base { stroke: #000000; stroke-opacity: 0.22; }
+    .accent { fill: #0071e3; }
+    .up { fill: #1a7f37; }
+    .down { fill: #d70015; }
+    .knob { fill: #ffffff; stroke: #0071e3; }
+    .area-1 { stop-color: #0071e3; stop-opacity: 0.22; }
+    .area-2 { stop-color: #0071e3; stop-opacity: 0; }
+    @media (prefers-color-scheme: dark) {
+      .bg-1 { stop-color: #0c1424; }
+      .bg-2 { stop-color: #1a1027; }
+      .win { fill: #1c1c1e; }
+      .rule { stroke: #ffffff; stroke-opacity: 0.1; }
+      .muted { fill: #ffffff; fill-opacity: 0.14; }
+      .faint { fill: #ffffff; fill-opacity: 0.06; }
+      .track { fill: #ffffff; fill-opacity: 0.14; }
+      .grid { stroke: #ffffff; stroke-opacity: 0.08; }
+      .base { stroke: #ffffff; stroke-opacity: 0.28; }
+      .accent { fill: #2997ff; }
+      .up { fill: #30d158; }
+      .down { fill: #ff453a; }
+      .knob { fill: #1c1c1e; stroke: #2997ff; }
+      .area-1 { stop-color: #2997ff; stop-opacity: 0.3; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop class="bg-1" />
+      <stop offset="1" class="bg-2" />
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#0071e3" />
+      <stop offset="1" stop-color="#b14be6" />
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop class="area-1" />
+      <stop offset="1" class="area-2" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#bg)" />
+
+  <!-- App window, cropped by the bottom edge -->
+  <rect x="56" y="44" width="528" height="380" rx="18" class="win" filter="url(#shadow)" />
+  <circle cx="80" cy="66" r="5" fill="#ff5f57" />
+  <circle cx="96" cy="66" r="5" fill="#febc2e" />
+  <circle cx="112" cy="66" r="5" fill="#28c840" />
+  <line x1="56" y1="88" x2="584" y2="88" class="rule" />
+  <line x1="196" y1="88" x2="196" y2="400" class="rule" />
+
+  <!-- Strategy parameters -->
+  <rect x="76" y="108" width="56" height="8" rx="4" class="muted" />
+  <rect x="76" y="126" width="100" height="4" rx="2" class="track" />
+  <rect x="76" y="126" width="64" height="4" rx="2" class="accent" />
+  <circle cx="140" cy="128" r="7" class="knob" stroke-width="2" />
+
+  <rect x="76" y="152" width="72" height="8" rx="4" class="muted" />
+  <rect x="76" y="170" width="100" height="4" rx="2" class="track" />
+  <rect x="76" y="170" width="38" height="4" rx="2" class="accent" />
+  <circle cx="114" cy="172" r="7" class="knob" stroke-width="2" />
+
+  <rect x="76" y="196" width="48" height="8" rx="4" class="muted" />
+  <rect x="76" y="214" width="100" height="4" rx="2" class="track" />
+  <rect x="76" y="214" width="82" height="4" rx="2" class="accent" />
+  <circle cx="158" cy="216" r="7" class="knob" stroke-width="2" />
+
+  <rect x="76" y="244" width="100" height="30" rx="15" fill="url(#brand)" />
+  <path d="M120 252 L132 259 L120 266 Z" fill="#ffffff" />
+
+  <rect x="76" y="296" width="100" height="40" rx="10" class="faint" />
+  <rect x="86" y="306" width="40" height="6" rx="3" class="muted" />
+  <rect x="86" y="320" width="64" height="6" rx="3" class="muted" />
+
+  <!-- Result tiles -->
+  <rect x="216" y="108" width="110" height="48" rx="12" class="faint" />
+  <rect x="228" y="120" width="44" height="6" rx="3" class="muted" />
+  <rect x="228" y="134" width="70" height="10" rx="5" class="up" />
+
+  <rect x="336" y="108" width="110" height="48" rx="12" class="faint" />
+  <rect x="348" y="120" width="52" height="6" rx="3" class="muted" />
+  <rect x="348" y="134" width="56" height="10" rx="5" class="accent" />
+
+  <rect x="456" y="108" width="108" height="48" rx="12" class="faint" />
+  <rect x="468" y="120" width="40" height="6" rx="3" class="muted" />
+  <rect x="468" y="134" width="46" height="10" rx="5" class="down" />
+
+  <!-- Equity curve vs. buy-and-hold -->
+  <line x1="216" y1="206" x2="564" y2="206" class="grid" stroke-dasharray="4 6" />
+  <line x1="216" y1="250" x2="564" y2="250" class="grid" stroke-dasharray="4 6" />
+  <line x1="216" y1="294" x2="564" y2="294" class="grid" stroke-dasharray="4 6" />
+  <line x1="216" y1="338" x2="564" y2="338" class="grid" stroke-dasharray="4 6" />
+
+  <path
+    d="M216 330 L250 318 L282 324 L316 300 L348 306 L382 276 L414 284 L448 248 L482 256 L516 222 L540 228 L564 196 L564 380 L216 380 Z"
+    fill="url(#area)"
+  />
+  <path
+    d="M216 332 L264 326 L312 322 L360 314 L408 310 L456 300 L504 296 L564 286"
+    class="base"
+    stroke-width="2"
+    stroke-dasharray="6 6"
+    stroke-linecap="round"
+  />
+  <path
+    d="M216 330 L250 318 L282 324 L316 300 L348 306 L382 276 L414 284 L448 248 L482 256 L516 222 L540 228 L564 196"
+    stroke="url(#brand)"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <circle cx="282" cy="324" r="6" class="up" />
+  <circle cx="382" cy="276" r="6" class="down" />
+  <circle cx="414" cy="284" r="6" class="up" />
+  <circle cx="516" cy="222" r="6" class="down" />
+</svg>

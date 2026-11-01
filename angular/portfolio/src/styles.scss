@@ -225,6 +225,16 @@ textarea {
   color: transparent;
 }
 
+// Decorative emoji, always aria-hidden. Colour emoji fonts first, so no platform falls back to
+// a monochrome glyph from the text font.
+.emoji {
+  display: inline-block;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
 /* ---------- Buttons ---------- */
 
 .button {
@@ -247,6 +257,33 @@ textarea {
 
 .button:active {
   transform: scale(0.97);
+}
+
+.button .emoji {
+  margin-right: 0.6rem;
+}
+
+.emoji--wave {
+  transform-origin: 70% 80%;
+}
+
+.button:hover .emoji--wave {
+  animation: wave 0.9s var(--ease);
+}
+
+@keyframes wave {
+  20% {
+    transform: rotate(16deg);
+  }
+  40% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(12deg);
+  }
+  80% {
+    transform: rotate(-4deg);
+  }
 }
 
 .button--primary {
@@ -557,6 +594,24 @@ textarea {
   position: relative;
 }
 
+// Inset 1.2rem from the card edge; radius = card radius - inset, so the corners stay concentric.
+.project-card__media {
+  overflow: hidden;
+  margin: -2rem -2rem 2.4rem;
+  border: 1px solid var(--hairline);
+  border-radius: 1.6rem;
+}
+
+.project-card__media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  transition: transform 0.6s var(--ease);
+}
+
+.project-card:hover .project-card__media img {
+  transform: scale(1.03);
+}
+
 .project-card__category {
   color: var(--text-soft);
   font-size: 1.3rem;
@@ -625,6 +680,19 @@ textarea {
 }
 
 /* ---------- About ---------- */
+
+.about__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36rem);
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.about__illustration {
+  width: 100%;
+  border-radius: 2.8rem;
+  box-shadow: var(--shadow);
+}
 
 .about__statement {
   max-width: 92rem;
@@ -832,6 +900,14 @@ textarea {
   .services {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .about__intro {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about__illustration {
+    max-width: 48rem;
+  }
 }
 
 @media (max-width: 734px) {
@@ -912,6 +988,15 @@ textarea {
   .contact-form {
     border-radius: 2.4rem;
     padding: 2.4rem;
+  }
+
+  .project-card__media {
+    margin: -1.2rem -1.2rem 2rem;
+    border-radius: 1.2rem;
+  }
+
+  .about__illustration {
+    border-radius: 2.4rem;
   }
 
   .contact-form__footer .button {
