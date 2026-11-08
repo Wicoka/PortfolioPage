@@ -1,0 +1,202 @@
+{
+  "brand": {
+    "role": "Angular Frontend Engineer"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Value",
+    "portfolio": "Projects",
+    "contact": "Contact",
+    "cta": "Let's Talk",
+    "toggleMenu": "Toggle menu"
+  },
+  "langSwitcher": {
+    "label": "Choose language"
+  },
+  "hero": {
+    "eyebrow": "Open to ambitious product teams",
+    "pill1": "Angular Specialist",
+    "pill2": "UX-aware Frontend",
+    "pill3": "AI-ready Product Thinking",
+    "headline": "Modern Angular interfaces with the polish and quality serious companies expect.",
+    "name": "Viktor Szőke",
+    "typedPrefix": "I'm a",
+    "typed1": "Frontend Engineer",
+    "typed2": "Team Leader",
+    "typed3": "Casual Gamer",
+    "intro": "I studied Computer Engineering at BME and focus on frontend, where product quality and disciplined execution both matter. With {{years}} years of experience, I build interfaces that feel refined, fast, and ready to scale.",
+    "background": "My background spans Angular development, UX/UI sensitivity, team leadership, and mentoring. I'm driven by high-standard environments where Apple-level craft is the bar.",
+    "ctaPrimary": "Start a Conversation",
+    "ctaSecondary": "Download CV",
+    "portraitAlt": "Portrait of Viktor Szőke",
+    "focusLabel": "Focus",
+    "focusValue": "Angular, UX, AI-aware product work",
+    "strengthLabel": "Strength",
+    "strengthValue": "Clear execution with visual precision"
+  },
+  "proof": {
+    "experienceLabel": "Years in frontend delivery",
+    "metric1": { "value": "Angular", "label": "Primary framework" },
+    "metric2": { "value": "UI/UX", "label": "Design-sensitive execution" },
+    "metric3": { "value": "Remote + Hybrid", "label": "Collaboration ready" }
+  },
+  "about": {
+    "eyebrow": "About me",
+    "heading": "Frontend engineering with product maturity.",
+    "lead": "I specialize in Angular and build products where interface quality matters as much as execution. I care about clean architecture, intuitive interaction, and experiences that feel trustworthy from the first click.",
+    "introHeading": "I enjoy web development, UI/UX design, and solving real product problems with practical engineering.",
+    "introBody": "In every project I combine maximum performance with a simple, coherent experience. Outside work I program, follow trends, and game, which keeps me curious about systems and interaction quality.",
+    "card1": {
+      "title": "Product-grade frontend",
+      "desc": "I build fast, resilient interfaces ready for real users, not just demos."
+    },
+    "card2": {
+      "title": "Design sensitivity with technical discipline",
+      "desc": "My UI decisions are shaped by usability, visual hierarchy, and execution quality together."
+    },
+    "card3": {
+      "title": "Calm leadership under pressure",
+      "desc": "I contribute as an engineer, lead a team, or mentor others without losing momentum."
+    }
+  },
+  "services": {
+    "eyebrow": "What I bring",
+    "heading": "Delivery, leadership, and design awareness in one, as modern teams need.",
+    "lead": "My strongest contribution happens where frontend craft, product thinking, and team effectiveness meet.",
+    "card1": {
+      "title": "Web Development",
+      "desc": "I build and maintain modern web experiences focused on interaction, responsiveness, and long-term maintainability."
+    },
+    "card2": {
+      "title": "Team Leading",
+      "desc": "I align execution, communicate clearly, and keep delivery moving without sacrificing quality."
+    },
+    "card3": {
+      "title": "Mentoring",
+      "desc": "I support growth through practical guidance, technical coaching, and confidence-building feedback."
+    },
+    "card4": {
+      "title": "AI-enhanced Product Work",
+      "desc": "I integrate AI concepts when they improve relevance, speed, or decision-making for users."
+    }
+  },
+  "craft": {
+    "eyebrow": "How I work",
+    "heading": "Built for teams that value quality without slowing down.",
+    "principle1": {
+      "title": "Craft matters",
+      "desc": "The best products feel clear and intentional, from micro-interactions to architecture."
+    },
+    "principle2": {
+      "title": "Speed needs structure",
+      "desc": "Good delivery comes from reusable components and predictable patterns."
+    },
+    "principle3": {
+      "title": "Teams scale through clarity",
+      "desc": "Strong communication, ownership, and thoughtful mentoring make ambitious products possible."
+    }
+  },
+  "stack": {
+    "eyebrow": "Capability snapshot",
+    "heading": "Technical depth plus product judgment.",
+    "group1": {
+      "title": "Frontend",
+      "item1": "Angular",
+      "item2": "TypeScript",
+      "item3": "Responsive UI",
+      "item4": "Component Systems"
+    },
+    "group2": {
+      "title": "Product Thinking",
+      "item1": "UX/UI Awareness",
+      "item2": "Interaction Design",
+      "item3": "Performance",
+      "item4": "Accessibility"
+    },
+    "group3": {
+      "title": "Modern Delivery",
+      "item1": "Team Leadership",
+      "item2": "Mentoring",
+      "item3": "Cross-functional Work",
+      "item4": "AI Features"
+    }
+  },
+  "portfolio": {
+    "eyebrow": "Selected work",
+    "heading": "Projects that combine engineering with usability and clear outcomes.",
+    "lead": "These are the challenges I enjoy most: complex products, high UX expectations, and interfaces that support real business goals.",
+    "impactLabel": "Impact"
+  },
+  "projects": {
+    "1": {
+      "category": "FinTech Tooling",
+      "title": "Crypto Trading Backtester",
+      "subtitle": "A backtester app where trading robots can be created, configured, and evaluated for crypto strategies.",
+      "description": "A backtester application for creating and testing crypto trading robots. Users could define trading logic, configure strategy parameters, and evaluate historical performance before going live.",
+      "outcome": "Enabled strategy experimentation and faster decision-making through a clearer workflow.",
+      "tags": ["Angular", "Crypto", "Backtesting", "Product UX"]
+    },
+    "2": {
+      "category": "AgriTech Operations",
+      "title": "Agricultural Monitoring Platform",
+      "subtitle": "An agricultural app for registering devices and monitoring the values they send from the fields.",
+      "description": "This app let users register field devices and monitor incoming values from remote environments. The interface had to surface device status, measurements, and operational context in an easy-to-understand way.",
+      "outcome": "Improved visibility into field data and device activity with a cleaner monitoring interface.",
+      "tags": ["Angular", "Monitoring", "IoT", "Dashboard Design"]
+    },
+    "3": {
+      "category": "Industrial UI",
+      "title": "Modern CNC Machine Interface",
+      "subtitle": "Modern interfaces for CNC machines, focused on clarity, usability, and operator workflows.",
+      "description": "Implementing modern interfaces for CNC machines where clarity, speed, and operator confidence were essential. The challenge was turning complex machine workflows into interfaces that feel contemporary and efficient.",
+      "outcome": "Delivered a more modern machine-facing experience with better usability and clearer workflows.",
+      "tags": ["Angular", "Industrial UX", "Machine UI", "Frontend Implementation"]
+    },
+    "4": {
+      "category": "Industrial Product Platform",
+      "title": "Robotic Application Platform",
+      "subtitle": "An automated platform for building, running, monitoring, and re-deploying collaborative applications.",
+      "description": "An automated platform for building, running, monitoring, and re-deploying collaborative applications. It automates getting a robotic application running, enabling deployment directly on the manufacturing floor with zero programming and zero simulations, in just a few hours.",
+      "outcome": "Reduced deployment complexity for robotics teams and enabled much faster rollout on the floor.",
+      "tags": ["Angular", "Automation", "Industrial UX", "Platform Thinking"]
+    },
+    "5": {
+      "category": "Commerce Personalization",
+      "title": "AI Powered Webshop",
+      "subtitle": "An AI-powered webshop that recommends new or similar products based on user behavior.",
+      "description": "An AI-powered webshop that recommends new or similar products based on user behavior, improving experience and sales through personalized recommendations. We used AWS Personalize to build a recommendation engine trained on a dataset of 5000 products.",
+      "outcome": "Combined modern commerce UX with AI-driven recommendations to improve discovery and relevance.",
+      "tags": ["Angular", "AI", "AWS Personalize", "E-commerce"]
+    },
+    "6": {
+      "category": "EdTech Experience",
+      "title": "Language Exam",
+      "subtitle": "An online language exam web app that lets users take proficiency exams remotely.",
+      "description": "An online language exam web app for taking proficiency exams remotely. Built with Angular on the frontend and ASP.NET Core on the backend, it offers intuitive navigation and responsive design. Users sign up, pick a language and level, and take the exam from any device.",
+      "outcome": "Delivered a reliable remote exam flow with responsive UI and clear task progression.",
+      "tags": ["Angular", "ASP.NET Core", "Responsive UI", "Remote Testing"]
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "heading": "Let's build something that looks sharp and performs at a high level.",
+    "lead": "If you're hiring for frontend, product engineering, design systems, or AI-enhanced experiences, let's talk about how I can contribute.",
+    "bestFitLabel": "Best fit",
+    "bestFitValue": "Angular teams, product-driven companies, high-craft environments",
+    "namePlaceholder": "Full Name",
+    "emailPlaceholder": "Email Address",
+    "phonePlaceholder": "Mobile Number",
+    "subjectPlaceholder": "Subject",
+    "messagePlaceholder": "Tell me about the role, team, or project.",
+    "validationError": "Please fill in your name, a valid email address, and your message.",
+    "successMessage": "Your message has been sent. I'll get back to you soon.",
+    "errorMessage": "Sending failed. Please try again later.",
+    "send": "Send Message",
+    "sending": "Sending..."
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Viktor Szőke. Built with clarity, taste, and modern frontend craft.",
+    "backToTop": "Back to top"
+  }
+}

@@ -306,6 +306,46 @@ textarea {
   cursor: pointer;
 }
 
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 999px;
+  padding: 0.4rem;
+  background: rgba(15, 23, 42, 0.48);
+}
+
+.language-switcher__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 6.2rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 0.9rem;
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.language-switcher__option:hover,
+.language-switcher__option.is-active {
+  background: rgba(245, 158, 11, 0.18);
+  color: var(--text);
+}
+
+.language-switcher__flag {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(32rem, 0.95fr);
@@ -787,6 +827,15 @@ textarea {
 
   .site-nav__cta {
     width: 100%;
+  }
+
+  .language-switcher {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .language-switcher__option {
+    flex: 1 1 0;
   }
 
   .hero {

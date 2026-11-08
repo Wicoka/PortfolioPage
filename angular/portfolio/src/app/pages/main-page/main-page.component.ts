@@ -8,8 +8,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TranslocoService } from '@ngneat/transloco';
 import { NgsRevealConfig } from 'ngx-scrollreveal';
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import Typed from 'typed.js';
+import { AVAILABLE_LANGS } from '../../transloco/transloco-root.module';
 import { ContactFormPayload, MainPageService } from './main-page.service';
 import { Project } from './models/project.model';
 
@@ -48,99 +52,13 @@ export class MainPageComponent
   @ViewChild('portfolio') portfolio?: ElementRef<HTMLElement>;
   @ViewChild('contact') contact?: ElementRef<HTMLElement>;
 
-  navItems: NavItem[] = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'services', label: 'Value' },
-    { id: 'portfolio', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
-  heroPills = [
-    'Angular Specialist',
-    'UX-aware Frontend Delivery',
-    'AI-ready Product Thinking',
-  ];
-
-  credibilityMetrics = [
-    { value: 'Angular', label: 'Primary framework' },
-    { value: 'UI/UX', label: 'Design-sensitive execution' },
-    { value: 'Remote + Hybrid', label: 'Collaboration ready' },
-  ];
-
-  valueCards: ContentCard[] = [
-    {
-      title: 'Product-grade frontend engineering',
-      description:
-        'I build interfaces that are fast, resilient, and ready for real users, not just demos.',
-    },
-    {
-      title: 'Design sensitivity with technical discipline',
-      description:
-        'My UI decisions are shaped by usability, visual hierarchy, and implementation quality at the same time.',
-    },
-    {
-      title: 'Calm leadership under delivery pressure',
-      description:
-        'I can contribute as an individual engineer, lead a team, or mentor others without losing momentum.',
-    },
-  ];
-
-  servicesCards: ContentCard[] = [
-    {
-      title: 'Web Development',
-      description:
-        'I create and maintain modern web experiences with a strong focus on interaction quality, responsiveness, and long-term maintainability.',
-    },
-    {
-      title: 'Team Leading',
-      description:
-        'I help teams align on execution, communicate clearly, and keep delivery moving while maintaining quality standards.',
-    },
-    {
-      title: 'Mentoring',
-      description:
-        'I support growth through practical guidance, technical coaching, and the kind of feedback that improves confidence and output.',
-    },
-    {
-      title: 'AI-enhanced Product Work',
-      description:
-        'I am comfortable integrating AI concepts into product experiences when they improve relevance, speed, or decision-making for users.',
-    },
-  ];
-
-  workPrinciples: ContentCard[] = [
-    {
-      title: 'Craft matters',
-      description:
-        'The strongest products feel clear, refined, and intentional in both micro-interactions and architecture.',
-    },
-    {
-      title: 'Speed needs structure',
-      description:
-        'Good delivery comes from reusable components, predictable patterns, and focused execution.',
-    },
-    {
-      title: 'Teams scale through clarity',
-      description:
-        'Strong communication, ownership, and thoughtful mentoring make ambitious products possible.',
-    },
-  ];
-
-  stackGroups: StackGroup[] = [
-    {
-      title: 'Frontend',
-      items: ['Angular', 'TypeScript', 'Responsive UI', 'Component Systems'],
-    },
-    {
-      title: 'Product Thinking',
-      items: ['UX/UI Awareness', 'Interaction Design', 'Performance', 'Accessibility'],
-    },
-    {
-      title: 'Modern Delivery',
-      items: ['Team Leadership', 'Mentoring', 'Cross-functional Work', 'AI Features'],
-    },
-  ];
+  navItems: NavItem[] = [];
+  heroPills: string[] = [];
+  credibilityMetrics: Array<{ value: string; label: string }> = [];
+  valueCards: ContentCard[] = [];
+  servicesCards: ContentCard[] = [];
+  workPrinciples: ContentCard[] = [];
+  stackGroups: StackGroup[] = [];
 
   socialLinks: SocialLink[] = [
     {
@@ -173,14 +91,20 @@ export class MainPageComponent
   mobileMenuOpen = false;
   activeSection = 'home';
   isHeaderElevated = false;
+  activeLang = 'en';
+
+  readonly availableLangs = AVAILABLE_LANGS;
 
   readonly date = new Date();
   readonly experience = this.date.getFullYear() - 2018;
 
   private typedInstance?: Typed;
+  private translationSubscription?: Subscription;
+  private viewInitialized = false;
 
   constructor(
     private readonly mainPageService: MainPageService,
+    private readonly translocoService: TranslocoService,
     config: NgsRevealConfig
   ) {
     config.duration = 1200;
@@ -190,27 +114,27 @@ export class MainPageComponent
   }
 
   ngOnInit(): void {
-    this.typedInstance = new Typed('#typer', {
-      strings: [
-        'Frontend Engineer',
-        'Team Leader',
-        'Casual Gamer',
-      ],
-      typeSpeed: 70,
-      backSpeed: 34,
-      backDelay: 1300,
-      loop: true,
-    });
-
-    this.projects = this.mainPageService.getProjects();
+    this.translationSubscription = this.translocoService.langChanges$
+      .pipe(switchMap((lang) => this.translocoService.load(lang)))
+      .subscribe(() => {
+        this.activeLang = this.translocoService.getActiveLang();
+        this.updateTranslatedContent();
+        this.queueTypedInit();
+      });
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.updateActiveSection(), 0);
+    this.viewInitialized = true;
+
+    setTimeout(() => {
+      this.updateActiveSection();
+      this.initTyped();
+    }, 0);
   }
 
   ngOnDestroy(): void {
     this.typedInstance?.destroy();
+    this.translationSubscription?.unsubscribe();
   }
 
   @HostListener('window:scroll')
@@ -225,6 +149,11 @@ export class MainPageComponent
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  changeLanguage(lang: string): void {
+    this.translocoService.setActiveLang(lang);
+    this.mobileMenuOpen = false;
   }
 
   scrollToElement(element: string): void {
@@ -264,13 +193,15 @@ export class MainPageComponent
     this.mainPageService.sendContactMessage(this.contactFormModel).subscribe({
       next: () => {
         this.submitSuccessMessage =
-          'Your message has been sent successfully. I will get back to you soon.';
+          this.translocoService.translate('contact.successMessage');
         this.contactFormModel = this.createEmptyContactForm();
         form.resetForm(this.contactFormModel);
         this.isSubmitting = false;
       },
       error: () => {
-        this.submitErrorMessage = 'Sending failed. Please try again later.';
+        this.submitErrorMessage = this.translocoService.translate(
+          'contact.errorMessage'
+        );
         this.isSubmitting = false;
       },
     });
@@ -284,6 +215,108 @@ export class MainPageComponent
       subject: '',
       message: '',
     };
+  }
+
+  private initTyped(): void {
+    if (!document.querySelector('#typer')) {
+      return;
+    }
+
+    this.typedInstance?.destroy();
+
+    this.typedInstance = new Typed('#typer', {
+      strings: [
+        this.translocoService.translate('hero.typed1'),
+        this.translocoService.translate('hero.typed2'),
+        this.translocoService.translate('hero.typed3'),
+      ],
+      typeSpeed: 70,
+      backSpeed: 34,
+      backDelay: 1300,
+      loop: true,
+    });
+  }
+
+  private queueTypedInit(): void {
+    if (!this.viewInitialized) {
+      return;
+    }
+
+    setTimeout(() => this.initTyped(), 0);
+  }
+
+  private updateTranslatedContent(): void {
+    this.navItems = [
+      { id: 'home', label: this.translocoService.translate('nav.home') },
+      { id: 'about', label: this.translocoService.translate('nav.about') },
+      { id: 'services', label: this.translocoService.translate('nav.services') },
+      {
+        id: 'portfolio',
+        label: this.translocoService.translate('nav.portfolio'),
+      },
+      { id: 'contact', label: this.translocoService.translate('nav.contact') },
+    ];
+
+    this.heroPills = [
+      this.translocoService.translate('hero.pill1'),
+      this.translocoService.translate('hero.pill2'),
+      this.translocoService.translate('hero.pill3'),
+    ];
+
+    this.credibilityMetrics = [1, 2, 3].map((index) => ({
+      value: this.translocoService.translate(`proof.metric${index}.value`),
+      label: this.translocoService.translate(`proof.metric${index}.label`),
+    }));
+
+    this.valueCards = [1, 2, 3].map((index) => ({
+      title: this.translocoService.translate(`about.card${index}.title`),
+      description: this.translocoService.translate(`about.card${index}.desc`),
+    }));
+
+    this.servicesCards = [1, 2, 3, 4].map((index) => ({
+      title: this.translocoService.translate(`services.card${index}.title`),
+      description: this.translocoService.translate(`services.card${index}.desc`),
+    }));
+
+    this.workPrinciples = [1, 2, 3].map((index) => ({
+      title: this.translocoService.translate(`craft.principle${index}.title`),
+      description: this.translocoService.translate(
+        `craft.principle${index}.desc`
+      ),
+    }));
+
+    this.stackGroups = [1, 2, 3].map((index) => ({
+      title: this.translocoService.translate(`stack.group${index}.title`),
+      items: [1, 2, 3, 4].map((itemIndex) =>
+        this.translocoService.translate(
+          `stack.group${index}.item${itemIndex}`
+        )
+      ),
+    }));
+
+    this.projects = this.mainPageService.getProjects().map((project) => {
+      const tags = this.translocoService.translate<string[]>(
+        `projects.${project.id}.tags`
+      );
+
+      return {
+        ...project,
+        category: this.translocoService.translate(
+          `projects.${project.id}.category`
+        ),
+        title: this.translocoService.translate(`projects.${project.id}.title`),
+        subtitle: this.translocoService.translate(
+          `projects.${project.id}.subtitle`
+        ),
+        description: this.translocoService.translate(
+          `projects.${project.id}.description`
+        ),
+        outcome: this.translocoService.translate(
+          `projects.${project.id}.outcome`
+        ),
+        tags: Array.isArray(tags) ? tags : project.tags,
+      };
+    });
   }
 
   private updateActiveSection(): void {

@@ -1,0 +1,202 @@
+{
+  "brand": {
+    "role": "Angular Frontend Engineer"
+  },
+  "nav": {
+    "home": "Start",
+    "about": "Über mich",
+    "services": "Mehrwert",
+    "portfolio": "Projekte",
+    "contact": "Kontakt",
+    "cta": "Sprechen wir",
+    "toggleMenu": "Menü umschalten"
+  },
+  "langSwitcher": {
+    "label": "Sprache wählen"
+  },
+  "hero": {
+    "eyebrow": "Offen für ambitionierte Produktteams",
+    "pill1": "Angular-Spezialist",
+    "pill2": "UX-bewusstes Frontend",
+    "pill3": "KI-fähiges Produktdenken",
+    "headline": "Moderne Angular-Oberflächen mit dem Feinschliff und der Qualität, die seriöse Unternehmen erwarten.",
+    "name": "Viktor Szőke",
+    "typedPrefix": "Ich bin",
+    "typed1": "Frontend-Entwickler",
+    "typed2": "Teamleiter",
+    "typed3": "Gelegenheits-Gamer",
+    "intro": "Ich habe an der TU Budapest Technische Informatik studiert und konzentriere mich auf das Frontend, wo Produktqualität und disziplinierte Umsetzung gleichermaßen zählen. Mit {{years}} Jahren Erfahrung baue ich Oberflächen, die sich verfeinert, schnell und skalierbar anfühlen.",
+    "background": "Mein Hintergrund umfasst Angular-Entwicklung, UX/UI-Gespür, Teamführung und Mentoring. Mich motivieren Umgebungen mit hohen Standards, in denen Handwerkskunst auf Apple-Niveau die Messlatte ist.",
+    "ctaPrimary": "Gespräch beginnen",
+    "ctaSecondary": "Lebenslauf herunterladen",
+    "portraitAlt": "Porträt von Viktor Szőke",
+    "focusLabel": "Fokus",
+    "focusValue": "Angular, UX, KI-bewusste Produktarbeit",
+    "strengthLabel": "Stärke",
+    "strengthValue": "Klare Umsetzung mit visueller Präzision"
+  },
+  "proof": {
+    "experienceLabel": "Jahre in der Frontend-Umsetzung",
+    "metric1": { "value": "Angular", "label": "Primäres Framework" },
+    "metric2": { "value": "UI/UX", "label": "Designsensible Umsetzung" },
+    "metric3": { "value": "Remote + Hybrid", "label": "Bereit zur Zusammenarbeit" }
+  },
+  "about": {
+    "eyebrow": "Über mich",
+    "heading": "Frontend-Entwicklung mit Produktreife.",
+    "lead": "Ich bin auf Angular spezialisiert und baue Produkte, bei denen die Qualität der Oberfläche genauso zählt wie die Umsetzung. Mir liegen saubere Architektur, intuitive Interaktion und Erlebnisse am Herzen, die ab dem ersten Klick vertrauenswürdig wirken.",
+    "introHeading": "Ich mag Webentwicklung, UI/UX-Design und das Lösen echter Produktprobleme mit pragmatischem Engineering.",
+    "introBody": "In jedem Projekt verbinde ich maximale Leistung mit einem einfachen, kohärenten Erlebnis. Außerhalb der Arbeit programmiere ich, verfolge Trends und spiele, was meine Neugier auf Systeme und Interaktionsqualität wachhält.",
+    "card1": {
+      "title": "Frontend auf Produktniveau",
+      "desc": "Ich baue schnelle, robuste Oberflächen für echte Nutzer, nicht nur für Demos."
+    },
+    "card2": {
+      "title": "Designgespür mit technischer Disziplin",
+      "desc": "Meine UI-Entscheidungen werden von Benutzerfreundlichkeit, visueller Hierarchie und Umsetzungsqualität zugleich geprägt."
+    },
+    "card3": {
+      "title": "Ruhige Führung unter Druck",
+      "desc": "Ich trage als Entwickler bei, leite ein Team oder mentore andere, ohne an Schwung zu verlieren."
+    }
+  },
+  "services": {
+    "eyebrow": "Was ich mitbringe",
+    "heading": "Umsetzung, Führung und Designbewusstsein in einem, wie moderne Teams es brauchen.",
+    "lead": "Meinen stärksten Beitrag leiste ich dort, wo Frontend-Handwerk, Produktdenken und Teameffektivität zusammentreffen.",
+    "card1": {
+      "title": "Webentwicklung",
+      "desc": "Ich baue und pflege moderne Web-Erlebnisse mit Fokus auf Interaktion, Reaktionsfähigkeit und langfristige Wartbarkeit."
+    },
+    "card2": {
+      "title": "Teamleitung",
+      "desc": "Ich stimme die Umsetzung ab, kommuniziere klar und halte die Lieferung in Bewegung, ohne Qualität zu opfern."
+    },
+    "card3": {
+      "title": "Mentoring",
+      "desc": "Ich fördere Wachstum durch praktische Anleitung, technisches Coaching und Feedback, das Selbstvertrauen stärkt."
+    },
+    "card4": {
+      "title": "KI-gestützte Produktarbeit",
+      "desc": "Ich integriere KI-Konzepte, wenn sie Relevanz, Geschwindigkeit oder Entscheidungsfindung verbessern."
+    }
+  },
+  "craft": {
+    "eyebrow": "Wie ich arbeite",
+    "heading": "Gebaut für Teams, die Qualität schätzen, ohne langsamer zu werden.",
+    "principle1": {
+      "title": "Handwerk zählt",
+      "desc": "Die besten Produkte wirken klar und bewusst gestaltet, von Mikrointeraktionen bis zur Architektur."
+    },
+    "principle2": {
+      "title": "Geschwindigkeit braucht Struktur",
+      "desc": "Gute Lieferung entsteht aus wiederverwendbaren Komponenten und vorhersehbaren Mustern."
+    },
+    "principle3": {
+      "title": "Teams skalieren durch Klarheit",
+      "desc": "Starke Kommunikation, Eigenverantwortung und durchdachtes Mentoring machen ambitionierte Produkte möglich."
+    }
+  },
+  "stack": {
+    "eyebrow": "Fähigkeiten im Überblick",
+    "heading": "Technische Tiefe plus Produkturteilsvermögen.",
+    "group1": {
+      "title": "Frontend",
+      "item1": "Angular",
+      "item2": "TypeScript",
+      "item3": "Responsive UI",
+      "item4": "Komponentensysteme"
+    },
+    "group2": {
+      "title": "Produktdenken",
+      "item1": "UX/UI-Bewusstsein",
+      "item2": "Interaktionsdesign",
+      "item3": "Performance",
+      "item4": "Barrierefreiheit"
+    },
+    "group3": {
+      "title": "Moderne Lieferung",
+      "item1": "Teamführung",
+      "item2": "Mentoring",
+      "item3": "Funktionsübergreifende Arbeit",
+      "item4": "KI-Funktionen"
+    }
+  },
+  "portfolio": {
+    "eyebrow": "Ausgewählte Arbeiten",
+    "heading": "Projekte, die Engineering mit Benutzerfreundlichkeit und klaren Ergebnissen verbinden.",
+    "lead": "Das sind die Herausforderungen, die mir am meisten Freude bereiten: komplexe Produkte, hohe UX-Erwartungen und Oberflächen, die echte Geschäftsziele unterstützen.",
+    "impactLabel": "Wirkung"
+  },
+  "projects": {
+    "1": {
+      "category": "FinTech-Tooling",
+      "title": "Krypto-Trading-Backtester",
+      "subtitle": "Eine Backtester-App, in der Trading-Roboter für Krypto-Strategien erstellt, konfiguriert und bewertet werden.",
+      "description": "Eine Backtester-Anwendung zum Erstellen und Testen von Krypto-Trading-Robotern. Nutzer konnten Handelslogik definieren, Strategieparameter konfigurieren und die historische Performance vor dem Live-Einsatz bewerten.",
+      "outcome": "Ermöglichte Strategie-Experimente und schnellere Entscheidungen durch einen klareren Arbeitsablauf.",
+      "tags": ["Angular", "Krypto", "Backtesting", "Produkt-UX"]
+    },
+    "2": {
+      "category": "AgriTech-Betrieb",
+      "title": "Landwirtschaftliche Monitoring-Plattform",
+      "subtitle": "Eine Agrar-App zum Registrieren von Geräten und zur Überwachung der Werte aus den Feldern.",
+      "description": "Die App ermöglichte das Registrieren von Feldgeräten und die Überwachung eingehender Werte aus entfernten Umgebungen. Die Oberfläche musste Gerätestatus, Messwerte und betrieblichen Kontext leicht verständlich darstellen.",
+      "outcome": "Verbesserte den Einblick in Felddaten und Geräteaktivität mit einer übersichtlicheren Oberfläche.",
+      "tags": ["Angular", "Monitoring", "IoT", "Dashboard-Design"]
+    },
+    "3": {
+      "category": "Industrielle UI",
+      "title": "Moderne CNC-Maschinenoberfläche",
+      "subtitle": "Moderne Oberflächen für CNC-Maschinen, fokussiert auf Klarheit, Benutzerfreundlichkeit und Bediener-Workflows.",
+      "description": "Umsetzung moderner Oberflächen für CNC-Maschinen, bei denen Klarheit, Geschwindigkeit und das Vertrauen der Bediener entscheidend waren. Die Herausforderung: komplexe Maschinen-Workflows in zeitgemäße, effiziente Oberflächen zu übersetzen.",
+      "outcome": "Lieferte ein moderneres maschinenseitiges Erlebnis mit besserer Bedienbarkeit und klareren Workflows.",
+      "tags": ["Angular", "Industrielle UX", "Maschinen-UI", "Frontend-Umsetzung"]
+    },
+    "4": {
+      "category": "Industrielle Produktplattform",
+      "title": "Plattform für Roboteranwendungen",
+      "subtitle": "Eine automatisierte Plattform zum Erstellen, Ausführen, Überwachen und erneuten Bereitstellen kollaborativer Anwendungen.",
+      "description": "Eine automatisierte Plattform zum Erstellen, Ausführen, Überwachen und erneuten Bereitstellen kollaborativer Anwendungen. Sie automatisiert die Inbetriebnahme von Roboteranwendungen und ermöglicht die Bereitstellung direkt in der Fertigung, ohne Programmierung und Simulationen, in nur wenigen Stunden.",
+      "outcome": "Reduzierte die Bereitstellungskomplexität für Robotik-Teams und ermöglichte eine viel schnellere Einführung.",
+      "tags": ["Angular", "Automatisierung", "Industrielle UX", "Plattformdenken"]
+    },
+    "5": {
+      "category": "Commerce-Personalisierung",
+      "title": "KI-gestützter Webshop",
+      "subtitle": "Ein KI-gestützter Webshop, der auf Basis des Nutzerverhaltens neue oder ähnliche Produkte empfiehlt.",
+      "description": "Ein KI-gestützter Webshop, der auf Basis des Nutzerverhaltens personalisierte Produktempfehlungen gibt und so Erlebnis und Umsatz steigert. Mit AWS Personalize haben wir eine Empfehlungs-Engine erstellt, trainiert mit einem Datensatz von 5000 Produkten.",
+      "outcome": "Verband modernes Commerce-UX mit KI-gestützten Empfehlungen für bessere Auffindbarkeit und Relevanz.",
+      "tags": ["Angular", "KI", "AWS Personalize", "E-Commerce"]
+    },
+    "6": {
+      "category": "EdTech-Erlebnis",
+      "title": "Sprachprüfung",
+      "subtitle": "Eine Online-Webanwendung, mit der Nutzer Sprachprüfungen aus der Ferne ablegen können.",
+      "description": "Eine Online-Webanwendung für Sprachprüfungen aus der Ferne. Erstellt mit Angular im Frontend und ASP.NET Core im Backend, bietet sie intuitive Navigation und responsives Design. Nutzer registrieren sich, wählen Sprache und Stufe und legen die Prüfung von jedem Gerät ab.",
+      "outcome": "Lieferte einen zuverlässigen Ablauf für Fernprüfungen mit responsiver Oberfläche und klarem Fortschritt.",
+      "tags": ["Angular", "ASP.NET Core", "Responsive UI", "Fernprüfung"]
+    }
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "heading": "Lassen Sie uns etwas bauen, das scharf aussieht und auf hohem Niveau funktioniert.",
+    "lead": "Wenn Sie für Frontend, Produkt-Engineering, Designsysteme oder KI-gestützte Erlebnisse einstellen, sprechen wir darüber, wie ich beitragen kann.",
+    "bestFitLabel": "Beste Passung",
+    "bestFitValue": "Angular-Teams, produktgetriebene Unternehmen, anspruchsvolle Umgebungen",
+    "namePlaceholder": "Vollständiger Name",
+    "emailPlaceholder": "E-Mail-Adresse",
+    "phonePlaceholder": "Mobilnummer",
+    "subjectPlaceholder": "Betreff",
+    "messagePlaceholder": "Erzählen Sie mir von der Rolle, dem Team oder dem Projekt.",
+    "validationError": "Bitte geben Sie Ihren Namen, eine gültige E-Mail-Adresse und Ihre Nachricht an.",
+    "successMessage": "Ihre Nachricht wurde gesendet. Ich melde mich bald bei Ihnen.",
+    "errorMessage": "Senden fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet..."
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Viktor Szőke. Gestaltet mit Klarheit, Geschmack und modernem Frontend-Handwerk.",
+    "backToTop": "Nach oben"
+  }
+}

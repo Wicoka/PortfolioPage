@@ -1,4 +1,4 @@
-<div class="portfolio-page">
+<div class="portfolio-page" *transloco="let t">
   <div class="page-orb page-orb--gold"></div>
   <div class="page-orb page-orb--rose"></div>
   <div class="page-grid"></div>
@@ -8,7 +8,7 @@
       <span class="brand__mark">VS</span>
       <span class="brand__text">
         <strong>Viktor Szőke</strong>
-        <span>Angular Frontend Engineer</span>
+        <span>{{ t('brand.role') }}</span>
       </span>
     </a>
 
@@ -16,7 +16,7 @@
       class="menu-toggle"
       type="button"
       [attr.aria-expanded]="mobileMenuOpen"
-      aria-label="Toggle menu"
+      [attr.aria-label]="t('nav.toggleMenu')"
       (click)="toggleMobileMenu()"
     >
       <i class="bx" [ngClass]="mobileMenuOpen ? 'bx-x' : 'bx-menu'"></i>
@@ -32,46 +32,52 @@
         {{ item.label }}
       </a>
       <button class="site-nav__cta" type="button" (click)="scrollToElement('contact')">
-        Let's Talk
+        {{ t('nav.cta') }}
       </button>
+      <div class="language-switcher" [attr.aria-label]="t('langSwitcher.label')">
+        <button
+          *ngFor="let lang of availableLangs"
+          class="language-switcher__option"
+          type="button"
+          [class.is-active]="activeLang === lang.id"
+          [attr.aria-label]="lang.label"
+          [attr.title]="lang.label"
+          (click)="changeLanguage(lang.id)"
+        >
+          <span class="language-switcher__flag" aria-hidden="true">{{ lang.flag }}</span>
+          <span>{{ lang.id | uppercase }}</span>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main class="page-main">
     <section class="hero section" id="home" #home>
       <div class="hero__copy" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">Open to ambitious product teams</span>
+        <span class="eyebrow">{{ t('hero.eyebrow') }}</span>
         <div class="hero__pills">
           <span *ngFor="let pill of heroPills">{{ pill }}</span>
         </div>
         <h1>
-          Modern Angular interfaces with the polish, clarity, and execution
-          quality serious companies expect.
+          {{ t('hero.headline') }}
         </h1>
         <h2>
-          Viktor Szőke
-          <span class="hero__typed">I'm a <span id="typer"></span></span>
+          {{ t('hero.name') }}
+          <span class="hero__typed">{{ t('hero.typedPrefix') }} <span id="typer"></span></span>
         </h2>
         <p>
-          I studied Computer Engineering at Budapest University of Technology
-          and Economics, and I focus on frontend engineering where product
-          quality, usability, and implementation discipline all matter. I have
-          {{ experience }} years of frontend development experience and I enjoy
-          building interfaces that feel refined, fast, and ready for scale.
+          {{ t('hero.intro', { years: experience }) }}
         </p>
         <p>
-          My background spans Angular development, UX/UI sensitivity, team
-          leadership, and mentoring. I am especially motivated by environments
-          with high standards, whether that means a fast product team or a
-          company with Apple-level expectations around craft.
+          {{ t('hero.background') }}
         </p>
 
         <div class="hero__actions">
           <button class="button button--primary" type="button" (click)="scrollToElement('contact')">
-            Start a Conversation
+            {{ t('hero.ctaPrimary') }}
           </button>
           <button class="button button--secondary" type="button" (click)="downloadCV()">
-            Download CV
+            {{ t('hero.ctaSecondary') }}
           </button>
         </div>
 
@@ -90,15 +96,15 @@
 
       <div class="hero__visual" [ngsReveal]="{ origin: 'right' }">
         <div class="hero-card">
-          <img src="assets/portre-3.png" alt="Portrait of Viktor Szőke" />
+          <img src="assets/portre-3.png" [alt]="t('hero.portraitAlt')" />
           <div class="hero-card__meta">
             <div>
-              <span>Focus</span>
-              <strong>Angular, UX, AI-aware product work</strong>
+              <span>{{ t('hero.focusLabel') }}</span>
+              <strong>{{ t('hero.focusValue') }}</strong>
             </div>
             <div>
-              <span>Strength</span>
-              <strong>Clear execution with visual precision</strong>
+              <span>{{ t('hero.strengthLabel') }}</span>
+              <strong>{{ t('hero.strengthValue') }}</strong>
             </div>
           </div>
         </div>
@@ -108,7 +114,7 @@
     <section class="proof-strip">
       <article class="proof-card proof-card--accent">
         <span class="proof-card__value">{{ experience }}+</span>
-        <span class="proof-card__label">Years in frontend delivery</span>
+        <span class="proof-card__label">{{ t('proof.experienceLabel') }}</span>
       </article>
       <article class="proof-card" *ngFor="let metric of credibilityMetrics">
         <span class="proof-card__value">{{ metric.value }}</span>
@@ -118,13 +124,10 @@
 
     <section class="about section" id="about" #about>
       <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">About me</span>
-        <h2>Frontend engineering with product maturity.</h2>
+        <span class="eyebrow">{{ t('about.eyebrow') }}</span>
+        <h2>{{ t('about.heading') }}</h2>
         <p>
-          I specialize in Angular and enjoy building digital products where the
-          interface quality is as important as the underlying execution. I care
-          about clean component architecture, intuitive interaction design, and
-          experiences that feel trustworthy from the first click.
+          {{ t('about.lead') }}
         </p>
       </div>
 
@@ -132,15 +135,10 @@
         <div class="about__content" [ngsReveal]="{ origin: 'right' }">
           <div class="about__intro">
             <h3>
-              I enjoy web development, UI/UX design, continuous learning, and
-              solving real product problems with practical engineering.
+              {{ t('about.introHeading') }}
             </h3>
             <p>
-              My goal in every project is to combine maximum performance with a
-              user experience that feels simple, coherent, and thoughtfully
-              crafted. Outside work, I like programming, following trends,
-              driving, and gaming, which keeps me curious about systems,
-              feedback loops, and interaction quality.
+              {{ t('about.introBody') }}
             </p>
           </div>
 
@@ -156,12 +154,10 @@
 
     <section class="services section" id="services" #services>
       <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">What I bring</span>
-        <h2>The mix of delivery, leadership, and design awareness modern teams need.</h2>
+        <span class="eyebrow">{{ t('services.eyebrow') }}</span>
+        <h2>{{ t('services.heading') }}</h2>
         <p>
-          My strongest contribution happens where frontend craft, product
-          thinking, and team effectiveness meet. That is where high-trust teams
-          compound.
+          {{ t('services.lead') }}
         </p>
       </div>
 
@@ -176,12 +172,10 @@
 
     <section class="portfolio section" id="portfolio" #portfolio>
       <div class="section-heading" [ngsReveal]="{ origin: 'top' }">
-        <span class="eyebrow">Selected work</span>
-        <h2>Projects that combine engineering with usability and clear outcomes.</h2>
+        <span class="eyebrow">{{ t('portfolio.eyebrow') }}</span>
+        <h2>{{ t('portfolio.heading') }}</h2>
         <p>
-          The work below reflects the type of challenges I enjoy most: complex
-          products, strong UX expectations, and interfaces that need to support
-          real business goals.
+          {{ t('portfolio.lead') }}
         </p>
       </div>
 
@@ -200,7 +194,7 @@
               <span *ngFor="let tag of project.tags">{{ tag }}</span>
             </div>
             <div class="project-card__footer">
-              <span class="project-card__impact-label">Impact</span>
+              <span class="project-card__impact-label">{{ t('portfolio.impactLabel') }}</span>
               <strong>{{ project.outcome }}</strong>
             </div>
           </div>
@@ -210,8 +204,8 @@
 
     <section class="craft section">
       <div class="craft__panel" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">How I work</span>
-        <h2>Built for teams that value quality without slowing down.</h2>
+        <span class="eyebrow">{{ t('craft.eyebrow') }}</span>
+        <h2>{{ t('craft.heading') }}</h2>
         <div class="craft__principles">
           <article class="principle" *ngFor="let principle of workPrinciples">
             <h3>{{ principle.title }}</h3>
@@ -221,8 +215,8 @@
       </div>
 
       <div class="stack-panel" [ngsReveal]="{ origin: 'right' }">
-        <span class="eyebrow">Capability snapshot</span>
-        <h2>Technical depth plus product judgment.</h2>
+        <span class="eyebrow">{{ t('stack.eyebrow') }}</span>
+        <h2>{{ t('stack.heading') }}</h2>
         <div class="stack-panel__groups">
           <article class="stack-group" *ngFor="let group of stackGroups">
             <h3>{{ group.title }}</h3>
@@ -236,19 +230,17 @@
 
     <section class="contact section" id="contact" #contact>
       <div class="contact__intro" [ngsReveal]="{ origin: 'left' }">
-        <span class="eyebrow">Contact</span>
-        <h2>Let’s build something that looks sharp and performs at a high level.</h2>
+        <span class="eyebrow">{{ t('contact.eyebrow') }}</span>
+        <h2>{{ t('contact.heading') }}</h2>
         <p>
-          If you are hiring for frontend, product engineering, design systems,
-          or AI-enhanced user experiences, I am open to conversations about how
-          I can contribute.
+          {{ t('contact.lead') }}
         </p>
 
         <div class="contact__cards">
 
           <article class="contact-card">
-            <span>Best fit</span>
-            <p>Angular teams, product-driven companies, high-craft environments</p>
+            <span>{{ t('contact.bestFitLabel') }}</span>
+            <p>{{ t('contact.bestFitValue') }}</p>
           </article>
         </div>
       </div>
@@ -265,7 +257,7 @@
             type="text"
             name="name"
             [(ngModel)]="contactFormModel.name"
-            placeholder="Full Name"
+            [placeholder]="t('contact.namePlaceholder')"
             required
             #nameField="ngModel"
           />
@@ -273,7 +265,7 @@
             type="email"
             name="email"
             [(ngModel)]="contactFormModel.email"
-            placeholder="Email Address"
+            [placeholder]="t('contact.emailPlaceholder')"
             required
             email
             #emailField="ngModel"
@@ -282,13 +274,13 @@
             type="text"
             name="phone"
             [(ngModel)]="contactFormModel.phone"
-            placeholder="Mobile Number"
+            [placeholder]="t('contact.phonePlaceholder')"
           />
           <input
             type="text"
             name="subject"
             [(ngModel)]="contactFormModel.subject"
-            placeholder="Subject"
+            [placeholder]="t('contact.subjectPlaceholder')"
           />
         </div>
 
@@ -296,7 +288,7 @@
           name="message"
           [(ngModel)]="contactFormModel.message"
           rows="8"
-          placeholder="Tell me about the role, team, or project."
+          [placeholder]="t('contact.messagePlaceholder')"
           required
           #messageField="ngModel"
         ></textarea>
@@ -309,7 +301,7 @@
             (messageField.invalid && messageField.touched)
           "
         >
-          Please fill in your name, a valid email address, and your message.
+          {{ t('contact.validationError') }}
         </p>
         <p class="form-feedback form-feedback-success" *ngIf="submitSuccessMessage">
           {{ submitSuccessMessage }}
@@ -323,7 +315,7 @@
           type="submit"
           [disabled]="isSubmitting"
         >
-          {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+          {{ isSubmitting ? t('contact.sending') : t('contact.send') }}
         </button>
       </form>
     </section>
@@ -331,11 +323,10 @@
 
   <footer class="site-footer">
     <p>
-      Copyright &copy; {{ date.getFullYear() }} Viktor Szőke. Designed to stand
-      out with clarity, taste, and modern frontend craft.
+      {{ t('footer.copyright', { year: date.getFullYear() }) }}
     </p>
     <button class="site-footer__top" type="button" (click)="scrollToElement('home')">
-      Back to top
+      {{ t('footer.backToTop') }}
       <i class="bx bx-up-arrow-alt"></i>
     </button>
   </footer>

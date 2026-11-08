@@ -1,0 +1,202 @@
+{
+  "brand": {
+    "role": "Angular frontend mérnök"
+  },
+  "nav": {
+    "home": "Főoldal",
+    "about": "Rólam",
+    "services": "Érték",
+    "portfolio": "Projektek",
+    "contact": "Kapcsolat",
+    "cta": "Beszéljünk",
+    "toggleMenu": "Menü megnyitása"
+  },
+  "langSwitcher": {
+    "label": "Nyelv kiválasztása"
+  },
+  "hero": {
+    "eyebrow": "Nyitott vagyok ambiciózus termékcsapatokra",
+    "pill1": "Angular specialista",
+    "pill2": "UX-tudatos frontend",
+    "pill3": "AI-kész terméki szemlélet",
+    "headline": "Modern Angular felületek azzal a kidolgozottsággal és minőséggel, amelyet a komoly cégek elvárnak.",
+    "name": "Szőke Viktor",
+    "typedPrefix": "Én egy",
+    "typed1": "frontend mérnök vagyok",
+    "typed2": "csapatvezető vagyok",
+    "typed3": "alkalmi gamer vagyok",
+    "intro": "A BME-n végeztem mérnökinformatikusként, és a frontendre összpontosítok, ahol a termékminőség és a fegyelmezett kivitelezés egyaránt számít. {{years}} év tapasztalattal építek kifinomult, gyors és skálázható felületeket.",
+    "background": "Hátteremben Angular fejlesztés, UX/UI érzék, csapatvezetés és mentorálás van. A magas elvárású környezetek motiválnak, ahol Apple-szintű igényesség a mérce.",
+    "ctaPrimary": "Kezdjünk beszélgetést",
+    "ctaSecondary": "Önéletrajz letöltése",
+    "portraitAlt": "Szőke Viktor portréja",
+    "focusLabel": "Fókusz",
+    "focusValue": "Angular, UX, AI-tudatos terméki munka",
+    "strengthLabel": "Erősség",
+    "strengthValue": "Tiszta kivitelezés vizuális precizitással"
+  },
+  "proof": {
+    "experienceLabel": "Év frontend fejlesztésben",
+    "metric1": { "value": "Angular", "label": "Elsődleges keretrendszer" },
+    "metric2": { "value": "UI/UX", "label": "Designérzékeny kivitelezés" },
+    "metric3": { "value": "Távoli + hibrid", "label": "Együttműködésre kész" }
+  },
+  "about": {
+    "eyebrow": "Rólam",
+    "heading": "Frontend fejlesztés terméki érettséggel.",
+    "lead": "Angularra specializálódtam, és olyan termékeket építek, ahol a felület minősége ugyanannyit ér, mint a megvalósítás. Számít a tiszta architektúra, az intuitív interakció és az első kattintástól megbízható élmény.",
+    "introHeading": "Szeretem a webfejlesztést, a UI/UX tervezést és a valós problémák gyakorlatias megoldását.",
+    "introBody": "Minden projektben a maximális teljesítményt egyszerű, koherens élménnyel ötvözöm. Munkán kívül programozok, követem a trendeket és játszom, ami folyamatosan kíváncsivá tesz a rendszerekre és az interakciók minőségére.",
+    "card1": {
+      "title": "Termékszintű frontend",
+      "desc": "Gyors, ellenálló felületeket építek, amelyek valódi felhasználókra készek, nem csak demókra."
+    },
+    "card2": {
+      "title": "Designérzék technikai fegyelemmel",
+      "desc": "A UI-döntéseimet a használhatóság, a vizuális hierarchia és a kivitelezés minősége együtt alakítja."
+    },
+    "card3": {
+      "title": "Higgadt vezetés nyomás alatt",
+      "desc": "Fejlesztőként, csapatvezetőként és mentorként is hozzájárulok, a lendület megtartásával."
+    }
+  },
+  "services": {
+    "eyebrow": "Amit hozok",
+    "heading": "Szállítás, vezetés és designtudat egyben, ahogy a modern csapatoknak kell.",
+    "lead": "Ott vagyok a legerősebb, ahol a frontend mesterség, a terméki gondolkodás és a csapat hatékonysága találkozik.",
+    "card1": {
+      "title": "Webfejlesztés",
+      "desc": "Modern webes élményeket építek és tartok karban: interakció, reszponzivitás, hosszú távú karbantarthatóság."
+    },
+    "card2": {
+      "title": "Csapatvezetés",
+      "desc": "Összehangolom a kivitelezést, tisztán kommunikálok és tartom a lendületet a minőség feláldozása nélkül."
+    },
+    "card3": {
+      "title": "Mentorálás",
+      "desc": "Gyakorlati útmutatással, technikai coachinggal és önbizalmat növelő visszajelzéssel támogatom a fejlődést."
+    },
+    "card4": {
+      "title": "AI-val bővített terméki munka",
+      "desc": "AI-koncepciókat integrálok, amikor javítják a relevanciát, a sebességet vagy a döntéshozatalt."
+    }
+  },
+  "craft": {
+    "eyebrow": "Hogyan dolgozom",
+    "heading": "Olyan csapatoknak, amelyek a minőséget lassítás nélkül értékelik.",
+    "principle1": {
+      "title": "A mesterség számít",
+      "desc": "A legjobb termékek tiszták és szándékosak a mikrointerakcióktól az architektúráig."
+    },
+    "principle2": {
+      "title": "A sebességhez struktúra kell",
+      "desc": "A jó szállítás újrafelhasználható komponensekből és kiszámítható mintázatokból fakad."
+    },
+    "principle3": {
+      "title": "A csapatok tisztánlátással skálázódnak",
+      "desc": "Erős kommunikáció, felelősségvállalás és átgondolt mentorálás teszi lehetővé az ambiciózus termékeket."
+    }
+  },
+  "stack": {
+    "eyebrow": "Képességek pillanatképe",
+    "heading": "Technikai mélység és terméki ítélőképesség.",
+    "group1": {
+      "title": "Frontend",
+      "item1": "Angular",
+      "item2": "TypeScript",
+      "item3": "Reszponzív UI",
+      "item4": "Komponensrendszerek"
+    },
+    "group2": {
+      "title": "Terméki gondolkodás",
+      "item1": "UX/UI tudatosság",
+      "item2": "Interakciótervezés",
+      "item3": "Teljesítmény",
+      "item4": "Akadálymentesség"
+    },
+    "group3": {
+      "title": "Modern szállítás",
+      "item1": "Csapatvezetés",
+      "item2": "Mentorálás",
+      "item3": "Funkcióközi munka",
+      "item4": "AI-funkciók"
+    }
+  },
+  "portfolio": {
+    "eyebrow": "Válogatott munkák",
+    "heading": "Projektek, amelyek a mérnöki munkát használhatósággal és világos eredménnyel ötvözik.",
+    "lead": "Ezek azok a kihívások, amelyeket a legjobban élvezek: összetett termékek, magas UX-elvárások és valós üzleti célokat szolgáló felületek.",
+    "impactLabel": "Hatás"
+  },
+  "projects": {
+    "1": {
+      "category": "FinTech eszköz",
+      "title": "Kripto kereskedési backtester",
+      "subtitle": "Backtester app, amelyben kereskedési robotokat lehet létrehozni, konfigurálni és kiértékelni kripto stratégiákhoz.",
+      "description": "Backtester alkalmazás kripto kereskedési robotok létrehozására és tesztelésére. A felhasználók kereskedési logikát definiálhattak, stratégiai paramétereket állíthattak be, és a historikus teljesítményt értékelhették ki az éles használat előtt.",
+      "outcome": "Gyorsabb döntéshozatalt és stratégiai kísérletezést tett lehetővé egy átláthatóbb munkafolyamattal.",
+      "tags": ["Angular", "Kripto", "Backtesting", "Termék UX"]
+    },
+    "2": {
+      "category": "AgriTech üzemeltetés",
+      "title": "Mezőgazdasági monitoring platform",
+      "subtitle": "Mezőgazdasági app eszközök regisztrálására és a mezőkről érkező értékek nyomon követésére.",
+      "description": "Az alkalmazás lehetővé tette a terepi eszközök regisztrálását és a távoli környezetekből érkező értékek követését. A felületnek érthetően kellett megjelenítenie az eszközállapotot, a méréseket és az üzemeltetési kontextust.",
+      "outcome": "Átláthatóbbá tette a terepi adatokat és az eszköztevékenységet egy letisztult monitoring felülettel.",
+      "tags": ["Angular", "Monitoring", "IoT", "Irányítópult-design"]
+    },
+    "3": {
+      "category": "Ipari UI",
+      "title": "Modern CNC gép felület",
+      "subtitle": "Modern felületek CNC gépekhez, a letisztultságra, használhatóságra és kezelői munkafolyamatokra fókuszálva.",
+      "description": "Modern felületek megvalósítása CNC gépekhez, ahol a letisztultság, a gyorsaság és a kezelői magabiztosság kulcsfontosságú. A cél az volt, hogy az összetett gépi munkafolyamatok érthető, hatékony felületté álljanak össze.",
+      "outcome": "Korszerűbb gépi élményt nyújtott, jobb kezelői használhatósággal és átláthatóbb munkafolyamatokkal.",
+      "tags": ["Angular", "Ipari UX", "Gép UI", "Frontend megvalósítás"]
+    },
+    "4": {
+      "category": "Ipari termékplatform",
+      "title": "Robotikai alkalmazásplatform",
+      "subtitle": "Automatizált platform kollaboratív alkalmazások építésére, futtatására, monitorozására és újratelepítésére.",
+      "description": "Automatizált platform kollaboratív alkalmazások építésére, futtatására, monitorozására és újratelepítésére. Automatizálja a robotikai alkalmazások beindítását, így programozás és szimuláció nélkül, közvetlenül a gyártósoron telepíthetők, akár néhány óra alatt.",
+      "outcome": "Csökkentette a telepítés bonyolultságát, és sokkal gyorsabb bevezetést tett lehetővé a gyártósoron.",
+      "tags": ["Angular", "Automatizálás", "Ipari UX", "Platformgondolkodás"]
+    },
+    "5": {
+      "category": "Kereskedelmi személyre szabás",
+      "title": "AI-alapú webshop",
+      "subtitle": "AI-alapú webshop, amely a felhasználói viselkedés alapján új vagy hasonló termékeket ajánl.",
+      "description": "AI-alapú webshop, amely a felhasználói viselkedés alapján személyre szabott termékajánlásokat ad, javítva az élményt és növelve az eladásokat. Az ajánlómotort AWS Personalize-zal, 5000 termékes adathalmazon építettük.",
+      "outcome": "Modern kereskedelmi UX-et ötvözött AI-alapú ajánlással a felfedezhetőség és relevancia javításáért.",
+      "tags": ["Angular", "AI", "AWS Personalize", "E-kereskedelem"]
+    },
+    "6": {
+      "category": "EdTech élmény",
+      "title": "Nyelvvizsga",
+      "subtitle": "Online nyelvvizsga webalkalmazás, amely lehetővé teszi a távoli szintfelmérő vizsgát.",
+      "description": "Online nyelvvizsga webalkalmazás távoli szintfelméréshez. Angular frontenddel és ASP.NET Core backenddel épült, intuitív navigációval és reszponzív designnal. A felhasználók regisztrálhatnak, nyelvet és szintet választhatnak, és bármely eszközről levizsgázhatnak.",
+      "outcome": "Megbízható távoli vizsgafolyamatot nyújtott reszponzív felülettel és világos előrehaladással.",
+      "tags": ["Angular", "ASP.NET Core", "Reszponzív UI", "Távoli vizsgáztatás"]
+    }
+  },
+  "contact": {
+    "eyebrow": "Kapcsolat",
+    "heading": "Építsünk valamit, ami élesen néz ki és magas szinten teljesít.",
+    "lead": "Ha frontend, termékfejlesztés, design rendszerek vagy AI-val bővített élmények területén keres munkatársat, beszéljünk arról, hogyan tudok hozzájárulni.",
+    "bestFitLabel": "Legjobb illeszkedés",
+    "bestFitValue": "Angular csapatok, termékvezérelt cégek, magas igényességű környezetek",
+    "namePlaceholder": "Teljes név",
+    "emailPlaceholder": "E-mail cím",
+    "phonePlaceholder": "Telefonszám",
+    "subjectPlaceholder": "Tárgy",
+    "messagePlaceholder": "Mesélj a pozícióról, a csapatról vagy a projektről.",
+    "validationError": "Kérlek, add meg a neved, egy érvényes e-mail címet és az üzeneted.",
+    "successMessage": "Az üzenetedet elküldtük. Hamarosan jelentkezem.",
+    "errorMessage": "A küldés nem sikerült. Kérlek, próbáld újra később.",
+    "send": "Üzenet küldése",
+    "sending": "Küldés..."
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Szőke Viktor. Letisztultsággal, ízléssel és modern frontend mesterséggel.",
+    "backToTop": "Vissza a tetejére"
+  }
+}
