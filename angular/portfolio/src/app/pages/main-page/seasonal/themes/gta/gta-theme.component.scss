@@ -1,0 +1,96 @@
+// REMOVE-AFTER-2026-12: whole file.
+// Token values are written without spaces: custom property values are not minified and this
+// file sits right at the 2 kB anyComponentStyle budget.
+// ViewEncapsulation.None: every rule must sit under $on, Angular 15 keeps these styles in
+// <head> after the component is destroyed (e.g. when another look replaces it).
+$on: ":root[data-season='gta']";
+
+// Always dark: a neon look does not work on white. Contrast checked against --bg:
+// --text-soft 10:1, --accent-text 8:1, white on --accent 5.1:1, on --accent-hover 4.6:1.
+#{$on} {
+  color-scheme: dark;
+
+  --bg: #120a1f;
+  --surface: rgba(34,17,52,.72);
+  --surface-solid: #221134;
+  --field: rgba(255,255,255,.08);
+  --hairline: rgba(255,92,170,.24);
+  --text: #fff4fb;
+  --text-soft: #d3b8d9;
+  --accent: #d6006b;
+  --accent-hover: #e0107a;
+  --accent-text: #ff7ac0;
+  --success: #3ee6a0;
+  --danger: #ff6b6b;
+  --header-bg: rgba(18,10,31,.72);
+  --shadow: 0 0 0 1px rgba(255,46,136,.16);
+  --shadow-hover: 0 0 0 1px rgba(255,46,136,.4),0 2.4rem 4.8rem rgba(255,46,136,.22);
+  --spot: rgba(0,229,255,.12);
+  --ambient-strength: .3;
+  --font-display: Impact,Haettenschweiler,'Arial Narrow Bold','Inter',sans-serif;
+
+  --season-gradient: linear-gradient(100deg,#ff4fa3,#ffb347 55%,#2ee6d6);
+}
+
+// "Increase contrast": the global prefers-contrast rules lose to $on, so firm these up here.
+@media (prefers-contrast: more) {
+  #{$on} {
+    --text-soft: #ecdcef;
+    --hairline: rgba(255,92,170,.5);
+    --field: rgba(255,255,255,.16);
+  }
+}
+
+#{$on} .hero h1,
+#{$on} .section-heading h2:not(.eyebrow),
+#{$on} .brand {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+#{$on} .brand {
+  color: var(--accent-text);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+#{$on} .gradient-text {
+  filter: drop-shadow(0 0 1.6rem rgba(255, 46, 136, 0.45));
+}
+
+// Decoration layer: the scene itself is the SVG in the template.
+.gta__scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// Twinkle only dims: the stars' resting opacity is their contrast-budget maximum.
+.gta__star {
+  animation: season-twinkle 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes season-twinkle {
+  to {
+    opacity: 0.06;
+  }
+}
+
+.gta__shimmer {
+  animation: season-shimmer 5s ease-in-out infinite alternate;
+}
+
+@keyframes season-shimmer {
+  to {
+    transform: translateX(14px);
+  }
+}
+
+@media (forced-colors: active) {
+  #{$on} .gradient-text {
+    filter: none;
+  }
+}

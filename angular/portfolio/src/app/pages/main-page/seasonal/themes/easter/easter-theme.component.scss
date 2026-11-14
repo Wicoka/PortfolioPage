@@ -1,0 +1,115 @@
+// Token values are written without spaces: custom property values are not minified, and this
+// file is close to the 2 kB anyComponentStyle budget.
+// ViewEncapsulation.None: every page rule must sit under $on, Angular 15 keeps these styles
+// in <head> after the component is destroyed (e.g. when another look replaces it).
+$on: ":root[data-season='easter']";
+
+// Contrast: white on --accent / --accent-hover >= 4.6:1 in both schemes; in dark, --accent
+// (focus ring) >= 3.7:1 on --surface-solid; --accent-text 5.2:1 on --bg (light) and >= 9:1
+// (dark); gradient stops >= 5.2:1 on --bg.
+#{$on} {
+  --accent: #1f7a4d;
+  --accent-hover: #1a6d44;
+  --accent-text: #1f7a4d;
+  --spot: rgba(31,122,77,.08);
+  --season-gradient: linear-gradient(100deg,#1f7a4d,#b0407a);
+  // Three painted patterns: banded, striped, dotted.
+  --egg-1: linear-gradient(#ff8fbf 30%,#ffd84d 0 55%,#5fd39a 0 80%,#7aa7ff 0);
+  --egg-2: repeating-linear-gradient(-35deg,#b69cff 0 .6rem,#fff3c4 0 1.2rem);
+  --egg-3: radial-gradient(#fff .35rem,#0000 0) 0 0/1.4rem 1.4rem,#5fd39a;
+}
+
+@media (prefers-color-scheme: dark) {
+  #{$on} {
+    --accent: #238556;
+    --accent-hover: #1f7a4d;
+    --accent-text: #6fdc9f;
+    --spot: rgba(111,220,159,.12);
+    --season-gradient: linear-gradient(100deg,#7fe0a8,#ff9fd0);
+  }
+}
+
+.easter__egg,
+.easter__nest-egg {
+  position: absolute;
+  border-radius: 50% / 60% 60% 40% 40%;
+  background: var(--egg-1);
+}
+
+// Mostly sunk below the viewport edge: at most ~3.3rem shows (eggs are <= 5.6rem tall, 55% hidden,
+// 0.8rem bob), which keeps them under the footer text's 4rem bottom padding at the end of the page.
+// They only bob in place, so under prefers-reduced-motion they stay and simply stand still
+// (unlike the travelling particles of other looks). The resting transform matches the first
+// keyframe, because the global reduced-motion rule ends the animation at once and the egg falls
+// back to it.
+.easter__egg {
+  bottom: 0;
+  transform: translateY(55%) rotate(-6deg);
+  animation: season-bob ease-in-out infinite alternate;
+}
+
+.easter__egg:nth-child(3n + 2),
+.easter__nest-egg--2,
+.easter__nest-egg--4 {
+  background: var(--egg-2);
+}
+
+.easter__egg:nth-child(3n),
+.easter__nest-egg--3 {
+  background: var(--egg-3);
+}
+
+@keyframes season-bob {
+  from {
+    transform: translateY(55%) rotate(-6deg);
+  }
+
+  to {
+    transform: translateY(calc(55% - 0.8rem)) rotate(6deg);
+  }
+}
+
+// Whole eggs in the empty side margins beside the 108rem container. Below this width the spans
+// have no size and stay invisible.
+@media (min-width: 1400px) {
+  .easter__nest-egg {
+    bottom: 0.8rem;
+    width: 6.4rem;
+    height: 8.4rem;
+    transform-origin: bottom;
+    animation: season-wobble 2.4s ease-in-out infinite alternate;
+  }
+
+  .easter__nest-egg--1 {
+    left: 1.6rem;
+  }
+
+  .easter__nest-egg--2,
+  .easter__nest-egg--3 {
+    width: 4.8rem;
+    height: 6.4rem;
+    animation-delay: -1.2s;
+  }
+
+  .easter__nest-egg--2 {
+    left: 8.4rem;
+  }
+
+  .easter__nest-egg--3 {
+    right: 8.4rem;
+  }
+
+  .easter__nest-egg--4 {
+    right: 1.6rem;
+  }
+}
+
+@keyframes season-wobble {
+  from {
+    transform: rotate(-5deg);
+  }
+
+  to {
+    transform: rotate(5deg);
+  }
+}

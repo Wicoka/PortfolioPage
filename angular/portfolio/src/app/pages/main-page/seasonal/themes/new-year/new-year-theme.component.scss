@@ -1,0 +1,56 @@
+// ViewEncapsulation.None: every page rule must sit under $on, Angular 15 keeps these styles
+// in <head> after the component is destroyed (e.g. when another look replaces it).
+$on: ":root[data-season='new-year']";
+
+// Contrast: white on --accent / --accent-hover >= 4.5:1 in both schemes; in dark, --accent
+// (focus ring) >= 3.3:1 on --surface-solid; --accent-text >= 9:1 on --bg in both schemes;
+// gradient stops >= 4.7:1 on --bg.
+#{$on} {
+  --accent: #3a2fb0;
+  --accent-hover: #4537c4;
+  --accent-text: #3a2fb0;
+  --spot: rgba(143, 107, 16, 0.1);
+  --season-gradient: linear-gradient(100deg, #8f6b10, #5b3fd1);
+  --ny-gold: #d4a017;
+  --ny-violet: #7b61ff;
+  --ny-pink: #ff5fa2;
+}
+
+@media (prefers-color-scheme: dark) {
+  #{$on} {
+    --accent: #6a4bff;
+    --accent-hover: #7657ff;
+    --accent-text: #b9a8ff;
+    --spot: rgba(255, 211, 107, 0.1);
+    --season-gradient: linear-gradient(100deg, #ffd36b, #b99cff);
+  }
+}
+
+.ny__confetti {
+  position: absolute;
+  top: -2rem;
+  border-radius: 0.15rem;
+  background: var(--ny-gold);
+  opacity: 0.55;
+  animation: season-confetti linear infinite;
+}
+
+.ny__confetti:nth-child(3n + 1) {
+  background: var(--ny-violet);
+}
+
+.ny__confetti:nth-child(3n + 2) {
+  background: var(--ny-pink);
+}
+
+@keyframes season-confetti {
+  to {
+    transform: translate3d(3rem, calc(100vh + 4rem), 0) rotate(720deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ny__confetti {
+    display: none;
+  }
+}

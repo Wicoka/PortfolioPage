@@ -1,0 +1,55 @@
+// ViewEncapsulation.None: every page rule must sit under $on, Angular 15 keeps these styles
+// in <head> after the component is destroyed (e.g. when another look replaces it).
+$on: ":root[data-season='christmas']";
+
+// Contrast: white on --accent / --accent-hover >= 4.9:1 in both schemes; in dark, --accent
+// (focus ring) >= 3.4:1 on --surface-solid; --accent-text 6.6:1 on --bg (light) and 7.7:1
+// (dark); both gradient stops >= 5:1 on --bg.
+#{$on} {
+  --accent: #c41e3a;
+  --accent-hover: #d42a46;
+  --accent-text: #b3122e;
+  --spot: rgba(196, 30, 58, 0.08);
+  --season-gradient: linear-gradient(100deg, #c41e3a, #1f7a3a);
+  --xmas-snow: rgba(110, 140, 185, 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  #{$on} {
+    --accent: #d42a46;
+    --accent-hover: #c41e3a;
+    --accent-text: #ff6b7f;
+    --spot: rgba(255, 107, 127, 0.12);
+    --season-gradient: linear-gradient(100deg, #ff6b7f, #4cd07a);
+    --xmas-snow: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.xmas__flake {
+  position: absolute;
+  top: -2rem;
+  border-radius: 50%;
+  background: var(--xmas-snow);
+  animation: season-snow linear infinite;
+}
+
+@keyframes season-snow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(2.4rem, 55vh, 0);
+  }
+
+  100% {
+    transform: translate3d(-1.2rem, calc(100vh + 4rem), 0);
+  }
+}
+
+// Particles stuck at the top would just look broken; the colours alone carry the theme.
+@media (prefers-reduced-motion: reduce) {
+  .xmas__flake {
+    display: none;
+  }
+}

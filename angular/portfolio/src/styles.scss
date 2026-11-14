@@ -214,11 +214,15 @@ textarea {
   letter-spacing: 0.02em;
 }
 
+// Seasonal themes (pages/main-page/seasonal) swap in their own gradient through --season-gradient.
 .gradient-text {
-  background: linear-gradient(
-    100deg,
-    hsl(var(--hue) 90% var(--gradient-lightness)),
-    hsl(calc(var(--hue) + 50) 90% var(--gradient-lightness))
+  background: var(
+    --season-gradient,
+    linear-gradient(
+      100deg,
+      hsl(var(--hue) 90% var(--gradient-lightness)),
+      hsl(calc(var(--hue) + 50) 90% var(--gradient-lightness))
+    )
   );
   -webkit-background-clip: text;
   background-clip: text;

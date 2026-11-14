@@ -1,6 +1,6 @@
 # ARCHI.md — PortfolioPage
 
-_Last updated: 2026-11-01_
+_Last updated: 2026-11-14_
 
 Personal portfolio site of Viktor Szőke. The live app is the Angular project in
 `angular/portfolio/`. **All commands and paths below are relative to `angular/portfolio/`**
@@ -54,6 +54,12 @@ src/
       i18n/language.service.ts     active language, persistence, <html lang> + document.title
       components/ambient-background/   fixed, pointer-reactive background
       directives/spotlight.directive.ts  per-element cursor highlight
+      seasonal/                    date-driven holiday looks (see Reusable inventory)
+        seasonal-theme.model.ts    theme ids, date windows, resolveSeasonalTheme(), easterSunday()
+        seasonal-theme.service.ts  active look -> <html data-season>
+        seasonal-theme.component   <app-seasonal-theme>, fixed decoration layer, renders the active theme
+        themes/<id>/               one component per look: decoration markup + the look's styles
+        particles.ts               scatter(): deterministic particle layout for snow/confetti/bats
       components/project-dialog/   ORPHANED: not declared in any module, not built
 ```
 
@@ -92,6 +98,51 @@ src/
   (see `.project-card::before`). Use this instead of a `HostListener('mousemove')`, which would
   run change detection on every mouse event.
 
+- Seasonal looks (`pages/main-page/seasonal/`):
+  - `SEASONAL_THEME_IDS` (priority order) + `SEASON_WINDOWS` (a `Record`, so a new id without a
+    date window does not compile) in `seasonal-theme.model.ts`. Windows are local-time calendar
+    days, inclusive; a window whose end is before its start wraps over New Year. Current set:
+    `gta` (temporary, until `GTA_CAMPAIGN_END` = 2026-12-01), `christmas` 12-01..12-26,
+    `new-year` 12-30..01-02, `easter` Good Friday..Easter Monday (`easterSunday(year)`),
+    `halloween` 10-25..10-31.
+  - `SeasonalThemeService` — `active`: the look the date picks, read once on load. It writes
+    `<html data-season="<id>">` and removes the attribute when no look is active.
+  - Each look is its own component in `themes/<id>/`, declared in `MainPageModule` and switched in
+    `SeasonalThemeComponent`. It uses `ViewEncapsulation.None` and re-themes the page by
+    overriding the `:root` tokens under `:root[data-season='<id>']`, and supplies the headline
+    gradient through `--season-gradient` (read by `.gradient-text` in `styles.scss`, so the
+    `forced-colors` override there still wins). Its decoration markup sits in the fixed layer
+    between the ambient background and the page (`z-index: 0`), always `aria-hidden`.
+  - Decoration that stays put must not cover text. Anything anchored to the bottom edge keeps
+    under ~4rem (the footer text's bottom padding at the end of the page): the Easter egg row is
+    55% sunk, the Halloween pumpkins are 3.6rem tall. Full-size pieces (Easter nest eggs, big
+    pumpkins) only appear from `min-width: 1400px`, where the margins beside the 108rem
+    container are >= 16rem wide.
+  - Theme stylesheets sit near the 2 kB `anyComponentStyle` budget. Custom property values are
+    not minified, so token values in the larger ones are written without spaces; the pumpkin SVG
+    carries its fills inline, like the illustrations do.
+  - The dark-only looks (`gta`, `halloween`) override `--text-soft` / `--hairline` / `--field`
+    with a more specific selector than the global `prefers-contrast: more` rules, so they carry
+    their own `prefers-contrast: more` block.
+  - Trap: Angular 15 does not remove a component's styles from `<head>` when it is destroyed, so
+    every page-level rule in a theme stylesheet must be scoped under `:root[data-season='<id>']`;
+    an unscoped rule would leak into any look that replaces it. Keyframes are
+    global too, so they are prefixed `season-`.
+  - A look that overrides `--accent` needs a dark-scheme value too (or forces dark itself):
+    `--accent` is the button background (white text, >= 4.5:1) and also the `:focus-visible`
+    ring, which needs >= 3:1 against `--surface-solid`. A dark accent that suits the light
+    scheme (e.g. `#3a2fb0`) drops to ~2:1 on the dark background.
+  - Particles that travel across the screen (snow, confetti, bats) are hidden under
+    `prefers-reduced-motion` (the global rule would leave them piled up at the start position);
+    the Easter eggs only bob in place, so they stay and stand still. The whole decoration layer
+    is hidden under `forced-colors: active`, where fills and glyphs turn the same colour as text.
+  - Text scrolls over every part of the decoration layer, so no decoration pixel may get brighter
+    than about sRGB 78 per channel (where `--text-soft` still has 4.5:1). Dark silhouettes can be
+    fully opaque; light sources are dimmed by opacity. The GTA scene (`themes/gta/gta-scene.ts`,
+    an inline SVG: sky, striped sun, skyline with lit windows, sea, palms) documents the opacities.
+  - Removal marker: `REMOVE-AFTER-2026-12` (GTA VI look). `grep -rn REMOVE-AFTER-2026-12 src`
+    lists every spot.
+
 ## Conventions
 
 - Page styles live in the global `src/styles.scss`, not in component SCSS. Component styles
@@ -100,6 +151,8 @@ src/
 - `html { font-size: 62.5% }`, so `1rem = 10px`. Sizes are written in `rem` with that in mind.
 - Colours are CSS custom properties on `:root` with a `prefers-color-scheme: dark` override.
   Do not hard-code colours in rules; add a token.
+  Seasonal looks override these tokens (see the seasonal entry above) instead of restyling
+  rules; the dark-only looks (`gta`, `halloween`) also set `color-scheme: dark`.
 - Motion respects `prefers-reduced-motion` (CSS media query + the checks in
   `MainPageComponent` and `AmbientBackgroundComponent`).
 - High-frequency DOM listeners (pointer/scroll animation) run outside `NgZone` and write CSS
